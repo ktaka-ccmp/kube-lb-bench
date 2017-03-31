@@ -1,0 +1,70 @@
+30s
+wrk -c800 -t40 -d30s http://172.16.14.2/coffee
+Start time: 1490857785
+Running 30s test @ http://172.16.14.2/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    85.54ms  124.45ms   2.00s    97.87%
+    Req/Sec   137.44     96.54     2.30k    78.74%
+  155112 requests in 30.03s, 38.77MB read
+  Socket errors: connect 0, read 39, write 0, timeout 1173
+Requests/sec:   5165.14
+Transfer/sec:      1.29MB
+End time: 1490857815
+
+60s
+wrk -c800 -t40 -d60s http://172.16.14.2/coffee
+Start time: 1490857966
+Running 1m test @ http://172.16.14.2/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    74.46ms   99.94ms   1.99s    98.72%
+    Req/Sec   136.84     87.11     2.48k    77.53%
+  304553 requests in 1.00m, 76.12MB read
+  Socket errors: connect 0, read 7, write 0, timeout 2553
+Requests/sec:   5069.53
+Transfer/sec:      1.27MB
+End time: 1490858026
+
+120s
+wrk -c800 -t40 -d120s http://172.16.14.2/coffee
+Start time: 1490858326
+Running 2m test @ http://172.16.14.2/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    73.28ms   79.86ms   2.00s    99.11%
+    Req/Sec   120.98     60.59     1.92k    74.11%
+  566184 requests in 2.00m, 141.51MB read
+  Socket errors: connect 0, read 328, write 0, timeout 5256
+Requests/sec:   4714.51
+Transfer/sec:      1.18MB
+End time: 1490858447
+
+180s
+wrk -c800 -t40 -d180s http://172.16.14.2/coffee
+Start time: 1490858927
+Running 3m test @ http://172.16.14.2/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    74.36ms   78.09ms   2.00s    99.25%
+    Req/Sec   123.51     61.80     2.56k    73.82%
+  863239 requests in 3.00m, 215.75MB read
+  Socket errors: connect 0, read 118, write 149, timeout 7664
+Requests/sec:   4793.82
+Transfer/sec:      1.20MB
+End time: 1490859107
+
+300s
+wrk -c800 -t40 -d300s http://172.16.14.2/coffee
+Start time: 1490859888
+Running 5m test @ http://172.16.14.2/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    71.59ms   63.29ms   2.00s    99.47%
+    Req/Sec   120.07     49.62     2.39k    71.72%
+  1425913 requests in 5.00m, 356.39MB read
+  Socket errors: connect 0, read 347, write 133, timeout 13325
+Requests/sec:   4751.45
+Transfer/sec:      1.19MB
+End time: 1490860188
+

@@ -1,0 +1,14 @@
+
+wrk -c800 -t40 -d60s http://172.16.121.2/coffee
+Start time: 1490865803
+Running 1m test @ http://172.16.121.2/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    74.70ms  197.52ms   2.00s    89.73%
+    Req/Sec   469.13    393.23     8.57k    83.25%
+  872111 requests in 1.00m, 219.53MB read
+  Socket errors: connect 0, read 228, write 0, timeout 157
+Requests/sec:  14517.85
+Transfer/sec:      3.65MB
+End time: 1490865863
+

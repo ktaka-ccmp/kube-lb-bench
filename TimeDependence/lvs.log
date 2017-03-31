@@ -1,0 +1,66 @@
+30s
+wrk -c800 -t40 -d30s http://10.0.255.10:8888/coffee
+Start time: 1490857815
+Running 30s test @ http://10.0.255.10:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.60ms    6.70ms 441.37ms   67.62%
+    Req/Sec     2.45k   580.32     7.10k    74.04%
+  2928385 requests in 30.10s, 734.68MB read
+Requests/sec:  97289.84
+Transfer/sec:     24.41MB
+End time: 1490857845
+
+60s
+wrk -c800 -t40 -d60s http://10.0.255.10:8888/coffee
+Start time: 1490858026
+Running 1m test @ http://10.0.255.10:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.05ms    7.73ms 204.78ms   70.78%
+    Req/Sec     2.39k   685.82     6.28k    70.58%
+  5702071 requests in 1.00m, 1.40GB read
+Requests/sec:  94986.82
+Transfer/sec:     23.83MB
+End time: 1490858086
+
+120s
+wrk -c800 -t40 -d120s http://10.0.255.10:8888/coffee
+Start time: 1490858447
+Running 2m test @ http://10.0.255.10:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.44ms   11.50ms 771.92ms   92.97%
+    Req/Sec     2.35k   702.00     7.23k    70.67%
+  11212943 requests in 2.00m, 2.75GB read
+Requests/sec:  93408.49
+Transfer/sec:     23.43MB
+End time: 1490858567
+
+180s
+wrk -c800 -t40 -d180s http://10.0.255.10:8888/coffee
+Start time: 1490859107
+Running 3m test @ http://10.0.255.10:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.52ms    9.54ms 491.49ms   89.84%
+    Req/Sec     2.33k   778.16    10.59k    68.69%
+  16710095 requests in 3.00m, 4.09GB read
+Requests/sec:  92787.67
+Transfer/sec:     23.28MB
+End time: 1490859287
+
+300s
+wrk -c800 -t40 -d300s http://10.0.255.10:8888/coffee
+Start time: 1490860188
+Running 5m test @ http://10.0.255.10:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.43ms    9.65ms 615.38ms   90.25%
+    Req/Sec     2.34k   772.04    21.39k    69.02%
+  27998807 requests in 5.00m, 6.86GB read
+  Socket errors: connect 0, read 0, write 0, timeout 14
+Requests/sec:  93301.03
+Transfer/sec:     23.41MB
+End time: 1490860488
+
