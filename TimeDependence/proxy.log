@@ -1,0 +1,65 @@
+30s
+wrk -c800 -t40 -d30s http://10.254.0.10/coffee
+Start time: 1490857755
+Running 30s test @ http://10.254.0.10/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.62ms   19.88ms 491.65ms   98.52%
+    Req/Sec     2.98k   540.38     9.55k    84.80%
+  3540629 requests in 30.05s, 0.87GB read
+Requests/sec: 117837.60
+Transfer/sec:     29.56MB
+End time: 1490857785
+
+60s
+wrk -c800 -t40 -d60s http://10.254.0.10/coffee
+Start time: 1490857906
+Running 1m test @ http://10.254.0.10/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.22ms    9.84ms 964.65ms   92.68%
+    Req/Sec     2.65k   781.61     6.59k    70.27%
+  6343587 requests in 1.00m, 1.55GB read
+Requests/sec: 105567.92
+Transfer/sec:     26.49MB
+End time: 1490857966
+
+120s
+wrk -c800 -t40 -d120s http://10.254.0.10/coffee
+Start time: 1490858206
+Running 2m test @ http://10.254.0.10/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.95ms    9.21ms 503.02ms   93.06%
+    Req/Sec     2.78k   755.18     7.70k    70.60%
+  13299235 requests in 2.00m, 3.26GB read
+Requests/sec: 110735.45
+Transfer/sec:     27.78MB
+End time: 1490858326
+
+180s
+wrk -c800 -t40 -d180s http://10.254.0.10/coffee
+Start time: 1490858747
+Running 3m test @ http://10.254.0.10/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.80ms    8.03ms 488.52ms   90.87%
+    Req/Sec     2.81k   776.65    10.11k    68.88%
+  20123621 requests in 3.00m, 4.93GB read
+Requests/sec: 111736.61
+Transfer/sec:     28.03MB
+End time: 1490858927
+
+300s
+wrk -c800 -t40 -d300s http://10.254.0.10/coffee
+Start time: 1490859588
+Running 5m test @ http://10.254.0.10/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.83ms    7.56ms 487.94ms   89.97%
+    Req/Sec     2.79k   799.60    10.77k    69.18%
+  33330769 requests in 5.00m, 8.17GB read
+Requests/sec: 111066.04
+Transfer/sec:     27.87MB
+End time: 1490859888
+
