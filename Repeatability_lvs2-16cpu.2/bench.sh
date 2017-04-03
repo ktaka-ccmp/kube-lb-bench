@@ -88,7 +88,7 @@ echo
 done
 }
 
-for i in {1..3}; do
+for i in {1..10}; do
 bench_set
 done
 

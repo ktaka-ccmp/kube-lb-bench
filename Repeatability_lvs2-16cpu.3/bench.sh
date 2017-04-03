@@ -59,7 +59,7 @@ file=lvs_cpu16.log
 }
 
 bench_set(){
-for repl in 1 $(seq 2 2 40) ; do 
+for repl in 1 $(seq 2 2 20) 25 30 35 40 ; do 
 
 kubectl scale rc/coffee-rc --replicas=0 -s 10.0.0.100:8080
 
@@ -75,11 +75,11 @@ sleep $wait
 
 set_lv02 ; bench
 set_lv04 ; bench
-set_lv06 ; bench
+#set_lv06 ; bench
 set_lv08 ; bench
-set_lv10 ; bench
+#set_lv10 ; bench
 set_lv12 ; bench
-set_lv14 ; bench
+#set_lv14 ; bench
 set_lv16 ; bench
 
 echo end measurement for $repl
@@ -88,7 +88,7 @@ echo
 done
 }
 
-for i in {1..3}; do
+for i in {1..10}; do
 bench_set
 done
 

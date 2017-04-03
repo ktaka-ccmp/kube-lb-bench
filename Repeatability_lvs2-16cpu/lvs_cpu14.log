@@ -1,0 +1,873 @@
+podnum=1
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490986999
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    72.90ms  203.70ms   1.99s    90.64%
+    Req/Sec   415.08    320.99     5.42k    80.53%
+  767226 requests in 1.00m, 193.13MB read
+  Socket errors: connect 0, read 185, write 10, timeout 482
+Requests/sec:  12771.79
+Transfer/sec:      3.21MB
+End time: 1490987060
+
+podnum=2
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490987545
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   129.70ms  258.89ms   2.00s    85.02%
+    Req/Sec   723.81    319.73     5.92k    73.00%
+  1705071 requests in 1.00m, 427.58MB read
+  Socket errors: connect 0, read 0, write 0, timeout 293
+Requests/sec:  28382.20
+Transfer/sec:      7.12MB
+End time: 1490987606
+
+podnum=4
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490988092
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    91.45ms  162.74ms   1.54s    84.00%
+    Req/Sec     1.42k   476.95     5.99k    71.14%
+  3375876 requests in 1.00m, 847.35MB read
+Requests/sec:  56200.43
+Transfer/sec:     14.11MB
+End time: 1490988152
+
+podnum=6
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490988638
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.38ms   35.00ms 836.12ms   96.53%
+    Req/Sec     2.03k   478.87     5.09k    81.44%
+  3765848 requests in 1.00m, 0.92GB read
+Requests/sec:  62661.64
+Transfer/sec:     15.72MB
+End time: 1490988698
+
+podnum=8
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490989184
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    23.98ms  124.41ms   1.98s    96.68%
+    Req/Sec     2.30k     0.93k    8.36k    71.22%
+  3751876 requests in 1.00m, 0.92GB read
+  Socket errors: connect 0, read 0, write 0, timeout 60
+Requests/sec:  62427.36
+Transfer/sec:     15.66MB
+End time: 1490989245
+
+podnum=10
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490989731
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.97ms   81.90ms   1.94s    97.71%
+    Req/Sec     2.79k   690.60     6.86k    76.66%
+  3675049 requests in 1.00m, 0.90GB read
+  Socket errors: connect 0, read 0, write 0, timeout 9
+Requests/sec:  61139.76
+Transfer/sec:     15.33MB
+End time: 1490989792
+
+podnum=12
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490990278
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.48ms   56.58ms   1.88s    97.60%
+    Req/Sec     2.99k   673.75     7.02k    79.60%
+  3327522 requests in 1.00m, 834.44MB read
+  Socket errors: connect 0, read 0, write 0, timeout 6
+Requests/sec:  55366.87
+Transfer/sec:     13.88MB
+End time: 1490990338
+
+podnum=14
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490990824
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.52ms   57.43ms   1.94s    97.26%
+    Req/Sec     3.03k   620.74     6.91k    77.94%
+  3591089 requests in 1.00m, 0.88GB read
+  Socket errors: connect 0, read 0, write 0, timeout 6
+Requests/sec:  59752.50
+Transfer/sec:     15.00MB
+End time: 1490990884
+
+podnum=16
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490991371
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.86ms   63.92ms   1.90s    97.55%
+    Req/Sec     2.86k   782.05     9.21k    75.96%
+  3447485 requests in 1.00m, 864.31MB read
+  Socket errors: connect 0, read 0, write 0, timeout 4
+Requests/sec:  57363.28
+Transfer/sec:     14.38MB
+End time: 1490991431
+
+podnum=18
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490991917
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.37ms   60.38ms   1.68s    97.38%
+    Req/Sec     2.92k   700.33     6.08k    75.09%
+  3673730 requests in 1.00m, 0.90GB read
+  Socket errors: connect 0, read 0, write 0, timeout 19
+Requests/sec:  61115.36
+Transfer/sec:     15.33MB
+End time: 1490991977
+
+podnum=20
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490992463
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.79ms   35.76ms   1.34s    98.43%
+    Req/Sec     2.72k     1.04k    7.87k    67.47%
+  3455724 requests in 1.00m, 867.08MB read
+  Socket errors: connect 0, read 0, write 0, timeout 3
+Requests/sec:  57502.04
+Transfer/sec:     14.43MB
+End time: 1490992524
+
+podnum=22
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490992950
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.64ms   50.11ms   1.73s    98.00%
+    Req/Sec     3.09k   795.77     6.41k    80.32%
+  3804769 requests in 1.00m, 0.93GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec:  63321.69
+Transfer/sec:     15.89MB
+End time: 1490993010
+
+podnum=24
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490993496
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.73ms   80.48ms   1.84s    97.97%
+    Req/Sec     3.34k   564.74     7.74k    78.24%
+  4083465 requests in 1.00m, 1.00GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec:  67946.39
+Transfer/sec:     17.05MB
+End time: 1490993556
+
+podnum=26
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490994042
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.87ms   66.69ms   1.91s    97.87%
+    Req/Sec     3.31k   636.44     6.39k    81.74%
+  4102198 requests in 1.00m, 1.01GB read
+  Socket errors: connect 0, read 0, write 0, timeout 8
+Requests/sec:  68261.90
+Transfer/sec:     17.13MB
+End time: 1490994102
+
+podnum=28
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490994588
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.72ms   63.66ms   1.89s    97.74%
+    Req/Sec     3.33k   581.43     5.77k    77.96%
+  3996182 requests in 1.00m, 0.98GB read
+  Socket errors: connect 0, read 0, write 0, timeout 95
+Requests/sec:  66494.68
+Transfer/sec:     16.68MB
+End time: 1490994649
+
+podnum=30
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490995134
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    18.03ms   76.88ms   1.98s    96.41%
+    Req/Sec     3.43k   413.89     9.74k    74.04%
+  8173409 requests in 1.00m, 2.00GB read
+  Socket errors: connect 0, read 0, write 0, timeout 9
+Requests/sec: 136003.06
+Transfer/sec:     34.12MB
+End time: 1490995194
+
+podnum=32
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490995680
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    16.88ms   71.86ms   2.00s    96.65%
+    Req/Sec     3.43k   379.94     6.73k    70.71%
+  8207474 requests in 1.00m, 2.01GB read
+  Socket errors: connect 0, read 0, write 0, timeout 10
+Requests/sec: 136614.21
+Transfer/sec:     34.27MB
+End time: 1490995740
+
+podnum=34
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490996227
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    22.85ms  107.83ms   1.98s    96.45%
+    Req/Sec     3.42k   450.78     7.04k    73.45%
+  8178994 requests in 1.00m, 2.00GB read
+  Socket errors: connect 0, read 0, write 0, timeout 49
+Requests/sec: 136105.47
+Transfer/sec:     34.15MB
+End time: 1490996287
+
+podnum=36
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490996773
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    21.04ms   87.70ms   1.95s    95.94%
+    Req/Sec     3.42k   426.08     8.48k    72.12%
+  8171863 requests in 1.00m, 2.00GB read
+  Socket errors: connect 0, read 0, write 0, timeout 15
+Requests/sec: 135985.15
+Transfer/sec:     34.12MB
+End time: 1490996833
+
+podnum=38
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490997319
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.90ms   74.02ms   1.93s    97.71%
+    Req/Sec     3.40k   556.48     6.62k    79.11%
+  4104449 requests in 1.00m, 1.01GB read
+  Socket errors: connect 0, read 0, write 0, timeout 4
+Requests/sec:  68296.77
+Transfer/sec:     17.14MB
+End time: 1490997379
+
+podnum=40
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490997865
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    16.52ms   85.39ms   1.99s    97.17%
+    Req/Sec     3.39k   610.36     6.14k    81.22%
+  4015333 requests in 1.00m, 0.98GB read
+  Socket errors: connect 0, read 0, write 0, timeout 22
+Requests/sec:  66811.54
+Transfer/sec:     16.76MB
+End time: 1490997925
+
+podnum=1
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490998411
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    74.11ms  206.53ms   1.99s    90.59%
+    Req/Sec   436.54    332.05     3.81k    80.52%
+  758385 requests in 1.00m, 190.90MB read
+  Socket errors: connect 0, read 232, write 10, timeout 492
+Requests/sec:  12625.88
+Transfer/sec:      3.18MB
+End time: 1490998471
+
+podnum=2
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490998957
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   133.50ms  267.30ms   2.00s    85.08%
+    Req/Sec   716.11    297.31     5.96k    71.62%
+  1689816 requests in 1.00m, 423.75MB read
+  Socket errors: connect 0, read 0, write 0, timeout 232
+Requests/sec:  28149.76
+Transfer/sec:      7.06MB
+End time: 1490999017
+
+podnum=4
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1490999502
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   107.81ms  184.53ms   1.26s    83.00%
+    Req/Sec     1.39k   319.71     6.86k    72.16%
+  3319897 requests in 1.00m, 833.38MB read
+Requests/sec:  55240.21
+Transfer/sec:     13.87MB
+End time: 1490999563
+
+podnum=6
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491000049
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.69ms   22.31ms 752.13ms   97.15%
+    Req/Sec     2.09k   589.56     5.87k    77.08%
+  3809493 requests in 1.00m, 0.93GB read
+Requests/sec:  63403.69
+Transfer/sec:     15.90MB
+End time: 1491000109
+
+podnum=8
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491000595
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    27.73ms  127.67ms   1.91s    95.93%
+    Req/Sec     2.59k   708.02     5.97k    75.46%
+  3533303 requests in 1.00m, 0.87GB read
+  Socket errors: connect 0, read 0, write 0, timeout 86
+Requests/sec:  58809.99
+Transfer/sec:     14.76MB
+End time: 1491000655
+
+podnum=10
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491001141
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.91ms   70.11ms   1.89s    97.64%
+    Req/Sec     2.99k   712.28     6.02k    80.78%
+  3759473 requests in 1.00m, 0.92GB read
+  Socket errors: connect 0, read 0, write 0, timeout 26
+Requests/sec:  62556.10
+Transfer/sec:     15.69MB
+End time: 1491001201
+
+podnum=12
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491001627
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.98ms   41.71ms   1.86s    98.41%
+    Req/Sec     2.76k   769.48     6.09k    73.69%
+  3014553 requests in 1.00m, 756.67MB read
+  Socket errors: connect 0, read 0, write 0, timeout 8
+Requests/sec:  50169.81
+Transfer/sec:     12.59MB
+End time: 1491001687
+
+podnum=14
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491002173
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    22.12ms   94.49ms   1.96s    96.03%
+    Req/Sec     3.29k   428.65     5.37k    71.32%
+  7862252 requests in 1.00m, 1.93GB read
+  Socket errors: connect 0, read 0, write 0, timeout 18
+Requests/sec: 130826.24
+Transfer/sec:     32.83MB
+End time: 1491002233
+
+podnum=16
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491002719
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    22.25ms  103.92ms   1.99s    96.45%
+    Req/Sec     3.35k   437.42     9.64k    74.41%
+  8016241 requests in 1.00m, 1.96GB read
+  Socket errors: connect 0, read 0, write 0, timeout 26
+Requests/sec: 133389.30
+Transfer/sec:     33.45MB
+End time: 1491002779
+
+podnum=18
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491003265
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.67ms   68.31ms   1.77s    95.96%
+    Req/Sec     3.35k   427.65     6.89k    71.81%
+  8012172 requests in 1.00m, 1.96GB read
+  Socket errors: connect 0, read 0, write 0, timeout 132
+Requests/sec: 133318.71
+Transfer/sec:     33.45MB
+End time: 1491003325
+
+podnum=20
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491003811
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    11.29ms   54.14ms   1.77s    97.95%
+    Req/Sec     3.26k   650.25     5.89k    81.79%
+  3564258 requests in 1.00m, 0.87GB read
+  Socket errors: connect 0, read 0, write 0, timeout 16
+Requests/sec:  59305.55
+Transfer/sec:     14.88MB
+End time: 1491003871
+
+podnum=22
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491004357
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.63ms   68.98ms   1.97s    97.56%
+    Req/Sec     3.35k   583.49     5.78k    78.94%
+  4055863 requests in 1.00m, 0.99GB read
+  Socket errors: connect 0, read 0, write 0, timeout 15
+Requests/sec:  67485.28
+Transfer/sec:     16.93MB
+End time: 1491004417
+
+podnum=24
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491004903
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.72ms   53.99ms   1.77s    98.58%
+    Req/Sec     2.72k     0.93k    6.57k    70.04%
+  3161426 requests in 1.00m, 793.17MB read
+  Socket errors: connect 0, read 0, write 0, timeout 18
+Requests/sec:  52641.33
+Transfer/sec:     13.21MB
+End time: 1491004963
+
+podnum=26
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491005450
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.98ms   25.38ms   1.73s    98.87%
+    Req/Sec     2.90k     0.86k    8.03k    71.71%
+  3135890 requests in 1.00m, 786.73MB read
+Requests/sec:  52179.18
+Transfer/sec:     13.09MB
+End time: 1491005510
+
+podnum=28
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491005996
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    18.32ms   99.91ms   1.98s    97.25%
+    Req/Sec     3.26k   616.54     7.00k    76.53%
+  3994407 requests in 1.00m, 0.98GB read
+  Socket errors: connect 0, read 0, write 0, timeout 42
+Requests/sec:  66464.42
+Transfer/sec:     16.67MB
+End time: 1491006056
+
+podnum=30
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491006542
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    19.20ms   80.42ms   1.99s    96.23%
+    Req/Sec     3.42k   407.00     5.89k    72.39%
+  8187116 requests in 1.00m, 2.01GB read
+  Socket errors: connect 0, read 0, write 0, timeout 35
+Requests/sec: 136229.41
+Transfer/sec:     34.18MB
+End time: 1491006602
+
+podnum=32
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491007089
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.50ms   70.91ms   1.74s    97.40%
+    Req/Sec     3.31k   602.58     7.31k    79.00%
+  4064077 requests in 1.00m, 1.00GB read
+  Socket errors: connect 0, read 0, write 0, timeout 9
+Requests/sec:  67624.82
+Transfer/sec:     16.97MB
+End time: 1491007149
+
+podnum=34
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491007636
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.57ms   71.55ms   1.77s    97.35%
+    Req/Sec     3.29k   584.95     6.62k    76.71%
+  4032663 requests in 1.00m, 0.99GB read
+  Socket errors: connect 0, read 0, write 0, timeout 16
+Requests/sec:  67100.63
+Transfer/sec:     16.83MB
+End time: 1491007696
+
+podnum=36
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491008182
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    11.25ms   53.07ms   1.74s    98.00%
+    Req/Sec     3.37k   550.68     8.65k    81.16%
+  4060928 requests in 1.00m, 0.99GB read
+  Socket errors: connect 0, read 0, write 0, timeout 4
+Requests/sec:  67571.65
+Transfer/sec:     16.95MB
+End time: 1491008242
+
+podnum=38
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491008729
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    19.61ms   91.54ms   1.99s    96.47%
+    Req/Sec     3.41k   433.63     5.51k    74.42%
+  8133666 requests in 1.00m, 1.99GB read
+  Socket errors: connect 0, read 0, write 0, timeout 17
+Requests/sec: 135337.36
+Transfer/sec:     33.96MB
+End time: 1491008789
+
+podnum=40
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491009276
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    21.09ms   99.99ms   1.94s    96.39%
+    Req/Sec     3.45k   461.84     7.68k    73.87%
+  8243983 requests in 1.00m, 2.02GB read
+  Socket errors: connect 0, read 0, write 0, timeout 28
+Requests/sec: 137172.48
+Transfer/sec:     34.41MB
+End time: 1491009336
+
+podnum=1
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491009822
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    83.08ms  231.32ms   2.00s    90.71%
+    Req/Sec   382.68    254.84     4.64k    62.18%
+  652774 requests in 1.00m, 163.70MB read
+  Socket errors: connect 0, read 46, write 0, timeout 505
+Requests/sec:  10865.75
+Transfer/sec:      2.72MB
+End time: 1491009882
+
+podnum=2
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491010370
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   133.15ms  266.38ms   2.00s    85.04%
+    Req/Sec   706.22    300.87     5.96k    70.79%
+  1655160 requests in 1.00m, 415.86MB read
+  Socket errors: connect 0, read 0, write 0, timeout 236
+Requests/sec:  27566.24
+Transfer/sec:      6.93MB
+End time: 1491010430
+
+podnum=4
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491010857
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   104.75ms  179.00ms   1.28s    82.96%
+    Req/Sec     1.43k   346.46    10.86k    73.56%
+  3418921 requests in 1.00m, 858.16MB read
+Requests/sec:  56887.25
+Transfer/sec:     14.28MB
+End time: 1491010917
+
+podnum=6
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491011403
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.36ms   32.46ms   1.45s    97.99%
+    Req/Sec     2.08k   571.59     6.66k    72.84%
+  3798027 requests in 1.00m, 0.93GB read
+Requests/sec:  63210.27
+Transfer/sec:     15.85MB
+End time: 1491011463
+
+podnum=8
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491011950
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    25.32ms  120.09ms   1.86s    96.09%
+    Req/Sec     2.64k   635.63     5.53k    75.92%
+  3399948 requests in 1.00m, 853.01MB read
+  Socket errors: connect 0, read 0, write 0, timeout 96
+Requests/sec:  56575.09
+Transfer/sec:     14.19MB
+End time: 1491012011
+
+podnum=10
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491012497
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.78ms   74.68ms   1.91s    97.48%
+    Req/Sec     3.05k   653.01     6.61k    79.31%
+  3636160 requests in 1.00m, 0.89GB read
+  Socket errors: connect 0, read 0, write 0, timeout 8
+Requests/sec:  60506.20
+Transfer/sec:     15.18MB
+End time: 1491012557
+
+podnum=12
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491013044
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.10ms   62.04ms   1.76s    97.62%
+    Req/Sec     2.89k   771.44     7.33k    82.92%
+  3521691 requests in 1.00m, 0.86GB read
+  Socket errors: connect 0, read 0, write 0, timeout 4
+Requests/sec:  58600.19
+Transfer/sec:     14.71MB
+End time: 1491013104
+
+podnum=14
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491013591
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.28ms   35.68ms   1.53s    98.21%
+    Req/Sec     3.12k   606.44     6.12k    84.14%
+  3465194 requests in 1.00m, 869.44MB read
+  Socket errors: connect 0, read 0, write 0, timeout 3
+Requests/sec:  57657.73
+Transfer/sec:     14.47MB
+End time: 1491013652
+
+podnum=16
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491014139
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.10ms   58.95ms   1.94s    97.77%
+    Req/Sec     2.95k   684.64     7.98k    83.87%
+  3513374 requests in 1.00m, 0.86GB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec:  58464.16
+Transfer/sec:     14.66MB
+End time: 1491014199
+
+podnum=18
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491014686
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.95ms   45.10ms   1.68s    98.55%
+    Req/Sec     2.87k   729.77     6.39k    82.53%
+  3519886 requests in 1.00m, 0.86GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec:  58570.70
+Transfer/sec:     14.69MB
+End time: 1491014747
+
+podnum=20
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491015233
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.82ms   67.77ms   1.94s    97.58%
+    Req/Sec     2.97k   629.33     6.63k    84.25%
+  3371383 requests in 1.00m, 846.25MB read
+  Socket errors: connect 0, read 0, write 0, timeout 36
+Requests/sec:  56100.51
+Transfer/sec:     14.08MB
+End time: 1491015293
+
+podnum=22
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491015780
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.04ms   39.48ms   1.76s    97.92%
+    Req/Sec     3.05k   589.94     7.87k    84.34%
+  3362581 requests in 1.00m, 843.24MB read
+  Socket errors: connect 0, read 0, write 0, timeout 4
+Requests/sec:  55950.71
+Transfer/sec:     14.03MB
+End time: 1491015840
+
+podnum=24
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491016328
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    11.15ms   51.26ms   1.93s    98.02%
+    Req/Sec     2.87k   620.77     6.51k    82.89%
+  3612050 requests in 1.00m, 0.88GB read
+  Socket errors: connect 0, read 0, write 0, timeout 6
+Requests/sec:  60103.10
+Transfer/sec:     15.08MB
+End time: 1491016388
+
+podnum=26
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491016875
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.52ms   49.05ms   1.69s    98.09%
+    Req/Sec     2.95k   700.26     6.32k    83.74%
+  3599843 requests in 1.00m, 0.88GB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec:  59899.52
+Transfer/sec:     15.03MB
+End time: 1491016935
+
+podnum=28
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491017422
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.38ms   37.95ms   1.27s    98.21%
+    Req/Sec     2.95k   686.59     8.29k    83.10%
+  3665630 requests in 1.00m, 0.90GB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec:  60994.35
+Transfer/sec:     15.30MB
+End time: 1491017482
+
+podnum=30
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491017970
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.04ms   35.37ms   1.48s    98.35%
+    Req/Sec     2.97k   739.85     8.53k    84.62%
+  3586103 requests in 1.00m, 0.88GB read
+Requests/sec:  59672.04
+Transfer/sec:     14.97MB
+End time: 1491018030
+
+podnum=32
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491018515
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.13ms   41.87ms   1.69s    97.96%
+    Req/Sec     3.01k   675.22     9.74k    85.92%
+  3756022 requests in 1.00m, 0.92GB read
+  Socket errors: connect 0, read 0, write 0, timeout 3
+Requests/sec:  62497.25
+Transfer/sec:     15.68MB
+End time: 1491018575
+
+podnum=34
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491019058
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.89ms   50.89ms   1.94s    97.94%
+    Req/Sec     3.04k   636.23     7.71k    85.36%
+  3393765 requests in 1.00m, 851.43MB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec:  56471.15
+Transfer/sec:     14.17MB
+End time: 1491019118
+
+podnum=36
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491019602
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.36ms   36.83ms   1.47s    98.07%
+    Req/Sec     2.96k   676.08     7.42k    83.35%
+  3683438 requests in 1.00m, 0.90GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec:  61289.74
+Transfer/sec:     15.38MB
+End time: 1491019662
+
+podnum=38
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491020146
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.14ms   44.43ms   1.54s    98.07%
+    Req/Sec     2.94k   677.12     6.71k    83.81%
+  3574353 requests in 1.00m, 0.88GB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec:  59474.12
+Transfer/sec:     14.92MB
+End time: 1491020206
+
+podnum=40
+Start time: wrk -c800 -t40 -d60s http://10.0.255.14:8888/coffee
+1491020689
+Running 1m test @ http://10.0.255.14:8888/coffee
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.88ms   39.77ms   1.72s    98.03%
+    Req/Sec     3.04k   578.73     6.80k    84.71%
+  3658606 requests in 1.00m, 0.90GB read
+Requests/sec:  60878.83
+Transfer/sec:     15.27MB
+End time: 1491020749
+
