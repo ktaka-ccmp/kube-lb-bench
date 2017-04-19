@@ -11748,13 +11748,13 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;matplotlib inline&#39;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">df01</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;cpu08_lv02_1.csv&quot;</span><span class="p">)</span>
 <span class="n">df02</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;cpu08_lv02_2.csv&quot;</span><span class="p">)</span>
 <span class="n">df03</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;cpu08_lv02_3.csv&quot;</span><span class="p">)</span>
@@ -11776,7 +11776,7 @@ div#notebook {
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;seaborn-colorblind&#39;, &#39;seaborn-darkgrid&#39;, &#39;seaborn-deep&#39;, &#39;seaborn-muted&#39;, &#39;fivethirtyeight&#39;, &#39;seaborn-poster&#39;, &#39;seaborn-whitegrid&#39;, &#39;grayscale&#39;, &#39;seaborn-bright&#39;, &#39;bmh&#39;, &#39;seaborn-talk&#39;, &#39;seaborn-dark&#39;, &#39;seaborn-paper&#39;, &#39;seaborn-white&#39;, &#39;ggplot&#39;, &#39;classic&#39;, &#39;seaborn-ticks&#39;, &#39;dark_background&#39;, &#39;seaborn-dark-palette&#39;, &#39;seaborn-notebook&#39;, &#39;seaborn-pastel&#39;]
+<pre>[&#39;bmh&#39;, &#39;seaborn-muted&#39;, &#39;seaborn-white&#39;, &#39;seaborn-ticks&#39;, &#39;dark_background&#39;, &#39;seaborn-dark-palette&#39;, &#39;seaborn-deep&#39;, &#39;seaborn-pastel&#39;, &#39;seaborn-colorblind&#39;, &#39;seaborn-notebook&#39;, &#39;seaborn-dark&#39;, &#39;seaborn-paper&#39;, &#39;grayscale&#39;, &#39;fivethirtyeight&#39;, &#39;seaborn-talk&#39;, &#39;seaborn-bright&#39;, &#39;seaborn-whitegrid&#39;, &#39;ggplot&#39;, &#39;classic&#39;, &#39;seaborn-poster&#39;, &#39;seaborn-darkgrid&#39;]
 </pre>
 </div>
 </div>
@@ -11787,7 +11787,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-poster&#39;</span><span class="p">)</span>
@@ -11800,6 +11800,7 @@ div#notebook {
 <span class="n">ax</span><span class="o">=</span><span class="n">df07</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;# of pods&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Req/sec&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;7th try&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">=</span><span class="n">df08</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;# of pods&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Req/sec&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;8th try&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180000</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lv_rps_vs_pods.png&#39;</span><span class="p">)</span>
 </pre></div>
 

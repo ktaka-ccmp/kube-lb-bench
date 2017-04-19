@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[4]:
 
 import numpy as np
 import pandas as pd
@@ -18,7 +18,7 @@ df08=pd.read_csv("cpu08_lv02_8.csv")
 print(plt.style.available)
 
 
-# In[2]:
+# In[5]:
 
 plt.style.use('seaborn-poster')
 ax=df01.plot(x='# of pods',y='Req/sec', color='m', label='1st try')
@@ -30,6 +30,7 @@ ax=df06.plot(x='# of pods',y='Req/sec', color='y', label='6th try', ax=ax)
 ax=df07.plot(x='# of pods',y='Req/sec', color='k', label='7th try', ax=ax)
 ax=df08.plot(x='# of pods',y='Req/sec', color='pink', label='8th try', ax=ax)
 ax.set_xlim(0,40)
+ax.set_ylim(0,180000)
 plt.savefig('lv_rps_vs_pods.png')
 
 
