@@ -1,0 +1,39 @@
+podnum=10
+Start time: 1492682954
+wrk -c800 -t40 -d60s http://10.254.0.14/
+Running 1m test @ http://10.254.0.14/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.28ms   19.45ms 808.43ms   99.38%
+    Req/Sec     3.27k   481.32     6.61k    70.82%
+  7827075 requests in 1.00m, 1.81GB read
+Requests/sec: 130234.59
+Transfer/sec:     30.78MB
+End time: 1492683014
+
+podnum=20
+Start time: 1492684374
+wrk -c800 -t40 -d60s http://10.254.0.14/
+Running 1m test @ http://10.254.0.14/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.82ms    8.54ms 245.24ms   97.19%
+    Req/Sec     3.19k   458.19     5.77k    71.46%
+  7592554 requests in 1.00m, 1.75GB read
+Requests/sec: 126497.44
+Transfer/sec:     29.90MB
+End time: 1492684434
+
+podnum=30
+Start time: 1492685526
+wrk -c800 -t40 -d60s http://10.254.0.14/
+Running 1m test @ http://10.254.0.14/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.38ms    4.35ms 474.89ms   84.11%
+    Req/Sec     3.19k   429.25     5.65k    71.30%
+  7639226 requests in 1.00m, 1.76GB read
+Requests/sec: 127109.91
+Transfer/sec:     30.05MB
+End time: 1492685587
+
