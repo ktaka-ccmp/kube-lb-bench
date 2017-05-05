@@ -1,0 +1,285 @@
+podnum=1
+Start time: 1493772574
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    97.14ms  256.34ms   2.00s    89.73%
+    Req/Sec   392.45    347.84     6.31k    83.46%
+  642305 requests in 1.00m, 151.27MB read
+  Socket errors: connect 0, read 774, write 689, timeout 171
+Requests/sec:  10693.32
+Transfer/sec:      2.52MB
+End time: 1493772634
+
+podnum=2
+Start time: 1493775784
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   110.29ms  222.27ms   2.00s    85.21%
+    Req/Sec   784.61    447.33     7.84k    67.65%
+  1821502 requests in 1.00m, 429.85MB read
+  Socket errors: connect 0, read 0, write 73, timeout 164
+Requests/sec:  30338.37
+Transfer/sec:      7.16MB
+End time: 1493775844
+
+podnum=4
+Start time: 1493777947
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   122.34ms  207.37ms   1.72s    82.93%
+    Req/Sec     1.42k   489.60    31.96k    78.55%
+  3360321 requests in 1.00m, 792.26MB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec:  55912.40
+Transfer/sec:     13.18MB
+End time: 1493778007
+
+podnum=6
+Start time: 1493780111
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    66.86ms  151.99ms   1.59s    88.71%
+    Req/Sec     2.04k   443.47    24.85k    80.00%
+  4870206 requests in 1.00m, 1.12GB read
+Requests/sec:  81035.25
+Transfer/sec:     19.10MB
+End time: 1493780171
+
+podnum=8
+Start time: 1493782165
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    43.11ms  116.67ms   1.56s    91.41%
+    Req/Sec     2.45k   454.89     8.45k    78.01%
+  5846215 requests in 1.00m, 1.35GB read
+Requests/sec:  97275.67
+Transfer/sec:     22.92MB
+End time: 1493782225
+
+podnum=10
+Start time: 1493784279
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    29.95ms  114.91ms   1.55s    95.17%
+    Req/Sec     3.11k   505.96     7.15k    72.68%
+  7429010 requests in 1.00m, 1.71GB read
+Requests/sec: 123611.32
+Transfer/sec:     29.14MB
+End time: 1493784339
+
+podnum=12
+Start time: 1493785803
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    70.22ms  197.31ms   1.99s    90.37%
+    Req/Sec     3.39k     0.90k    8.34k    69.62%
+  8104674 requests in 1.00m, 1.87GB read
+  Socket errors: connect 0, read 0, write 47, timeout 36
+Requests/sec: 134854.33
+Transfer/sec:     31.78MB
+End time: 1493785863
+
+podnum=14
+Start time: 1493787852
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    21.68ms   84.22ms   1.34s    95.20%
+    Req/Sec     4.01k   689.64     7.88k    71.70%
+  9592716 requests in 1.00m, 2.21GB read
+Requests/sec: 159614.06
+Transfer/sec:     37.61MB
+End time: 1493787912
+
+podnum=16
+Start time: 1493789934
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.26ms   78.29ms   1.33s    96.84%
+    Req/Sec     4.04k   552.49     7.41k    76.41%
+  9669082 requests in 1.00m, 2.23GB read
+Requests/sec: 160885.23
+Transfer/sec:     37.92MB
+End time: 1493789994
+
+podnum=18
+Start time: 1493791755
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.94ms   32.59ms   1.77s    95.31%
+    Req/Sec     4.12k   274.39     6.15k    70.87%
+  9851506 requests in 1.00m, 2.27GB read
+Requests/sec: 163919.08
+Transfer/sec:     38.63MB
+End time: 1493791815
+
+podnum=20
+Start time: 1493793282
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    11.22ms   34.69ms   1.10s    95.34%
+    Req/Sec     4.12k   280.35     6.34k    71.47%
+  9849860 requests in 1.00m, 2.27GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec: 163891.31
+Transfer/sec:     38.62MB
+End time: 1493793342
+
+podnum=22
+Start time: 1493795070
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.29ms   36.07ms   1.76s    93.46%
+    Req/Sec     4.12k   291.08     5.88k    69.56%
+  9850016 requests in 1.00m, 2.27GB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec: 163895.33
+Transfer/sec:     38.63MB
+End time: 1493795130
+
+podnum=24
+Start time: 1493796343
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.93ms   34.87ms   1.77s    93.65%
+    Req/Sec     4.12k   286.87     6.45k    69.67%
+  9849228 requests in 1.00m, 2.27GB read
+Requests/sec: 163882.70
+Transfer/sec:     38.62MB
+End time: 1493796404
+
+podnum=26
+Start time: 1493797607
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.01ms   34.76ms   1.20s    93.57%
+    Req/Sec     4.12k   289.30     5.52k    68.85%
+  9849134 requests in 1.00m, 2.27GB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec: 163879.87
+Transfer/sec:     38.64MB
+End time: 1493797667
+
+podnum=28
+Start time: 1493798880
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.46ms   43.01ms   1.77s    93.40%
+    Req/Sec     4.12k   319.28     6.55k    70.04%
+  9847126 requests in 1.00m, 2.27GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec: 163846.89
+Transfer/sec:     38.64MB
+End time: 1493798941
+
+podnum=30
+Start time: 1493800154
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.84ms   37.81ms   1.98s    93.15%
+    Req/Sec     4.12k   310.85     7.07k    69.63%
+  9845974 requests in 1.00m, 2.27GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec: 163828.15
+Transfer/sec:     38.64MB
+End time: 1493800214
+
+podnum=32
+Start time: 1493801428
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.39ms   40.10ms   1.37s    93.16%
+    Req/Sec     4.12k   308.53     5.73k    69.03%
+  9845179 requests in 1.00m, 2.27GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec: 163813.14
+Transfer/sec:     38.65MB
+End time: 1493801488
+
+podnum=34
+Start time: 1493802701
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.37ms   37.83ms   1.77s    92.74%
+    Req/Sec     4.12k   310.05     5.75k    69.10%
+  9843454 requests in 1.00m, 2.27GB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec: 163785.23
+Transfer/sec:     38.64MB
+End time: 1493802761
+
+podnum=36
+Start time: 1493803975
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.99ms   36.37ms   1.55s    92.92%
+    Req/Sec     4.12k   312.41     6.64k    69.19%
+  9842891 requests in 1.00m, 2.27GB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec: 163776.82
+Transfer/sec:     38.65MB
+End time: 1493804035
+
+podnum=38
+Start time: 1493805516
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.62ms   37.61ms   1.77s    92.49%
+    Req/Sec     4.12k   319.90     5.91k    69.11%
+  9841587 requests in 1.00m, 2.27GB read
+Requests/sec: 163753.09
+Transfer/sec:     38.65MB
+End time: 1493805576
+
+podnum=40
+Start time: 1493807047
+wrk -c800 -t40 -d60s http://192.168.0.111:8888/
+Running 1m test @ http://192.168.0.111:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    14.67ms   37.59ms   1.19s    92.45%
+    Req/Sec     4.12k   315.22     5.81k    68.95%
+  9841396 requests in 1.00m, 2.27GB read
+Requests/sec: 163750.77
+Transfer/sec:     38.65MB
+End time: 1493807107
+

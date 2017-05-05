@@ -1,0 +1,14 @@
+podnum=
+Start time: 1493306424
+wrk -c800 -t40 -d60s http://172.16.21.2/
+Running 1m test @ http://172.16.21.2/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    58.03ms  155.70ms   1.98s    89.81%
+    Req/Sec   631.68    540.71     4.01k    81.30%
+  1185061 requests in 1.00m, 279.09MB read
+  Socket errors: connect 0, read 484, write 0, timeout 163
+Requests/sec:  19728.95
+Transfer/sec:      4.65MB
+End time: 1493306484
+
