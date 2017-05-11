@@ -408,7 +408,74 @@ Average:      14    1.03    0.00    0.41    0.00    0.00    0.10    0.00    0.00
 Average:      15    0.59    0.00    3.88    0.00    0.00    1.06    0.00    0.00    0.00   94.47
 ```
 
+# 13th_try
 
+flanneld: vxlan
+
+k12: rss=off, rps=on, rfs=off
+k11: rss=on, rps=on, rfs=on
+
+```
+root@k11:~# ./irq_chk.sh
+/proc/irq/82/smp_affinity : 0000,00000001
+/proc/irq/83/smp_affinity : 0000,00000004
+/proc/irq/84/smp_affinity : 0000,00000010
+/proc/irq/85/smp_affinity : 0000,00000040
+/sys/class/net/eth0/queues/rx-0/rps_cpus : 00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,0000ffff
+/sys/class/net/eth0/queues/rx-1/rps_cpus : 00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,0000ffff
+/sys/class/net/eth0/queues/rx-2/rps_cpus : 00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,0000ffff
+/sys/class/net/eth0/queues/rx-3/rps_cpus : 00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,0000ffff
+/proc/sys/net/core/rps_sock_flow_entries : 32768
+/sys/class/net/eth0/queues/rx-0/rps_flow_cnt : 8192
+/sys/class/net/eth0/queues/rx-1/rps_flow_cnt : 8192
+/sys/class/net/eth0/queues/rx-2/rps_flow_cnt : 8192
+/sys/class/net/eth0/queues/rx-3/rps_flow_cnt : 8192
+```
+
+```
+mpstat -P ALL 1 10
+Average:     CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+Average:     all    0.42    0.00    0.42    0.04    0.00    5.23    0.00    0.00    0.00   93.89
+Average:       0    0.33    0.00    0.00    0.33    0.00   29.43    0.00    0.00    0.00   69.90
+Average:       1    0.00    0.00    0.14    0.00    0.00    5.40    0.00    0.00    0.00   94.46
+Average:       2    0.67    0.00    0.50    0.00    0.00    7.51    0.00    0.00    0.00   91.32
+Average:       3    0.13    0.00    0.27    0.00    0.00    6.21    0.00    0.00    0.00   93.39
+Average:       4    0.41    0.00    0.41    0.00    0.00    9.80    0.00    0.00    0.00   89.39
+Average:       5    1.24    0.00    0.14    0.00    0.00    5.65    0.00    0.00    0.00   92.98
+Average:       6    0.20    0.00    0.61    0.00    0.00   10.82    0.00    0.00    0.00   88.37
+Average:       7    1.24    0.00    0.14    0.00    0.00    5.92    0.00    0.00    0.00   92.70
+Average:       8    0.48    0.00    0.97    0.00    0.00    3.54    0.00    0.00    0.00   95.01
+Average:       9    0.00    0.00    0.15    0.29    0.00    1.47    0.00    0.00    0.00   98.09
+Average:      10    0.45    0.00    0.30    0.00    0.00    2.09    0.00    0.00    0.00   97.17
+Average:      11    0.15    0.00    0.29    0.00    0.00    1.60    0.00    0.00    0.00   97.97
+Average:      12    0.77    0.00    1.70    0.00    0.00    4.33    0.00    0.00    0.00   93.19
+Average:      13    0.57    0.00    0.43    0.00    0.00    2.00    0.00    0.00    0.00   97.00
+Average:      14    0.16    0.00    0.47    0.00    0.00    3.13    0.00    0.00    0.00   96.24
+Average:      15    0.14    0.00    0.14    0.00    0.00    1.30    0.00    0.00    0.00   98.41
+```
+
+```
+root@k11:~# ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr b0:83:fe:e7:d8:b8
+          inet addr:192.168.0.111  Bcast:192.168.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::b283:feff:fee7:d8b8/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1014683909 errors:0 dropped:1108 overruns:0 frame:0
+          TX packets:1014308027 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:168056213062 (156.5 GiB)  TX bytes:167913604597 (156.3 GiB)
+          Interrupt:16
+
+root@k11:~# ifconfig flannel.1
+flannel.1 Link encap:Ethernet  HWaddr 96:57:22:a1:2a:1e
+          inet addr:172.16.72.0  Bcast:0.0.0.0  Mask:255.255.255.255
+          inet6 addr: fe80::9457:22ff:fea1:2a1e/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1450  Metric:1
+          RX packets:506647891 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:507606022 errors:0 dropped:116446 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:87701587263 (81.6 GiB)  TX bytes:51763871887 (48.2 GiB)
+```
 
 
 ## Node Specs
