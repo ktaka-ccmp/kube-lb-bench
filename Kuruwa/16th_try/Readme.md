@@ -1,0 +1,1 @@
+flannel: vxlan mode 
