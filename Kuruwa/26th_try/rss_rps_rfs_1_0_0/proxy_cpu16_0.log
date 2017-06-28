@@ -1,0 +1,59 @@
+podnum=1
+Start time: 1498616025
+wrk -c800 -t40 -d30s http://10.254.0.10:81/
+Running 30s test @ http://10.254.0.10:81/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    80.61ms  216.81ms   2.00s    90.13%
+    Req/Sec   413.78    374.51     2.63k    84.32%
+  387515 requests in 30.03s, 91.26MB read
+  Socket errors: connect 0, read 333, write 296, timeout 175
+Requests/sec:  12904.87
+Transfer/sec:      3.04MB
+End time: 1498616055
+
+podnum=2
+Start time: 1498616161
+wrk -c800 -t40 -d30s http://10.254.0.10:81/
+Running 30s test @ http://10.254.0.10:81/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    86.53ms  236.11ms   1.99s    90.08%
+    Req/Sec   760.92    638.68     6.41k    82.95%
+  891914 requests in 30.10s, 210.06MB read
+  Socket errors: connect 0, read 0, write 301, timeout 171
+Requests/sec:  29632.48
+Transfer/sec:      6.98MB
+End time: 1498616191
+
+podnum=4
+Start time: 1498616298
+wrk -c800 -t40 -d30s http://10.254.0.10:81/
+Running 30s test @ http://10.254.0.10:81/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    39.47ms  108.92ms   1.77s    92.34%
+    Req/Sec     1.09k   363.40     2.98k    68.42%
+  1300476 requests in 30.10s, 306.59MB read
+  Socket errors: connect 0, read 0, write 177, timeout 93
+Requests/sec:  43205.86
+Transfer/sec:     10.19MB
+End time: 1498616328
+
+podnum=6
+Start time: 1498616452
+wrk -c800 -t40 -d30s http://10.254.0.10:81/
+Running 30s test @ http://10.254.0.10:81/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    49.64ms  135.31ms   1.88s    92.32%
+    Req/Sec     1.15k   526.37     3.02k    62.98%
+  1375062 requests in 30.10s, 324.06MB read
+  Socket errors: connect 0, read 0, write 232, timeout 98
+Requests/sec:  45684.10
+Transfer/sec:     10.77MB
+End time: 1498616482
+
+podnum=8
+Start time: 1498616593
+wrk -c800 -t40 -d30s http://10.254.0.10:81/
