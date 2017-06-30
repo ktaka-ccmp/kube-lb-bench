@@ -17,7 +17,12 @@ done
 
 }
 
-prefix=lvs_ ; anal_outer
-prefix=proxy_ ; anal_outer
-
+for dir in rss_* ; do 
+echo $dir 
+(cd $dir 
+prefix=ipvs_ ; anal_outer 
+prefix=lvs_ ; anal_outer 
+prefix=proxy_ ; anal_outer 
+)
+done
 

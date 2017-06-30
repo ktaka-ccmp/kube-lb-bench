@@ -17,7 +17,10 @@ done
 
 }
 
-prefix=lvs_ ; anal_outer
-prefix=proxy_ ; anal_outer
-
+for dir in rss_* ; do 
+echo $dir 
+(cd $dir 
+prefix=nginx_ ; anal_outer 
+)
+done
 
