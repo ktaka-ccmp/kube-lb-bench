@@ -6,9 +6,9 @@ con=800
 thr=40
 dur=30s
 
-echo 3 >  /proc/sys/net/ipv4/tcp_syn_retries
+sudo sh -c "echo 3 >  /proc/sys/net/ipv4/tcp_syn_retries"
 
-kbctl="kubectl -s 192.168.0.104:8080 "
+kbctl="kubectl -s 10.0.0.100:8080 "
 
 bench(){
 	chk_url
@@ -27,10 +27,10 @@ bench(){
 }
 
 chk_url(){
-	ip route flush cache
+	sudo ip route flush cache
 	sleep $wait
 	while ! curl $url ; do
-		ip route flush cache
+		sudo ip route flush cache
 		sleep $wait
 		echo Retrying ....
 	done
@@ -45,7 +45,7 @@ set_ipvs(){
 ipvs_addr=$($kbctl get po -o wide |grep ipvs|awk '{print $6}')
 url=http://${ipvs_addr}:8888/
 file=ipvs_cpu16$num.log
-ip route replace ${ipvs_addr}/32 via 192.168.0.111
+#sudo ip route replace ${ipvs_addr}/32 via 10.0.255.2
 }
 
 set_lv16(){
@@ -97,13 +97,13 @@ done
 }
 
 lvs_restart(){
-for lv in k11 ; do 
+for lv in kt-lvs002 ; do 
 	ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo svc -t /etc/service/ipvs ; sudo svc -t /etc/service/flanneld/ '
 done
 }
 
 lvs_check(){
-for lv in k11 ; do 
+for lv in kt-lvs002 ; do 
         workers=$(ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo ipvsadm -L -n|egrep :80 |wc -l')
         if [ $workers != $repl ]; then
 		ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo svc -t /etc/service/ipvs ; sudo svc -t /etc/service/flanneld/ '
@@ -115,9 +115,9 @@ done
 
 pod_check
 
-for try in {0..0} ; do
+for try in {0..1} ; do
 num=_$try
-set_nginx ; bench
+set_ipvs ; bench
 done
 
 echo end measurement for $repl
@@ -131,13 +131,13 @@ bench_set_set(){
 	start=$(date +%s)
 
 	echo "RSS=$RSS;RPS=$RPS;RFS=$RFS" | \
-	ssh k11  "cat - > /etc/service/irq_set/env"
+	ssh kt-lvs002 'sudo sh -c "cat - > /etc/service/irq_set/env"'
 
 	sleep 6
 
 	dir=rss_rps_rfs_${RSS}_${RPS}_${RFS}
 	mkdir -p $dir && \
-	ssh k11 ./irq_chk.sh > $dir/irq_chk.status && \
+	ssh kt-lvs002 ./irq_chk.sh > $dir/irq_chk.status && \
 	(cd $dir ; bench_set)
 
 	echo -n "Elapsed time: "
@@ -145,5 +145,6 @@ bench_set_set(){
 	echo
 }
 
-RSS=0;RPS=1;RFS=0 ; bench_set_set
+#RSS=0;RPS=1;RFS=0 ; bench_set_set
+RSS=1;RPS=0;RFS=0 ; bench_set_set
 
