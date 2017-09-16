@@ -5,6 +5,8 @@ Intel(R) Xeon(R) CPU @ 2.20GHz x 16
 Mem:
 16470340 kB
 
+WEB Node: 6
+
 NIC Queue 16
 ktaka@kt-lvs002:~$ egrep virtio1-in  /proc/interrupts  | tr -s ' '
  41: 2728228 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 PCI-MSI-edge virtio1-input.0
