@@ -1,0 +1,198 @@
+podnum=1
+Start time: 1505995899
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    68.57ms  182.43ms   2.00s    89.69%
+    Req/Sec   549.26    396.06     5.71k    73.34%
+  553210 requests in 30.03s, 130.81MB read
+  Socket errors: connect 0, read 97, write 241, timeout 184
+Requests/sec:  18421.18
+Transfer/sec:      4.36MB
+End time: 1505995929
+
+podnum=2
+Start time: 1505996646
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   109.42ms  227.05ms   2.00s    85.79%
+    Req/Sec     0.99k   464.45    11.30k    75.35%
+  1140779 requests in 30.10s, 269.75MB read
+  Socket errors: connect 0, read 0, write 49, timeout 156
+Requests/sec:  37901.35
+Transfer/sec:      8.96MB
+End time: 1505996676
+
+podnum=4
+Start time: 1505997364
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    55.78ms  133.61ms   1.80s    88.80%
+    Req/Sec     1.85k   668.54     7.51k    79.36%
+  2111246 requests in 30.10s, 499.75MB read
+  Socket errors: connect 0, read 0, write 11, timeout 0
+Requests/sec:  70141.64
+Transfer/sec:     16.60MB
+End time: 1505997394
+
+podnum=6
+Start time: 1505998124
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    25.19ms   68.24ms 948.52ms   92.42%
+    Req/Sec     2.91k   393.53     5.33k    73.38%
+  3482693 requests in 30.10s, 824.08MB read
+Requests/sec: 115704.22
+Transfer/sec:     27.38MB
+End time: 1505998155
+
+podnum=8
+Start time: 1505998898
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.00ms   20.13ms 557.35ms   98.63%
+    Req/Sec     3.24k   375.24     5.37k    71.89%
+  3883752 requests in 30.10s, 0.90GB read
+Requests/sec: 129028.73
+Transfer/sec:     30.54MB
+End time: 1505998928
+
+podnum=10
+Start time: 1505999673
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.19ms   13.80ms 501.61ms   98.87%
+    Req/Sec     3.32k   408.96     5.88k    71.20%
+  3977710 requests in 30.10s, 0.92GB read
+Requests/sec: 132151.65
+Transfer/sec:     31.27MB
+End time: 1505999704
+
+podnum=12
+Start time: 1506000452
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.98ms   32.32ms   1.01s    98.33%
+    Req/Sec     3.41k   427.07     5.93k    70.12%
+  4080300 requests in 30.10s, 0.94GB read
+Requests/sec: 135560.48
+Transfer/sec:     32.08MB
+End time: 1506000482
+
+podnum=14
+Start time: 1506001231
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.54ms   57.06ms   1.22s    97.69%
+    Req/Sec     3.43k   419.18     5.50k    72.32%
+  4108273 requests in 30.10s, 0.95GB read
+Requests/sec: 136487.96
+Transfer/sec:     32.29MB
+End time: 1506001261
+
+podnum=16
+Start time: 1506002007
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.65ms   10.22ms 235.23ms   99.09%
+    Req/Sec     3.35k   397.31     5.49k    70.49%
+  4007846 requests in 30.10s, 0.93GB read
+Requests/sec: 133152.50
+Transfer/sec:     31.51MB
+End time: 1506002037
+
+podnum=18
+Start time: 1506002782
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.10ms   21.29ms 659.57ms   98.43%
+    Req/Sec     3.36k   425.53     5.45k    71.70%
+  4025359 requests in 30.10s, 0.93GB read
+Requests/sec: 133734.51
+Transfer/sec:     31.64MB
+End time: 1506002812
+
+podnum=20
+Start time: 1506003561
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.12ms   11.61ms 361.31ms   98.99%
+    Req/Sec     3.18k   376.75     5.24k    71.79%
+  3812452 requests in 30.10s, 0.88GB read
+Requests/sec: 126660.11
+Transfer/sec:     29.97MB
+End time: 1506003591
+
+podnum=25
+Start time: 1506004336
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.57ms   14.10ms 245.85ms   98.67%
+    Req/Sec     3.20k   400.59     5.22k    70.85%
+  3826019 requests in 30.10s, 0.88GB read
+Requests/sec: 127110.32
+Transfer/sec:     30.08MB
+End time: 1506004366
+
+podnum=30
+Start time: 1506005111
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.86ms   10.17ms 231.10ms   99.08%
+    Req/Sec     3.23k   411.96     6.58k    70.35%
+  3865457 requests in 30.10s, 0.89GB read
+Requests/sec: 128421.90
+Transfer/sec:     30.42MB
+End time: 1506005141
+
+podnum=35
+Start time: 1506005886
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.88ms   17.83ms 743.78ms   98.65%
+    Req/Sec     3.23k   429.02     5.51k    70.90%
+  3871994 requests in 30.10s, 0.90GB read
+Requests/sec: 128638.54
+Transfer/sec:     30.47MB
+End time: 1506005916
+
+podnum=40
+Start time: 1506006662
+wrk -c800 -t40 -d30s http://172.16.4.2:8888/
+Running 30s test @ http://172.16.4.2:8888/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.20ms   11.90ms 237.73ms   98.98%
+    Req/Sec     3.18k   396.52     5.23k    71.20%
+  3805805 requests in 30.10s, 0.88GB read
+Requests/sec: 126440.57
+Transfer/sec:     29.97MB
+End time: 1506006692
+
