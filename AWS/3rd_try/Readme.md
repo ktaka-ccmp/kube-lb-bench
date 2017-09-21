@@ -16,3 +16,19 @@ admin@ip-10-0-0-101:~$ egrep eth /proc/interrupts  | tr -s ' '
  147: 25987572 975973 0 0 0 0 0 0 0 0 0 0 0 0 0 0 xen-pirq-msi-x eth0-TxRx-1
  148: 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 xen-pirq-msi-x eth0
 
+/etc/modprobe.d/ixgbevf.conf
+ options ixgbevf InterruptThrottleRate=0 RSS=16
+
+sudo update-initramfs -u
+
+admin@ip-10-0-0-101:~$ sudo ethtool -i eth0
+driver: ixgbevf
+version: 2.16.4
+firmware-version: N/A
+bus-info: 0000:00:03.0
+supports-statistics: yes
+supports-test: yes
+supports-eeprom-access: no
+supports-register-dump: yes
+supports-priv-flags: no
+
