@@ -10,7 +10,7 @@ egrep "podnum|Requ" $file \
 }
 
 anal_outer(){
-for i in {0..19} ; do 
+for i in {0..4} ; do 
 	file=${prefix}cpu16_${i}.log
 	anal > ${prefix}cpu16_${i}.csv 
 done 
