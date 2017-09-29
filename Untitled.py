@@ -151,6 +151,155 @@ plt.title('Loadbalancer Performance for ipvs on AWS\n')
 plt.savefig('aws_c4.png')
 
 
+# In[9]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+df100=pd.read_csv("GCP/3rd_try/rss_rps_rfs_1_0_0/ipvs_cpu16_all.csv")
+df010=pd.read_csv("GCP/3rd_try/rss_rps_rfs_0_1_0/ipvs_cpu16_all.csv")
+plt.style.use('seaborn-poster')
+ax=df100.plot(x='# of pods',y='Req/sec', color='b', label='16 cpu,rss', linestyle='none',marker='.')
+ax=df010.plot(x='# of pods',y='Req/sec', color='r', label='16 cpu,rps', linestyle='none',marker='.', ax=ax)
+
+ax.set_xlim(0,40)
+#ax.set_ylim(0,200000)
+ax.set_xlabel('# of pods i.e. nginx containers')
+ax.set_ylabel('Request/sec')
+plt.title('Loadbalancer Performance for ipvs on GCP\n')
+
+
+# In[40]:
+
+df100grouped = df100.groupby('# of pods')
+df100grouped.describe()
+df100grouped.ngroups
+df100grouped.groups.keys()
+df100grouped.describe()
+
+
+# In[139]:
+
+df010grouped = df010.groupby('# of pods')
+df010grouped.describe()
+#plt.figure()
+x=df100grouped.groups.keys()
+means=df100grouped.mean()
+error=df100grouped.std()
+#plt.plot(df100grouped.mean())
+#df010grouped.mean().plot()
+#plt.plot(y)
+#plt.errorbar(y,yerr=e)
+#plt.errorbar(trip.index, 'gas', yerr='std', data=trip)
+#df100grouped.mean().plot(yerr=df100grouped.std())
+#ax.errorbar(df100grouped.groups.keys(), df100grouped.mean() , yerr= df100grouped.std(),fmt='.')
+type(df100grouped.groups.keys())
+data=df100.groupby('# of pods').agg(['mean', 'std'])
+
+gp=df010.groupby('# of pods')
+means=gp.mean()
+errors=gp.std()
+#data.plot()
+fig, ax = plt.subplots()
+#means.plot.bar(yerr=errors, ax=ax)
+#means.plot(yerr=errors, ax=ax)
+#pd.__version__
+#data.plot(yerr=errors, ax=ax)
+data.reset_index().as_matrix()
+d2=data.reset_index().values.T
+plt.errorbar(d2[0],d2[1],yerr=d2[2],fmt='.', ls='dashed',lw='1')
+d2
+
+
+# In[154]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+df100=pd.read_csv("GCP/3rd_try/rss_rps_rfs_1_0_0/ipvs_cpu16_all.csv")
+df010=pd.read_csv("GCP/3rd_try/rss_rps_rfs_0_1_0/ipvs_cpu16_all.csv")
+plt.style.use('seaborn-poster')
+
+fig, ax = plt.subplots()
+d100=df100.groupby('# of pods').agg(['mean', 'std']).reset_index().as_matrix().T
+d010=df010.groupby('# of pods').agg(['mean', 'std']).reset_index().as_matrix().T
+ax.errorbar(d100[0],d100[1],yerr=d100[2]*2,fmt='.', ls='solid',lw='1', label='rss')
+ax.errorbar(d010[0],d010[1],yerr=d010[2]*2,fmt='.', ls='solid',lw='1', label='rps')
+
+ax.set_ylabel('Request/sec')
+ax.set_xlabel('# of pods')
+plt.title('GCP 16CPU 20 times stats \n')
+#plt.savefig('n5.png',dpi=500)
+
+plt.show()
+d100
+d010
+
+
+# In[187]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+df002=pd.read_csv("GCP/7th_try/rss_rps_rfs_0_1_0/ipvs_on_kt-lvs002.csv")
+df004=pd.read_csv("GCP/7th_try/rss_rps_rfs_0_1_0/ipvs_on_kt-lvs004.csv")
+df006=pd.read_csv("GCP/7th_try/rss_rps_rfs_0_1_0/ipvs_on_kt-lvs006.csv")
+df008=pd.read_csv("GCP/7th_try/rss_rps_rfs_0_1_0/ipvs_on_kt-lvs008.csv")
+df010=pd.read_csv("GCP/7th_try/rss_rps_rfs_0_1_0/ipvs_on_kt-lvs010.csv")
+df012=pd.read_csv("GCP/7th_try/rss_rps_rfs_0_1_0/ipvs_on_kt-lvs012.csv")
+df014=pd.read_csv("GCP/7th_try/rss_rps_rfs_0_1_0/ipvs_on_kt-lvs014.csv")
+df016=pd.read_csv("GCP/7th_try/rss_rps_rfs_0_1_0/ipvs_on_kt-lvs016.csv")
+df002['Epoch'] = pd.to_datetime(df002['Epoch'],unit='s')
+df004['Epoch'] = pd.to_datetime(df004['Epoch'],unit='s')
+df006['Epoch'] = pd.to_datetime(df006['Epoch'],unit='s')
+df008['Epoch'] = pd.to_datetime(df008['Epoch'],unit='s')
+df010['Epoch'] = pd.to_datetime(df010['Epoch'],unit='s')
+df012['Epoch'] = pd.to_datetime(df012['Epoch'],unit='s')
+df014['Epoch'] = pd.to_datetime(df014['Epoch'],unit='s')
+df016['Epoch'] = pd.to_datetime(df016['Epoch'],unit='s')
+plt.style.use('seaborn-poster')
+ax=df002.plot(x='Epoch',y='Req/sec', color='r', label='Skylake,16 cpu, rps', ls='--',lw='1',marker='.')
+ax=df004.plot(x='Epoch',y='Req/sec', color='b', label='Skylake,16 cpu, rps', ls='--',lw='1',marker='.', ax=ax)
+ax=df006.plot(x='Epoch',y='Req/sec', color='g', label='Skylake,16 cpu, rps', ls='--',lw='1',marker='.', ax=ax)
+ax=df008.plot(x='Epoch',y='Req/sec', color='y', label='Skylake,16 cpu, rps', ls='--',lw='1',marker='.', ax=ax)
+ax=df010.plot(x='Epoch',y='Req/sec', color='r', label='Broadwell,16 cpu, rps', ls='--',lw='1',marker='*', ax=ax)
+ax=df012.plot(x='Epoch',y='Req/sec', color='b', label='Broadwell,16 cpu, rps', ls='--',lw='1',marker='*', ax=ax)
+ax=df014.plot(x='Epoch',y='Req/sec', color='g', label='Broadwell,16 cpu, rps', ls='--',lw='1',marker='*', ax=ax)
+ax=df016.plot(x='Epoch',y='Req/sec', color='y', label='Broadwell,16 cpu, rps', ls='--',lw='1',marker='*', ax=ax)
+
+#ax.set_xlim(0,40)
+ax.set_ylim(0,200000)
+ax.set_xlabel('Time')
+ax.set_ylabel('Request/sec')
+plt.title('Loadbalancer Performance for ipvs on GCP\n')
+plt.savefig('gcp_16core_stability.png')
+
+
+# In[192]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+df101=pd.read_csv("AWS/10th_try/rss_rps_rfs_0_1_0/ipvs_on_ip-10-0-0-101.csv")
+df102=pd.read_csv("AWS/10th_try/rss_rps_rfs_0_1_0/ipvs_on_ip-10-0-0-102.csv")
+df101['Epoch'] = pd.to_datetime(df101['Epoch'],unit='s')
+df102['Epoch'] = pd.to_datetime(df102['Epoch'],unit='s')
+plt.style.use('seaborn-poster')
+ax=df101.plot(x='Epoch',y='Req/sec', color='r', label='m4.4xlarge,16 cpu, rps', ls='--',lw='1',marker='.')
+ax=df102.plot(x='Epoch',y='Req/sec', color='b', label='m4.4xlarge,16 cpu, rps', ls='--',lw='1',marker='.', ax=ax)
+
+#ax.set_xlim(0,40)
+ax.set_ylim(0,140000)
+ax.set_xlabel('Time')
+ax.set_ylabel('Request/sec')
+plt.title('Loadbalancer Performance for ipvs on AWS\n')
+plt.savefig('aws_16core_stability.png')
+
+
 # In[ ]:
 
 
