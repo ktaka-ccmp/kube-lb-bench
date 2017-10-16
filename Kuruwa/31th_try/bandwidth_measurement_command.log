@@ -1,0 +1,6 @@
+  437  for file in 10 20 30 40 50 60 70 80 90 100 200 300 400 500 600 700 800 900 1000 ; do echo size=$file ; wrk -c800 -t40 -d10s http://172.16.72.2:8888/$file  ; done  > rss_rps_rfs_0_1_0/ipvs_cpu16_pod40.log
+  442  for file in  1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 ; do echo size=$file ; wrk -c800 -t40 -d10s http://172.16.72.2:8888/$file  ; done  >> rss_rps_rfs_0_1_0/ipvs_cpu16_pod40.log
+  444  for file in  2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 ; do echo size=$file ; wrk -c800 -t40 -d10s http://172.16.72.2:8888/$file  ; done  >> rss_rps_rfs_0_1_0/ipvs_cpu16_pod40.log
+  447  for file in  4000 5000 6000 7000 8000 9000 10000 ; do echo size=$file ; wrk -c800 -t40 -d10s http://172.16.72.2:8888/$file  ; done  >> rss_rps_rfs_0_1_0/ipvs_cpu16_pod40.log
+  527  history |grep size |egrep wrk 
+  528  history |grep size |egrep wrk  > bandwidth_measurement_command.log
