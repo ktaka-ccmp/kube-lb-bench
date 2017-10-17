@@ -5,7 +5,6 @@ wait=3
 con=800
 thr=40
 dur=30s
-lua_script=${PWD}/result.lua
 
 echo 3 >  /proc/sys/net/ipv4/tcp_syn_retries
 
@@ -14,14 +13,12 @@ kbctl="kubectl -s 192.168.0.104:8080 "
 bench(){
 	chk_url
 
-	wrk_cmd="wrk2 -c$con -t$thr -d$dur -s$lua_script -R $rate $url"
-
-	echo ${wrk_cmd}
+	echo wrk -c$con -t$thr -d$dur $url 
 	echo podnum=$repl >> $file
 	echo -n "Start time: " >> $file
 	date +%s >> $file
-	echo ${wrk_cmd} >> $file
-	while ! ${wrk_cmd}  >> $file ; do
+	echo wrk -c$con -t$thr -d$dur $url >> $file
+	while ! wrk -c$con -t$thr -d$dur $url >> $file ; do
 		chk_url
 	done
 	echo -n "End time: " >> $file
@@ -44,16 +41,11 @@ url=http://172.16.61.2/
 file=single.log
 }
 
-set_ipvs(){
+set_lv16(){
 ipvs_addr=$($kbctl get po -o wide |grep ipvs|awk '{print $6}')
 url=http://${ipvs_addr}:8888/
-file=ipvs_cpu16$num.log
-ip route replace ${ipvs_addr}/32 via 192.168.0.111
-}
-
-set_lv16(){
-url=http://192.168.0.111:8888/
 file=lvs_cpu16$num.log
+ip route replace ${ipvs_addr}/32 via 192.168.0.111
 }
 
 set_px16(){
@@ -62,16 +54,9 @@ file=proxy_cpu16$num.log
 ip route replace 10.254.0.10/32 via 192.168.0.111
 }
 
-set_nginx(){
-ipvs_addr=$($kbctl get po -o wide |grep nginx-ingress|awk '{print $6}')
-url=http://${ipvs_addr}/
-file=nginx_cpu16$num.log
-ip route replace ${ipvs_addr}/32 via 192.168.0.111
-}
-
 bench_set(){
 
-for repl in 5 10 20 30 40 ; do 
+for repl in 1 $(seq 2 2 20) 25 30 35 40 ; do 
 
 $kbctl scale deploy/tea-rc --replicas=0
 
@@ -99,36 +84,22 @@ for cid in $cids ; do
 done
 }
 
-lvs_restart(){
-for lv in k11 ; do 
-	ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo svc -t /etc/service/ipvs ; sudo svc -t /etc/service/flanneld/ '
-done
-}
-
-lvs_check(){
-for lv in k11 ; do 
-        workers=$(ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo ipvsadm -L -n|egrep :80 |wc -l')
-        if [ $workers != $repl ]; then
-		ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo svc -t /etc/service/ipvs ; sudo svc -t /etc/service/flanneld/ '
-		sleep 15
-                lvs_check
-        fi
-done
-}
-
 pod_check
+ipvs_check
 
-for try in {10000..200000..10000} ; do
+for try in {0..1} ; do
 num=_$try
-rate=$try
-set_ipvs ; bench
+set_lv16 ; bench
+sleep 30
 set_px16 ; bench
 done
 
 echo end measurement for $repl
 echo 
+
 done
 }
+
 
 bench_set_set(){
 	echo "Measurement for RSS=$RSS;RPS=$RPS;RFS=$RFS "
@@ -151,5 +122,6 @@ bench_set_set(){
 }
 
 RSS=0;RPS=1;RFS=0 ; bench_set_set
-#RSS=1;RPS=0;RFS=0 ; bench_set_set
+RSS=1;RPS=0;RFS=0 ; bench_set_set
+RSS=0;RPS=0;RFS=0 ; bench_set_set
 
