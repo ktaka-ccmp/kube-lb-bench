@@ -1,26 +1,24 @@
 #/bin/bash
 
 anal(){
-
-echo \"# of pods\",\"Req/sec\"
-egrep "podnum|Requ" $file \
-|awk '/^podnum/ { printf("%s,", $0); next } 1' \
-|egrep -v "podnum=.*,podnum" \
-| sed -E -e 's/podnum=//g' -e 's/Requests\/sec:[[:space:]]+//g'
+	echo \"Percentile\",\"Latency [msec]\"
+	sed -n -e '/podnum='$podnum'$/,/End time/p' $file |egrep percentile |sed -e 's/^percentile,//g' 
 }
 
 anal_outer(){
-for i in {0..0} ; do 
+for i in {0..1} ; do 
 	file=${prefix}cpu16_${i}.log
-	anal > ${prefix}cpu16_${i}.csv 
+	for podnum in $(egrep podnum= $file|sed -e 's/^podnum=//g') ;  do
+		anal > latency_${prefix}${podnum}_${i}.csv
+	done
 done 
-
 }
 
 for dir in rss_* ; do 
 echo $dir 
 (cd $dir 
-prefix=nginx_ ; anal_outer 
+prefix=ipvs_ ; anal_outer 
+prefix=proxy_ ; anal_outer 
 )
 done
 
