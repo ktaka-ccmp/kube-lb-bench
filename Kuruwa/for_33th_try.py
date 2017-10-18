@@ -81,7 +81,7 @@ plt.savefig('33th_try/ipvs_iptabls_2figs.png', bbox_inches="tight", dpi=300)
 plt.show()
 
 
-# In[20]:
+# In[23]:
 
 import numpy as np
 import pandas as pd
@@ -118,7 +118,7 @@ plt.style.use('seaborn-poster')
 
 get_ipython().magic('matplotlib inline')
 
-fig = plt.figure(figsize=(8, 6))
+fig = plt.figure(figsize=(6, 6))
 
 ax1 = fig.add_subplot(111)
 
@@ -145,7 +145,7 @@ plt.savefig('33th_try/ipvs_iptabls_rps.png', bbox_inches="tight", dpi=300)
 plt.show()
 
 
-# In[21]:
+# In[25]:
 
 import numpy as np
 import pandas as pd
@@ -182,7 +182,7 @@ plt.style.use('seaborn-poster')
 
 get_ipython().magic('matplotlib inline')
 
-fig = plt.figure(figsize=(8, 6))
+fig = plt.figure(figsize=(6, 6))
 
 ax1 = fig.add_subplot(111)
 df1 = np.loadtxt("24th_try/rss_rps_rfs_1_0_0/ipvs_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
