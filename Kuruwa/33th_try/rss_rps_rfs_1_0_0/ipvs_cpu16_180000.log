@@ -1,0 +1,1776 @@
+podnum=5
+Start time: 1508270157
+wrk2 -c800 -t40 -d30s -s/root/kube-lb-bench/Kuruwa/33th_try/result.lua -R 180000 http://172.16.72.2:8888/
+Running 30s test @ http://172.16.72.2:8888/
+  40 threads and 800 connections
+  Thread calibration: mean lat.: 2674.750ms, rate sampling interval: 9560ms
+  Thread calibration: mean lat.: 2604.581ms, rate sampling interval: 9347ms
+  Thread calibration: mean lat.: 2622.871ms, rate sampling interval: 9568ms
+  Thread calibration: mean lat.: 2572.776ms, rate sampling interval: 9306ms
+  Thread calibration: mean lat.: 2661.804ms, rate sampling interval: 9478ms
+  Thread calibration: mean lat.: 2649.930ms, rate sampling interval: 9363ms
+  Thread calibration: mean lat.: 2628.121ms, rate sampling interval: 9641ms
+  Thread calibration: mean lat.: 2684.143ms, rate sampling interval: 9625ms
+  Thread calibration: mean lat.: 2613.984ms, rate sampling interval: 9650ms
+  Thread calibration: mean lat.: 2623.257ms, rate sampling interval: 9641ms
+  Thread calibration: mean lat.: 2653.584ms, rate sampling interval: 9535ms
+  Thread calibration: mean lat.: 2678.077ms, rate sampling interval: 9461ms
+  Thread calibration: mean lat.: 2689.654ms, rate sampling interval: 9527ms
+  Thread calibration: mean lat.: 2678.306ms, rate sampling interval: 9732ms
+  Thread calibration: mean lat.: 2664.637ms, rate sampling interval: 9494ms
+  Thread calibration: mean lat.: 2678.760ms, rate sampling interval: 9519ms
+  Thread calibration: mean lat.: 2663.951ms, rate sampling interval: 9601ms
+  Thread calibration: mean lat.: 2617.717ms, rate sampling interval: 9142ms
+  Thread calibration: mean lat.: 2655.924ms, rate sampling interval: 9494ms
+  Thread calibration: mean lat.: 2701.645ms, rate sampling interval: 9781ms
+  Thread calibration: mean lat.: 2611.892ms, rate sampling interval: 9289ms
+  Thread calibration: mean lat.: 2676.613ms, rate sampling interval: 9363ms
+  Thread calibration: mean lat.: 2610.829ms, rate sampling interval: 9338ms
+  Thread calibration: mean lat.: 2689.807ms, rate sampling interval: 9469ms
+  Thread calibration: mean lat.: 2646.150ms, rate sampling interval: 9494ms
+  Thread calibration: mean lat.: 2695.699ms, rate sampling interval: 9494ms
+  Thread calibration: mean lat.: 2672.654ms, rate sampling interval: 9420ms
+  Thread calibration: mean lat.: 2661.867ms, rate sampling interval: 9453ms
+  Thread calibration: mean lat.: 2741.823ms, rate sampling interval: 9707ms
+  Thread calibration: mean lat.: 2628.832ms, rate sampling interval: 9379ms
+  Thread calibration: mean lat.: 2712.571ms, rate sampling interval: 9486ms
+  Thread calibration: mean lat.: 2692.363ms, rate sampling interval: 9371ms
+  Thread calibration: mean lat.: 2680.910ms, rate sampling interval: 9371ms
+  Thread calibration: mean lat.: 2728.796ms, rate sampling interval: 9609ms
+  Thread calibration: mean lat.: 2681.690ms, rate sampling interval: 9437ms
+  Thread calibration: mean lat.: 2712.841ms, rate sampling interval: 9822ms
+  Thread calibration: mean lat.: 2665.526ms, rate sampling interval: 9478ms
+  Thread calibration: mean lat.: 2752.124ms, rate sampling interval: 9576ms
+  Thread calibration: mean lat.: 2691.393ms, rate sampling interval: 9707ms
+  Thread calibration: mean lat.: 2647.721ms, rate sampling interval: 9183ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.41s     3.06s   23.81s    60.07%
+    Req/Sec     2.15k    62.47     2.25k    68.75%
+  2565303 requests in 29.98s, 604.74MB read
+  Socket errors: connect 0, read 1, write 14, timeout 92
+Requests/sec:  85561.84
+Transfer/sec:     20.17MB
+------------------------------
+percentile,0.0001,4.53837
+percentile,0.0002,4.58752
+percentile,0.0003,4.63258
+percentile,0.0004,4.66944
+percentile,0.0005,4.7063
+percentile,0.0006,4.73088
+percentile,0.0007,4.74726
+percentile,0.0008,4.76365
+percentile,0.0009,4.78003
+percentile,0.001,4.79641
+percentile,0.0011,4.8087
+percentile,0.0012,4.82099
+percentile,0.0013,4.82918
+percentile,0.0014,4.84147
+percentile,0.0015,4.84966
+percentile,0.0016,4.85785
+percentile,0.0017,4.86605
+percentile,0.0018,4.87424
+percentile,0.0019,4.88243
+percentile,0.002,4.88653
+percentile,0.0021,4.89472
+percentile,0.0022,4.89881
+percentile,0.0023,4.90701
+percentile,0.0024,4.9111
+percentile,0.0025,4.9152
+percentile,0.0026,4.92339
+percentile,0.0027,4.92749
+percentile,0.0028,4.93158
+percentile,0.0029,4.93568
+percentile,0.003,4.93978
+percentile,0.0031,4.94387
+percentile,0.0032,4.94797
+percentile,0.0033,4.95206
+percentile,0.0034,4.95616
+percentile,0.0035,4.96026
+percentile,0.0036,4.96435
+percentile,0.0037,4.96845
+percentile,0.0038,4.97254
+percentile,0.0039,4.97664
+percentile,0.004,4.98074
+percentile,0.0041,4.98483
+percentile,0.0042,4.98893
+percentile,0.0043,4.99302
+percentile,0.0044,4.99712
+percentile,0.0045,5.00122
+percentile,0.0046,5.00122
+percentile,0.0047,5.00531
+percentile,0.0048,5.00941
+percentile,0.0049,5.0135
+percentile,0.005,5.0176
+percentile,0.0051,5.0217
+percentile,0.0052,5.02579
+percentile,0.0053,5.02989
+percentile,0.0054,5.03398
+percentile,0.0055,5.03808
+percentile,0.0056,5.04218
+percentile,0.0057,5.04627
+percentile,0.0058,5.05037
+percentile,0.0059,5.05446
+percentile,0.006,5.05856
+percentile,0.0061,5.05856
+percentile,0.0062,5.06266
+percentile,0.0063,5.06675
+percentile,0.0064,5.07085
+percentile,0.0065,5.07494
+percentile,0.0066,5.07904
+percentile,0.0067,5.08314
+percentile,0.0068,5.08314
+percentile,0.0069,5.08723
+percentile,0.007,5.09133
+percentile,0.0071,5.09542
+percentile,0.0072,5.09952
+percentile,0.0073,5.09952
+percentile,0.0074,5.10361
+percentile,0.0075,5.10771
+percentile,0.0076,5.11181
+percentile,0.0077,5.11181
+percentile,0.0078,5.1159
+percentile,0.0079,5.12
+percentile,0.008,5.12409
+percentile,0.0081,5.12819
+percentile,0.0082,5.12819
+percentile,0.0083,5.13229
+percentile,0.0084,5.13638
+percentile,0.0085,5.13638
+percentile,0.0086,5.14048
+percentile,0.0087,5.14457
+percentile,0.0088,5.14457
+percentile,0.0089,5.14867
+percentile,0.009,5.15277
+percentile,0.0091,5.15277
+percentile,0.0092,5.15686
+percentile,0.0093,5.16096
+percentile,0.0094,5.16096
+percentile,0.0095,5.16505
+percentile,0.0096,5.16505
+percentile,0.0097,5.16915
+percentile,0.0098,5.17325
+percentile,0.0099,5.17325
+percentile,0.01,5.17734
+percentile,0.02,5.36576
+percentile,0.03,5.50093
+percentile,0.04,5.632
+percentile,0.05,5.74259
+percentile,0.06,5.84909
+percentile,0.07,5.96787
+percentile,0.08,6.07437
+percentile,0.09,6.17677
+percentile,0.1,6.29555
+percentile,0.11,6.40205
+percentile,0.12,6.50445
+percentile,0.13,6.61094
+percentile,0.14,6.72154
+percentile,0.15,6.81574
+percentile,0.16,6.91814
+percentile,0.17,7.02464
+percentile,0.18,7.12704
+percentile,0.19,7.22534
+percentile,0.2,7.31955
+percentile,0.21,7.41786
+percentile,0.22,7.52025
+percentile,0.23,7.63085
+percentile,0.24,7.72915
+percentile,0.25,7.81926
+percentile,0.26,7.91347
+percentile,0.27,8.02406
+percentile,0.28,8.12237
+percentile,0.29,8.22067
+percentile,0.3,8.31898
+percentile,0.31,8.42957
+percentile,0.32,8.53606
+percentile,0.33,8.64256
+percentile,0.34,8.74086
+percentile,0.35,8.83917
+percentile,0.36,8.93747
+percentile,0.37,9.04397
+percentile,0.38,9.15046
+percentile,0.39,9.24877
+percentile,0.4,9.35526
+percentile,0.41,9.45357
+percentile,0.42,9.55187
+percentile,0.43,9.65837
+percentile,0.44,9.74848
+percentile,0.45,9.83859
+percentile,0.46,9.94509
+percentile,0.47,10.0434
+percentile,0.48,10.1499
+percentile,0.49,10.24
+percentile,0.5,10.3383
+percentile,0.51,10.4448
+percentile,0.52,10.5513
+percentile,0.53,10.666
+percentile,0.54,10.7643
+percentile,0.55,10.8708
+percentile,0.56,10.9773
+percentile,0.57,11.0838
+percentile,0.58,11.1903
+percentile,0.59,11.2968
+percentile,0.6,11.4033
+percentile,0.61,11.5098
+percentile,0.62,11.6081
+percentile,0.63,11.7146
+percentile,0.64,11.8211
+percentile,0.65,11.9276
+percentile,0.66,12.034
+percentile,0.67,12.1324
+percentile,0.68,12.2388
+percentile,0.69,12.3372
+percentile,0.7,12.4355
+percentile,0.71,12.5338
+percentile,0.72,12.6321
+percentile,0.73,12.7304
+percentile,0.74,12.8287
+percentile,0.75,12.9352
+percentile,0.76,13.0253
+percentile,0.77,13.1318
+percentile,0.78,13.2301
+percentile,0.79,13.3366
+percentile,0.8,13.4431
+percentile,0.81,13.5332
+percentile,0.82,13.6397
+percentile,0.83,13.7462
+percentile,0.84,13.8445
+percentile,0.85,13.9346
+percentile,0.86,14.0329
+percentile,0.87,14.1476
+percentile,0.88,14.2541
+percentile,0.89,14.3524
+percentile,0.9,14.4589
+percentile,0.91,14.59
+percentile,0.92,14.7128
+percentile,0.93,14.8275
+percentile,0.94,14.9586
+percentile,0.95,15.0979
+percentile,0.96,15.2617
+percentile,0.97,15.4665
+percentile,0.98,15.7368
+percentile,0.99,16.1628
+percentile,0.9901,16.1628
+percentile,0.9902,16.171
+percentile,0.9903,16.1792
+percentile,0.9904,16.1792
+percentile,0.9905,16.1874
+percentile,0.9906,16.1956
+percentile,0.9907,16.2038
+percentile,0.9908,16.212
+percentile,0.9909,16.2202
+percentile,0.991,16.2284
+percentile,0.9911,16.2365
+percentile,0.9912,16.2447
+percentile,0.9913,16.2529
+percentile,0.9914,16.2611
+percentile,0.9915,16.2693
+percentile,0.9916,16.2775
+percentile,0.9917,16.2939
+percentile,0.9918,16.3021
+percentile,0.9919,16.3103
+percentile,0.992,16.3185
+percentile,0.9921,16.3267
+percentile,0.9922,16.343
+percentile,0.9923,16.3512
+percentile,0.9924,16.3594
+percentile,0.9925,16.3676
+percentile,0.9926,16.3758
+percentile,0.9927,16.384
+percentile,0.9928,16.4004
+percentile,0.9929,16.4086
+percentile,0.993,16.425
+percentile,0.9931,16.4332
+percentile,0.9932,16.4413
+percentile,0.9933,16.4577
+percentile,0.9934,16.4659
+percentile,0.9935,16.4741
+percentile,0.9936,16.4905
+percentile,0.9937,16.4987
+percentile,0.9938,16.5151
+percentile,0.9939,16.5315
+percentile,0.994,16.5396
+percentile,0.9941,16.556
+percentile,0.9942,16.5642
+percentile,0.9943,16.5806
+percentile,0.9944,16.597
+percentile,0.9945,16.6134
+percentile,0.9946,16.638
+percentile,0.9947,16.6543
+percentile,0.9948,16.6707
+percentile,0.9949,16.6871
+percentile,0.995,16.7117
+percentile,0.9951,16.7363
+percentile,0.9952,16.7608
+percentile,0.9953,16.7772
+percentile,0.9954,16.7936
+percentile,0.9955,16.8264
+percentile,0.9956,16.8591
+percentile,0.9957,16.8919
+percentile,0.9958,16.9574
+percentile,0.9959,16.9902
+percentile,0.996,17.0885
+percentile,0.9961,17.1868
+percentile,0.9962,17.4326
+percentile,0.9963,19.1365
+percentile,0.9964,19.4642
+percentile,0.9965,19.9557
+percentile,0.9966,20.2179
+percentile,0.9967,20.4308
+percentile,0.9968,20.7094
+percentile,0.9969,20.7913
+percentile,0.997,20.8404
+percentile,0.9971,20.9388
+percentile,0.9972,21.0043
+percentile,0.9973,21.0534
+percentile,0.9974,21.119
+percentile,0.9975,21.25
+percentile,0.9976,21.3647
+percentile,0.9977,21.4303
+percentile,0.9978,21.463
+percentile,0.9979,21.4958
+percentile,0.998,21.5286
+percentile,0.9981,21.5613
+percentile,0.9982,21.6105
+percentile,0.9983,21.7088
+percentile,0.9984,21.7907
+percentile,0.9985,21.9054
+percentile,0.9986,21.9709
+percentile,0.9987,22.0365
+percentile,0.9988,22.102
+percentile,0.9989,22.1676
+percentile,0.999,22.2167
+percentile,0.9991,22.2986
+percentile,0.9992,22.3314
+percentile,0.9993,22.3805
+percentile,0.9994,22.4788
+percentile,0.9995,22.6263
+percentile,0.9996,22.7246
+percentile,0.9997,22.8721
+percentile,0.9998,22.9212
+percentile,0.9999,23.0195
+------------------------------
+Percentile: 5%, 10%, 25%, 50%, 75%, 90%, 95%
+Latency[msec]: 5742.59, 6295.55, 7819.26, 10338.3, 12935.2, 14458.9, 15097.9
+min=4345.86[msec],median=10338.3[msec],max=23806[msec]
+End time: 1508270187
+
+podnum=10
+Start time: 1508271560
+wrk2 -c800 -t40 -d30s -s/root/kube-lb-bench/Kuruwa/33th_try/result.lua -R 180000 http://172.16.72.2:8888/
+Running 30s test @ http://172.16.72.2:8888/
+  40 threads and 800 connections
+  Thread calibration: mean lat.: 1810.944ms, rate sampling interval: 7438ms
+  Thread calibration: mean lat.: 2016.401ms, rate sampling interval: 7561ms
+  Thread calibration: mean lat.: 2013.315ms, rate sampling interval: 7561ms
+  Thread calibration: mean lat.: 1951.373ms, rate sampling interval: 7704ms
+  Thread calibration: mean lat.: 1938.031ms, rate sampling interval: 7499ms
+  Thread calibration: mean lat.: 1731.179ms, rate sampling interval: 7176ms
+  Thread calibration: mean lat.: 2030.448ms, rate sampling interval: 7704ms
+  Thread calibration: mean lat.: 1841.578ms, rate sampling interval: 6959ms
+  Thread calibration: mean lat.: 2142.826ms, rate sampling interval: 8323ms
+  Thread calibration: mean lat.: 2025.395ms, rate sampling interval: 7966ms
+  Thread calibration: mean lat.: 2032.848ms, rate sampling interval: 7626ms
+  Thread calibration: mean lat.: 2024.988ms, rate sampling interval: 7958ms
+  Thread calibration: mean lat.: 1986.934ms, rate sampling interval: 7876ms
+  Thread calibration: mean lat.: 2014.500ms, rate sampling interval: 7581ms
+  Thread calibration: mean lat.: 1949.094ms, rate sampling interval: 8179ms
+  Thread calibration: mean lat.: 1923.919ms, rate sampling interval: 8019ms
+  Thread calibration: mean lat.: 2092.069ms, rate sampling interval: 8413ms
+  Thread calibration: mean lat.: 1876.041ms, rate sampling interval: 7413ms
+  Thread calibration: mean lat.: 2034.299ms, rate sampling interval: 7983ms
+  Thread calibration: mean lat.: 2051.697ms, rate sampling interval: 7782ms
+  Thread calibration: mean lat.: 1983.107ms, rate sampling interval: 8032ms
+  Thread calibration: mean lat.: 2119.555ms, rate sampling interval: 8204ms
+  Thread calibration: mean lat.: 1889.080ms, rate sampling interval: 7303ms
+  Thread calibration: mean lat.: 2151.934ms, rate sampling interval: 7647ms
+  Thread calibration: mean lat.: 1930.706ms, rate sampling interval: 7790ms
+  Thread calibration: mean lat.: 2124.751ms, rate sampling interval: 7880ms
+  Thread calibration: mean lat.: 1789.129ms, rate sampling interval: 6860ms
+  Thread calibration: mean lat.: 1973.359ms, rate sampling interval: 7864ms
+  Thread calibration: mean lat.: 1984.480ms, rate sampling interval: 8269ms
+  Thread calibration: mean lat.: 2114.203ms, rate sampling interval: 7974ms
+  Thread calibration: mean lat.: 2215.681ms, rate sampling interval: 8048ms
+  Thread calibration: mean lat.: 1863.907ms, rate sampling interval: 7098ms
+  Thread calibration: mean lat.: 1862.862ms, rate sampling interval: 7479ms
+  Thread calibration: mean lat.: 1957.695ms, rate sampling interval: 7536ms
+  Thread calibration: mean lat.: 2104.603ms, rate sampling interval: 7507ms
+  Thread calibration: mean lat.: 1820.231ms, rate sampling interval: 7667ms
+  Thread calibration: mean lat.: 1806.476ms, rate sampling interval: 6926ms
+  Thread calibration: mean lat.: 2082.975ms, rate sampling interval: 8118ms
+  Thread calibration: mean lat.: 1969.930ms, rate sampling interval: 7409ms
+  Thread calibration: mean lat.: 1979.477ms, rate sampling interval: 7880ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.10s     2.65s   16.51s    63.59%
+    Req/Sec     2.67k    82.65     2.91k    73.75%
+  3187230 requests in 29.98s, 750.92MB read
+Requests/sec: 106305.93
+Transfer/sec:     25.05MB
+------------------------------
+percentile,0.0001,1.36601
+percentile,0.0002,1.47661
+percentile,0.0003,1.53395
+percentile,0.0004,1.59744
+percentile,0.0005,1.63942
+percentile,0.0006,1.68345
+percentile,0.0007,1.7367
+percentile,0.0008,1.81043
+percentile,0.0009,1.87187
+percentile,0.001,1.91898
+percentile,0.0011,1.96505
+percentile,0.0012,1.99782
+percentile,0.0013,2.01523
+percentile,0.0014,2.03469
+percentile,0.0015,2.05926
+percentile,0.0016,2.08384
+percentile,0.0017,2.10534
+percentile,0.0018,2.12787
+percentile,0.0019,2.1504
+percentile,0.002,2.17088
+percentile,0.0021,2.18931
+percentile,0.0022,2.21184
+percentile,0.0023,2.22822
+percentile,0.0024,2.24051
+percentile,0.0025,2.25485
+percentile,0.0026,2.27123
+percentile,0.0027,2.28557
+percentile,0.0028,2.2999
+percentile,0.0029,2.31014
+percentile,0.003,2.32448
+percentile,0.0031,2.33472
+percentile,0.0032,2.34905
+percentile,0.0033,2.36134
+percentile,0.0034,2.37363
+percentile,0.0035,2.38592
+percentile,0.0036,2.39616
+percentile,0.0037,2.40845
+percentile,0.0038,2.41869
+percentile,0.0039,2.42688
+percentile,0.004,2.43712
+percentile,0.0041,2.44531
+percentile,0.0042,2.45555
+percentile,0.0043,2.46374
+percentile,0.0044,2.47194
+percentile,0.0045,2.48013
+percentile,0.0046,2.48832
+percentile,0.0047,2.49651
+percentile,0.0048,2.50675
+percentile,0.0049,2.51494
+percentile,0.005,2.52313
+percentile,0.0051,2.53133
+percentile,0.0052,2.53952
+percentile,0.0053,2.54771
+percentile,0.0054,2.55385
+percentile,0.0055,2.56205
+percentile,0.0056,2.57024
+percentile,0.0057,2.57843
+percentile,0.0058,2.58662
+percentile,0.0059,2.59482
+percentile,0.006,2.60506
+percentile,0.0061,2.61325
+percentile,0.0062,2.61939
+percentile,0.0063,2.62554
+percentile,0.0064,2.63168
+percentile,0.0065,2.63987
+percentile,0.0066,2.65011
+percentile,0.0067,2.6583
+percentile,0.0068,2.66854
+percentile,0.0069,2.67878
+percentile,0.007,2.68493
+percentile,0.0071,2.69517
+percentile,0.0072,2.70336
+percentile,0.0073,2.71155
+percentile,0.0074,2.71974
+percentile,0.0075,2.72998
+percentile,0.0076,2.73818
+percentile,0.0077,2.74637
+percentile,0.0078,2.75456
+percentile,0.0079,2.76275
+percentile,0.008,2.77094
+percentile,0.0081,2.77914
+percentile,0.0082,2.78733
+percentile,0.0083,2.79347
+percentile,0.0084,2.79962
+percentile,0.0085,2.80576
+percentile,0.0086,2.8119
+percentile,0.0087,2.81805
+percentile,0.0088,2.82419
+percentile,0.0089,2.82829
+percentile,0.009,2.83443
+percentile,0.0091,2.84057
+percentile,0.0092,2.84467
+percentile,0.0093,2.85081
+percentile,0.0094,2.85696
+percentile,0.0095,2.8631
+percentile,0.0096,2.86925
+percentile,0.0097,2.87539
+percentile,0.0098,2.87949
+percentile,0.0099,2.88563
+percentile,0.01,2.89177
+percentile,0.02,3.30547
+percentile,0.03,3.60858
+percentile,0.04,3.81133
+percentile,0.05,3.9895
+percentile,0.06,4.14925
+percentile,0.07,4.28851
+percentile,0.08,4.42368
+percentile,0.09,4.54656
+percentile,0.1,4.66534
+percentile,0.11,4.76774
+percentile,0.12,4.87424
+percentile,0.13,4.96845
+percentile,0.14,5.05446
+percentile,0.15,5.14457
+percentile,0.16,5.23469
+percentile,0.17,5.31661
+percentile,0.18,5.41082
+percentile,0.19,5.50093
+percentile,0.2,5.58694
+percentile,0.21,5.67706
+percentile,0.22,5.76307
+percentile,0.23,5.84909
+percentile,0.24,5.9351
+percentile,0.25,6.01702
+percentile,0.26,6.10304
+percentile,0.27,6.18496
+percentile,0.28,6.27097
+percentile,0.29,6.35699
+percentile,0.3,6.43072
+percentile,0.31,6.51264
+percentile,0.32,6.58637
+percentile,0.33,6.67648
+percentile,0.34,6.7584
+percentile,0.35,6.84032
+percentile,0.36,6.92224
+percentile,0.37,7.00416
+percentile,0.38,7.08608
+percentile,0.39,7.15981
+percentile,0.4,7.23353
+percentile,0.41,7.31136
+percentile,0.42,7.38918
+percentile,0.43,7.46701
+percentile,0.44,7.54073
+percentile,0.45,7.61856
+percentile,0.46,7.69638
+percentile,0.47,7.77421
+percentile,0.48,7.85613
+percentile,0.49,7.93805
+percentile,0.5,8.02406
+percentile,0.51,8.10598
+percentile,0.52,8.17971
+percentile,0.53,8.25344
+percentile,0.54,8.33126
+percentile,0.55,8.41318
+percentile,0.56,8.4951
+percentile,0.57,8.57702
+percentile,0.58,8.66714
+percentile,0.59,8.74086
+percentile,0.6,8.82278
+percentile,0.61,8.9047
+percentile,0.62,8.98662
+percentile,0.63,9.07673
+percentile,0.64,9.15865
+percentile,0.65,9.23238
+percentile,0.66,9.30611
+percentile,0.67,9.38803
+percentile,0.68,9.47814
+percentile,0.69,9.56006
+percentile,0.7,9.64198
+percentile,0.71,9.7239
+percentile,0.72,9.82221
+percentile,0.73,9.90413
+percentile,0.74,9.99424
+percentile,0.75,10.0762
+percentile,0.76,10.1745
+percentile,0.77,10.2646
+percentile,0.78,10.3547
+percentile,0.79,10.453
+percentile,0.8,10.5513
+percentile,0.81,10.6496
+percentile,0.82,10.7561
+percentile,0.83,10.8708
+percentile,0.84,10.9855
+percentile,0.85,11.1002
+percentile,0.86,11.2148
+percentile,0.87,11.3295
+percentile,0.88,11.4524
+percentile,0.89,11.5753
+percentile,0.9,11.7064
+percentile,0.91,11.8374
+percentile,0.92,11.9767
+percentile,0.93,12.1405
+percentile,0.94,12.3044
+percentile,0.95,12.5256
+percentile,0.96,12.7631
+percentile,0.97,13.0335
+percentile,0.98,13.3939
+percentile,0.99,13.8854
+percentile,0.9901,13.8854
+percentile,0.9902,13.8936
+percentile,0.9903,13.9018
+percentile,0.9904,13.91
+percentile,0.9905,13.91
+percentile,0.9906,13.9182
+percentile,0.9907,13.9264
+percentile,0.9908,13.9346
+percentile,0.9909,13.9428
+percentile,0.991,13.951
+percentile,0.9911,13.9592
+percentile,0.9912,13.9674
+percentile,0.9913,13.9756
+percentile,0.9914,13.9837
+percentile,0.9915,13.9919
+percentile,0.9916,14.0083
+percentile,0.9917,14.0165
+percentile,0.9918,14.0329
+percentile,0.9919,14.0411
+percentile,0.992,14.0493
+percentile,0.9921,14.0575
+percentile,0.9922,14.0657
+percentile,0.9923,14.0739
+percentile,0.9924,14.082
+percentile,0.9925,14.0902
+percentile,0.9926,14.1066
+percentile,0.9927,14.1148
+percentile,0.9928,14.123
+percentile,0.9929,14.1394
+percentile,0.993,14.1476
+percentile,0.9931,14.1558
+percentile,0.9932,14.1722
+percentile,0.9933,14.1804
+percentile,0.9934,14.1967
+percentile,0.9935,14.2049
+percentile,0.9936,14.2213
+percentile,0.9937,14.2377
+percentile,0.9938,14.2459
+percentile,0.9939,14.2623
+percentile,0.994,14.2787
+percentile,0.9941,14.2868
+percentile,0.9942,14.3032
+percentile,0.9943,14.3196
+percentile,0.9944,14.3278
+percentile,0.9945,14.3442
+percentile,0.9946,14.3524
+percentile,0.9947,14.3688
+percentile,0.9948,14.3852
+percentile,0.9949,14.3933
+percentile,0.995,14.4015
+percentile,0.9951,14.4097
+percentile,0.9952,14.4179
+percentile,0.9953,14.4261
+percentile,0.9954,14.4425
+percentile,0.9955,14.4507
+percentile,0.9956,14.4671
+percentile,0.9957,14.4753
+percentile,0.9958,14.4916
+percentile,0.9959,14.508
+percentile,0.996,14.5162
+percentile,0.9961,14.5326
+percentile,0.9962,14.5572
+percentile,0.9963,14.5736
+percentile,0.9964,14.59
+percentile,0.9965,14.6145
+percentile,0.9966,14.6309
+percentile,0.9967,14.6473
+percentile,0.9968,14.6719
+percentile,0.9969,14.6883
+percentile,0.997,14.7128
+percentile,0.9971,14.7374
+percentile,0.9972,14.7538
+percentile,0.9973,14.7784
+percentile,0.9974,14.7948
+percentile,0.9975,14.8111
+percentile,0.9976,14.8357
+percentile,0.9977,14.8603
+percentile,0.9978,14.8849
+percentile,0.9979,14.9094
+percentile,0.998,14.934
+percentile,0.9981,14.9668
+percentile,0.9982,14.9996
+percentile,0.9983,15.0487
+percentile,0.9984,15.0815
+percentile,0.9985,15.1142
+percentile,0.9986,15.1388
+percentile,0.9987,15.1716
+percentile,0.9988,15.2125
+percentile,0.9989,15.2535
+percentile,0.999,15.2781
+percentile,0.9991,15.3108
+percentile,0.9992,15.3518
+percentile,0.9993,15.401
+percentile,0.9994,15.4337
+percentile,0.9995,15.4911
+percentile,0.9996,15.5484
+percentile,0.9997,15.6877
+percentile,0.9998,15.8106
+percentile,0.9999,15.999
+------------------------------
+Percentile: 5%, 10%, 25%, 50%, 75%, 90%, 95%
+Latency[msec]: 3989.5, 4665.34, 6017.02, 8024.06, 10076.2, 11706.4, 12525.6
+min=1121.28[msec],median=8024.06[msec],max=16506.9[msec]
+End time: 1508271590
+
+podnum=20
+Start time: 1508272956
+wrk2 -c800 -t40 -d30s -s/root/kube-lb-bench/Kuruwa/33th_try/result.lua -R 180000 http://172.16.72.2:8888/
+Running 30s test @ http://172.16.72.2:8888/
+  40 threads and 800 connections
+  Thread calibration: mean lat.: 1804.878ms, rate sampling interval: 7032ms
+  Thread calibration: mean lat.: 2000.844ms, rate sampling interval: 7475ms
+  Thread calibration: mean lat.: 1804.136ms, rate sampling interval: 7122ms
+  Thread calibration: mean lat.: 1798.599ms, rate sampling interval: 6864ms
+  Thread calibration: mean lat.: 1818.518ms, rate sampling interval: 7069ms
+  Thread calibration: mean lat.: 1961.788ms, rate sampling interval: 7294ms
+  Thread calibration: mean lat.: 1963.694ms, rate sampling interval: 7725ms
+  Thread calibration: mean lat.: 1842.009ms, rate sampling interval: 7139ms
+  Thread calibration: mean lat.: 2073.431ms, rate sampling interval: 7782ms
+  Thread calibration: mean lat.: 1830.621ms, rate sampling interval: 6991ms
+  Thread calibration: mean lat.: 1836.708ms, rate sampling interval: 6688ms
+  Thread calibration: mean lat.: 1946.062ms, rate sampling interval: 7716ms
+  Thread calibration: mean lat.: 1858.384ms, rate sampling interval: 7241ms
+  Thread calibration: mean lat.: 1836.076ms, rate sampling interval: 7303ms
+  Thread calibration: mean lat.: 2019.903ms, rate sampling interval: 7679ms
+  Thread calibration: mean lat.: 1763.579ms, rate sampling interval: 7098ms
+  Thread calibration: mean lat.: 1789.778ms, rate sampling interval: 6602ms
+  Thread calibration: mean lat.: 1966.801ms, rate sampling interval: 7237ms
+  Thread calibration: mean lat.: 1933.167ms, rate sampling interval: 7069ms
+  Thread calibration: mean lat.: 1862.667ms, rate sampling interval: 7385ms
+  Thread calibration: mean lat.: 1871.790ms, rate sampling interval: 7421ms
+  Thread calibration: mean lat.: 1828.912ms, rate sampling interval: 6709ms
+  Thread calibration: mean lat.: 1963.803ms, rate sampling interval: 7610ms
+  Thread calibration: mean lat.: 1990.686ms, rate sampling interval: 7213ms
+  Thread calibration: mean lat.: 1842.734ms, rate sampling interval: 6860ms
+  Thread calibration: mean lat.: 1905.055ms, rate sampling interval: 7110ms
+  Thread calibration: mean lat.: 2000.641ms, rate sampling interval: 7516ms
+  Thread calibration: mean lat.: 1986.197ms, rate sampling interval: 7725ms
+  Thread calibration: mean lat.: 2045.828ms, rate sampling interval: 7696ms
+  Thread calibration: mean lat.: 1896.475ms, rate sampling interval: 7553ms
+  Thread calibration: mean lat.: 1925.415ms, rate sampling interval: 7274ms
+  Thread calibration: mean lat.: 1923.524ms, rate sampling interval: 7311ms
+  Thread calibration: mean lat.: 1966.279ms, rate sampling interval: 7573ms
+  Thread calibration: mean lat.: 1932.035ms, rate sampling interval: 7254ms
+  Thread calibration: mean lat.: 1826.118ms, rate sampling interval: 7139ms
+  Thread calibration: mean lat.: 1945.066ms, rate sampling interval: 7544ms
+  Thread calibration: mean lat.: 1937.850ms, rate sampling interval: 7327ms
+  Thread calibration: mean lat.: 1591.821ms, rate sampling interval: 6512ms
+  Thread calibration: mean lat.: 1940.346ms, rate sampling interval: 7270ms
+  Thread calibration: mean lat.: 2016.945ms, rate sampling interval: 7487ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.96s     2.73s   17.97s    64.26%
+    Req/Sec     2.64k   151.06     2.99k    69.51%
+  3186935 requests in 29.98s, 751.18MB read
+Requests/sec: 106292.23
+Transfer/sec:     25.05MB
+------------------------------
+percentile,0.0001,1.2503
+percentile,0.0002,1.40493
+percentile,0.0003,1.51449
+percentile,0.0004,1.57594
+percentile,0.0005,1.59744
+percentile,0.0006,1.62918
+percentile,0.0007,1.65478
+percentile,0.0008,1.68141
+percentile,0.0009,1.70803
+percentile,0.001,1.73158
+percentile,0.0011,1.75309
+percentile,0.0012,1.77766
+percentile,0.0013,1.80122
+percentile,0.0014,1.82477
+percentile,0.0015,1.84525
+percentile,0.0016,1.86982
+percentile,0.0017,1.88621
+percentile,0.0018,1.90566
+percentile,0.0019,1.92512
+percentile,0.002,1.94253
+percentile,0.0021,1.96198
+percentile,0.0022,1.9753
+percentile,0.0023,1.9968
+percentile,0.0024,2.02137
+percentile,0.0025,2.04595
+percentile,0.0026,2.06848
+percentile,0.0027,2.08384
+percentile,0.0028,2.10125
+percentile,0.0029,2.11558
+percentile,0.003,2.12992
+percentile,0.0031,2.14221
+percentile,0.0032,2.15449
+percentile,0.0033,2.16064
+percentile,0.0034,2.17293
+percentile,0.0035,2.18317
+percentile,0.0036,2.19955
+percentile,0.0037,2.21389
+percentile,0.0038,2.23027
+percentile,0.0039,2.24461
+percentile,0.004,2.26099
+percentile,0.0041,2.27533
+percentile,0.0042,2.29171
+percentile,0.0043,2.30809
+percentile,0.0044,2.32448
+percentile,0.0045,2.34086
+percentile,0.0046,2.35315
+percentile,0.0047,2.36134
+percentile,0.0048,2.37363
+percentile,0.0049,2.38387
+percentile,0.005,2.39616
+percentile,0.0051,2.40435
+percentile,0.0052,2.41459
+percentile,0.0053,2.42483
+percentile,0.0054,2.43098
+percentile,0.0055,2.43917
+percentile,0.0056,2.44736
+percentile,0.0057,2.45555
+percentile,0.0058,2.4617
+percentile,0.0059,2.46784
+percentile,0.006,2.47808
+percentile,0.0061,2.48422
+percentile,0.0062,2.49446
+percentile,0.0063,2.5047
+percentile,0.0064,2.51699
+percentile,0.0065,2.52723
+percentile,0.0066,2.53952
+percentile,0.0067,2.55181
+percentile,0.0068,2.56205
+percentile,0.0069,2.57024
+percentile,0.007,2.58048
+percentile,0.0071,2.59072
+percentile,0.0072,2.60096
+percentile,0.0073,2.60915
+percentile,0.0074,2.61734
+percentile,0.0075,2.62758
+percentile,0.0076,2.63578
+percentile,0.0077,2.64601
+percentile,0.0078,2.65625
+percentile,0.0079,2.6624
+percentile,0.008,2.67264
+percentile,0.0081,2.67878
+percentile,0.0082,2.68697
+percentile,0.0083,2.69517
+percentile,0.0084,2.70336
+percentile,0.0085,2.71155
+percentile,0.0086,2.71974
+percentile,0.0087,2.72793
+percentile,0.0088,2.73818
+percentile,0.0089,2.74432
+percentile,0.009,2.75046
+percentile,0.0091,2.75661
+percentile,0.0092,2.76275
+percentile,0.0093,2.7689
+percentile,0.0094,2.77504
+percentile,0.0095,2.78118
+percentile,0.0096,2.78733
+percentile,0.0097,2.79142
+percentile,0.0098,2.79552
+percentile,0.0099,2.79962
+percentile,0.01,2.80371
+percentile,0.02,3.20717
+percentile,0.03,3.50413
+percentile,0.04,3.71917
+percentile,0.05,3.90963
+percentile,0.06,4.07347
+percentile,0.07,4.20249
+percentile,0.08,4.32538
+percentile,0.09,4.44825
+percentile,0.1,4.55475
+percentile,0.11,4.65306
+percentile,0.12,4.75136
+percentile,0.13,4.84147
+percentile,0.14,4.93568
+percentile,0.15,5.02579
+percentile,0.16,5.11181
+percentile,0.17,5.19373
+percentile,0.18,5.27155
+percentile,0.19,5.35347
+percentile,0.2,5.43539
+percentile,0.21,5.51321
+percentile,0.22,5.59923
+percentile,0.23,5.68115
+percentile,0.24,5.75488
+percentile,0.25,5.8327
+percentile,0.26,5.90233
+percentile,0.27,5.98016
+percentile,0.28,6.05389
+percentile,0.29,6.13171
+percentile,0.3,6.20953
+percentile,0.31,6.28326
+percentile,0.32,6.35699
+percentile,0.33,6.43072
+percentile,0.34,6.50035
+percentile,0.35,6.57408
+percentile,0.36,6.64781
+percentile,0.37,6.72154
+percentile,0.38,6.79936
+percentile,0.39,6.88128
+percentile,0.4,6.9632
+percentile,0.41,7.04922
+percentile,0.42,7.12704
+percentile,0.43,7.20077
+percentile,0.44,7.27449
+percentile,0.45,7.34413
+percentile,0.46,7.41786
+percentile,0.47,7.49568
+percentile,0.48,7.5735
+percentile,0.49,7.64723
+percentile,0.5,7.72915
+percentile,0.51,7.80698
+percentile,0.52,7.8848
+percentile,0.53,7.96262
+percentile,0.54,8.04454
+percentile,0.55,8.12646
+percentile,0.56,8.20838
+percentile,0.57,8.2903
+percentile,0.58,8.37632
+percentile,0.59,8.46233
+percentile,0.6,8.55245
+percentile,0.61,8.63437
+percentile,0.62,8.72448
+percentile,0.63,8.81459
+percentile,0.64,8.89651
+percentile,0.65,8.98662
+percentile,0.66,9.08493
+percentile,0.67,9.17504
+percentile,0.68,9.26515
+percentile,0.69,9.35526
+percentile,0.7,9.44538
+percentile,0.71,9.53549
+percentile,0.72,9.64198
+percentile,0.73,9.73209
+percentile,0.74,9.83859
+percentile,0.75,9.94509
+percentile,0.76,10.0598
+percentile,0.77,10.1663
+percentile,0.78,10.2728
+percentile,0.79,10.3793
+percentile,0.8,10.494
+percentile,0.81,10.6168
+percentile,0.82,10.7397
+percentile,0.83,10.8544
+percentile,0.84,10.9855
+percentile,0.85,11.1165
+percentile,0.86,11.2312
+percentile,0.87,11.3705
+percentile,0.88,11.5098
+percentile,0.89,11.6408
+percentile,0.9,11.7883
+percentile,0.91,11.9439
+percentile,0.92,12.116
+percentile,0.93,12.2962
+percentile,0.94,12.4928
+percentile,0.95,12.714
+percentile,0.96,12.9352
+percentile,0.97,13.2137
+percentile,0.98,13.5578
+percentile,0.99,14.2213
+percentile,0.9901,14.2295
+percentile,0.9902,14.2377
+percentile,0.9903,14.2459
+percentile,0.9904,14.2541
+percentile,0.9905,14.2623
+percentile,0.9906,14.2705
+percentile,0.9907,14.2787
+percentile,0.9908,14.2868
+percentile,0.9909,14.3032
+percentile,0.991,14.3114
+percentile,0.9911,14.3196
+percentile,0.9912,14.3278
+percentile,0.9913,14.3442
+percentile,0.9914,14.3524
+percentile,0.9915,14.3606
+percentile,0.9916,14.377
+percentile,0.9917,14.3852
+percentile,0.9918,14.4015
+percentile,0.9919,14.4097
+percentile,0.992,14.4261
+percentile,0.9921,14.4343
+percentile,0.9922,14.4425
+percentile,0.9923,14.4507
+percentile,0.9924,14.4589
+percentile,0.9925,14.4671
+percentile,0.9926,14.4753
+percentile,0.9927,14.4916
+percentile,0.9928,14.508
+percentile,0.9929,14.5162
+percentile,0.993,14.5244
+percentile,0.9931,14.5408
+percentile,0.9932,14.549
+percentile,0.9933,14.5654
+percentile,0.9934,14.5736
+percentile,0.9935,14.59
+percentile,0.9936,14.5981
+percentile,0.9937,14.6145
+percentile,0.9938,14.6227
+percentile,0.9939,14.6309
+percentile,0.994,14.6391
+percentile,0.9941,14.6555
+percentile,0.9942,14.6719
+percentile,0.9943,14.6801
+percentile,0.9944,14.6964
+percentile,0.9945,14.7046
+percentile,0.9946,14.7128
+percentile,0.9947,14.7292
+percentile,0.9948,14.7456
+percentile,0.9949,14.762
+percentile,0.995,14.7702
+percentile,0.9951,14.7948
+percentile,0.9952,14.8029
+percentile,0.9953,14.8193
+percentile,0.9954,14.8357
+percentile,0.9955,14.8521
+percentile,0.9956,14.8603
+percentile,0.9957,14.8685
+percentile,0.9958,14.8849
+percentile,0.9959,14.9012
+percentile,0.996,14.9176
+percentile,0.9961,14.9422
+percentile,0.9962,14.9668
+percentile,0.9963,14.9914
+percentile,0.9964,15.0077
+percentile,0.9965,15.0241
+percentile,0.9966,15.0405
+percentile,0.9967,15.0569
+percentile,0.9968,15.0733
+percentile,0.9969,15.0897
+percentile,0.997,15.0979
+percentile,0.9971,15.1142
+percentile,0.9972,15.1388
+percentile,0.9973,15.1552
+percentile,0.9974,15.1798
+percentile,0.9975,15.2044
+percentile,0.9976,15.2207
+percentile,0.9977,15.2453
+percentile,0.9978,15.2699
+percentile,0.9979,15.2945
+percentile,0.998,15.3108
+percentile,0.9981,15.3436
+percentile,0.9982,15.3846
+percentile,0.9983,15.4173
+percentile,0.9984,15.4583
+percentile,0.9985,15.4911
+percentile,0.9986,15.5156
+percentile,0.9987,15.532
+percentile,0.9988,15.5812
+percentile,0.9989,15.6303
+percentile,0.999,15.6795
+percentile,0.9991,15.7204
+percentile,0.9992,15.786
+percentile,0.9993,15.8433
+percentile,0.9994,15.9089
+percentile,0.9995,15.9498
+percentile,0.9996,15.9908
+percentile,0.9997,16.0891
+percentile,0.9998,16.3594
+percentile,0.9999,17.0066
+------------------------------
+Percentile: 5%, 10%, 25%, 50%, 75%, 90%, 95%
+Latency[msec]: 3909.63, 4554.75, 5832.7, 7729.15, 9945.09, 11788.3, 12714
+min=968.192[msec],median=7729.15[msec],max=17973.2[msec]
+End time: 1508272986
+
+podnum=30
+Start time: 1508274342
+wrk2 -c800 -t40 -d30s -s/root/kube-lb-bench/Kuruwa/33th_try/result.lua -R 180000 http://172.16.72.2:8888/
+Running 30s test @ http://172.16.72.2:8888/
+  40 threads and 800 connections
+  Thread calibration: mean lat.: 1940.276ms, rate sampling interval: 7389ms
+  Thread calibration: mean lat.: 2001.754ms, rate sampling interval: 7438ms
+  Thread calibration: mean lat.: 1878.213ms, rate sampling interval: 7487ms
+  Thread calibration: mean lat.: 1932.980ms, rate sampling interval: 6774ms
+  Thread calibration: mean lat.: 1886.956ms, rate sampling interval: 6905ms
+  Thread calibration: mean lat.: 1965.253ms, rate sampling interval: 7434ms
+  Thread calibration: mean lat.: 1967.795ms, rate sampling interval: 7602ms
+  Thread calibration: mean lat.: 1814.097ms, rate sampling interval: 6660ms
+  Thread calibration: mean lat.: 1902.863ms, rate sampling interval: 7237ms
+  Thread calibration: mean lat.: 1960.300ms, rate sampling interval: 7405ms
+  Thread calibration: mean lat.: 1838.393ms, rate sampling interval: 6729ms
+  Thread calibration: mean lat.: 1944.160ms, rate sampling interval: 7335ms
+  Thread calibration: mean lat.: 2046.247ms, rate sampling interval: 7516ms
+  Thread calibration: mean lat.: 1919.226ms, rate sampling interval: 6918ms
+  Thread calibration: mean lat.: 1906.607ms, rate sampling interval: 7147ms
+  Thread calibration: mean lat.: 2011.781ms, rate sampling interval: 7254ms
+  Thread calibration: mean lat.: 1965.762ms, rate sampling interval: 7647ms
+  Thread calibration: mean lat.: 1920.585ms, rate sampling interval: 7311ms
+  Thread calibration: mean lat.: 1941.981ms, rate sampling interval: 7262ms
+  Thread calibration: mean lat.: 1929.775ms, rate sampling interval: 7094ms
+  Thread calibration: mean lat.: 1826.039ms, rate sampling interval: 6774ms
+  Thread calibration: mean lat.: 1931.196ms, rate sampling interval: 6742ms
+  Thread calibration: mean lat.: 1934.302ms, rate sampling interval: 7077ms
+  Thread calibration: mean lat.: 1912.268ms, rate sampling interval: 6934ms
+  Thread calibration: mean lat.: 1975.634ms, rate sampling interval: 7200ms
+  Thread calibration: mean lat.: 1942.947ms, rate sampling interval: 6983ms
+  Thread calibration: mean lat.: 1980.851ms, rate sampling interval: 7172ms
+  Thread calibration: mean lat.: 1859.903ms, rate sampling interval: 6942ms
+  Thread calibration: mean lat.: 1891.296ms, rate sampling interval: 6950ms
+  Thread calibration: mean lat.: 1921.314ms, rate sampling interval: 7221ms
+  Thread calibration: mean lat.: 1991.391ms, rate sampling interval: 7286ms
+  Thread calibration: mean lat.: 1874.638ms, rate sampling interval: 7000ms
+  Thread calibration: mean lat.: 1945.203ms, rate sampling interval: 7208ms
+  Thread calibration: mean lat.: 1900.027ms, rate sampling interval: 7311ms
+  Thread calibration: mean lat.: 2036.595ms, rate sampling interval: 7618ms
+  Thread calibration: mean lat.: 1889.806ms, rate sampling interval: 6864ms
+  Thread calibration: mean lat.: 1910.355ms, rate sampling interval: 7151ms
+  Thread calibration: mean lat.: 1877.124ms, rate sampling interval: 6868ms
+  Thread calibration: mean lat.: 1872.045ms, rate sampling interval: 6524ms
+  Thread calibration: mean lat.: 1919.745ms, rate sampling interval: 7385ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.07s     2.78s   16.47s    62.61%
+    Req/Sec     2.60k   160.40     2.96k    65.43%
+  3169169 requests in 29.98s, 747.08MB read
+Requests/sec: 105693.80
+Transfer/sec:     24.92MB
+------------------------------
+percentile,0.0001,1.75718
+percentile,0.0002,1.86777
+percentile,0.0003,1.90669
+percentile,0.0004,1.92921
+percentile,0.0005,1.96096
+percentile,0.0006,2.00499
+percentile,0.0007,2.0521
+percentile,0.0008,2.08282
+percentile,0.0009,2.11763
+percentile,0.001,2.16473
+percentile,0.0011,2.21184
+percentile,0.0012,2.2569
+percentile,0.0013,2.29376
+percentile,0.0014,2.32857
+percentile,0.0015,2.34905
+percentile,0.0016,2.36134
+percentile,0.0017,2.37363
+percentile,0.0018,2.39411
+percentile,0.0019,2.41459
+percentile,0.002,2.43302
+percentile,0.0021,2.45146
+percentile,0.0022,2.47194
+percentile,0.0023,2.49241
+percentile,0.0024,2.5088
+percentile,0.0025,2.52518
+percentile,0.0026,2.53747
+percentile,0.0027,2.54976
+percentile,0.0028,2.55795
+percentile,0.0029,2.56614
+percentile,0.003,2.57638
+percentile,0.0031,2.59072
+percentile,0.0032,2.60506
+percentile,0.0033,2.61939
+percentile,0.0034,2.63168
+percentile,0.0035,2.64192
+percentile,0.0036,2.65216
+percentile,0.0037,2.66445
+percentile,0.0038,2.67469
+percentile,0.0039,2.68288
+percentile,0.004,2.68902
+percentile,0.0041,2.69721
+percentile,0.0042,2.70541
+percentile,0.0043,2.7136
+percentile,0.0044,2.72179
+percentile,0.0045,2.72793
+percentile,0.0046,2.73613
+percentile,0.0047,2.74227
+percentile,0.0048,2.74842
+percentile,0.0049,2.75866
+percentile,0.005,2.76685
+percentile,0.0051,2.77504
+percentile,0.0052,2.78118
+percentile,0.0053,2.78938
+percentile,0.0054,2.79552
+percentile,0.0055,2.80166
+percentile,0.0056,2.80781
+percentile,0.0057,2.81395
+percentile,0.0058,2.82214
+percentile,0.0059,2.82624
+percentile,0.006,2.83238
+percentile,0.0061,2.83853
+percentile,0.0062,2.84467
+percentile,0.0063,2.85081
+percentile,0.0064,2.85696
+percentile,0.0065,2.86105
+percentile,0.0066,2.8672
+percentile,0.0067,2.87334
+percentile,0.0068,2.87744
+percentile,0.0069,2.88358
+percentile,0.007,2.88768
+percentile,0.0071,2.89177
+percentile,0.0072,2.89587
+percentile,0.0073,2.89997
+percentile,0.0074,2.90611
+percentile,0.0075,2.91021
+percentile,0.0076,2.91635
+percentile,0.0077,2.92045
+percentile,0.0078,2.9225
+percentile,0.0079,2.92659
+percentile,0.008,2.93274
+percentile,0.0081,2.93683
+percentile,0.0082,2.94298
+percentile,0.0083,2.94707
+percentile,0.0084,2.95322
+percentile,0.0085,2.95936
+percentile,0.0086,2.96346
+percentile,0.0087,2.9696
+percentile,0.0088,2.9737
+percentile,0.0089,2.97984
+percentile,0.009,2.98598
+percentile,0.0091,2.99213
+percentile,0.0092,2.99622
+percentile,0.0093,3.00237
+percentile,0.0094,3.00646
+percentile,0.0095,3.01261
+percentile,0.0096,3.01875
+percentile,0.0097,3.02285
+percentile,0.0098,3.02899
+percentile,0.0099,3.03513
+percentile,0.01,3.04128
+percentile,0.02,3.39763
+percentile,0.03,3.61472
+percentile,0.04,3.79904
+percentile,0.05,3.9465
+percentile,0.06,4.07347
+percentile,0.07,4.19226
+percentile,0.08,4.3008
+percentile,0.09,4.41139
+percentile,0.1,4.50969
+percentile,0.11,4.6039
+percentile,0.12,4.70221
+percentile,0.13,4.79232
+percentile,0.14,4.87833
+percentile,0.15,4.96026
+percentile,0.16,5.04627
+percentile,0.17,5.13229
+percentile,0.18,5.2183
+percentile,0.19,5.30432
+percentile,0.2,5.39034
+percentile,0.21,5.48045
+percentile,0.22,5.56237
+percentile,0.23,5.64019
+percentile,0.24,5.7303
+percentile,0.25,5.81632
+percentile,0.26,5.89824
+percentile,0.27,5.98835
+percentile,0.28,6.07437
+percentile,0.29,6.16038
+percentile,0.3,6.2423
+percentile,0.31,6.32013
+percentile,0.32,6.39795
+percentile,0.33,6.47987
+percentile,0.34,6.56179
+percentile,0.35,6.64371
+percentile,0.36,6.72563
+percentile,0.37,6.80755
+percentile,0.38,6.88947
+percentile,0.39,6.97139
+percentile,0.4,7.04922
+percentile,0.41,7.13113
+percentile,0.42,7.21305
+percentile,0.43,7.29907
+percentile,0.44,7.38509
+percentile,0.45,7.46701
+percentile,0.46,7.54893
+percentile,0.47,7.63085
+percentile,0.48,7.71686
+percentile,0.49,7.80288
+percentile,0.5,7.88889
+percentile,0.51,7.97901
+percentile,0.52,8.07321
+percentile,0.53,8.16333
+percentile,0.54,8.24934
+percentile,0.55,8.33945
+percentile,0.56,8.42957
+percentile,0.57,8.52787
+percentile,0.58,8.61798
+percentile,0.59,8.7081
+percentile,0.6,8.79821
+percentile,0.61,8.88832
+percentile,0.62,8.97843
+percentile,0.63,9.06854
+percentile,0.64,9.15046
+percentile,0.65,9.24057
+percentile,0.66,9.33069
+percentile,0.67,9.41261
+percentile,0.68,9.50272
+percentile,0.69,9.59283
+percentile,0.7,9.68294
+percentile,0.71,9.77305
+percentile,0.72,9.86317
+percentile,0.73,9.96147
+percentile,0.74,10.068
+percentile,0.75,10.1663
+percentile,0.76,10.2728
+percentile,0.77,10.3711
+percentile,0.78,10.4858
+percentile,0.79,10.6004
+percentile,0.8,10.7069
+percentile,0.81,10.8134
+percentile,0.82,10.9281
+percentile,0.83,11.0346
+percentile,0.84,11.1493
+percentile,0.85,11.264
+percentile,0.86,11.3869
+percentile,0.87,11.4934
+percentile,0.88,11.6326
+percentile,0.89,11.7801
+percentile,0.9,11.9276
+percentile,0.91,12.0586
+percentile,0.92,12.2143
+percentile,0.93,12.3863
+percentile,0.94,12.5911
+percentile,0.95,12.8041
+percentile,0.96,13.0499
+percentile,0.97,13.3448
+percentile,0.98,13.738
+percentile,0.99,14.2868
+percentile,0.9901,14.295
+percentile,0.9902,14.3032
+percentile,0.9903,14.3032
+percentile,0.9904,14.3114
+percentile,0.9905,14.3196
+percentile,0.9906,14.3278
+percentile,0.9907,14.336
+percentile,0.9908,14.3442
+percentile,0.9909,14.3606
+percentile,0.991,14.3688
+percentile,0.9911,14.377
+percentile,0.9912,14.3852
+percentile,0.9913,14.3933
+percentile,0.9914,14.4015
+percentile,0.9915,14.4015
+percentile,0.9916,14.4097
+percentile,0.9917,14.4261
+percentile,0.9918,14.4343
+percentile,0.9919,14.4425
+percentile,0.992,14.4507
+percentile,0.9921,14.4589
+percentile,0.9922,14.4671
+percentile,0.9923,14.4753
+percentile,0.9924,14.4835
+percentile,0.9925,14.4998
+percentile,0.9926,14.508
+percentile,0.9927,14.5162
+percentile,0.9928,14.5244
+percentile,0.9929,14.5408
+percentile,0.993,14.549
+percentile,0.9931,14.5654
+percentile,0.9932,14.5818
+percentile,0.9933,14.5981
+percentile,0.9934,14.6063
+percentile,0.9935,14.6145
+percentile,0.9936,14.6309
+percentile,0.9937,14.6391
+percentile,0.9938,14.6473
+percentile,0.9939,14.6637
+percentile,0.994,14.6801
+percentile,0.9941,14.6883
+percentile,0.9942,14.7046
+percentile,0.9943,14.721
+percentile,0.9944,14.7292
+percentile,0.9945,14.7456
+percentile,0.9946,14.762
+percentile,0.9947,14.7784
+percentile,0.9948,14.7948
+percentile,0.9949,14.8111
+percentile,0.995,14.8275
+percentile,0.9951,14.8439
+percentile,0.9952,14.8603
+percentile,0.9953,14.8685
+percentile,0.9954,14.8767
+percentile,0.9955,14.8849
+percentile,0.9956,14.8931
+percentile,0.9957,14.9012
+percentile,0.9958,14.9094
+percentile,0.9959,14.9176
+percentile,0.996,14.9258
+percentile,0.9961,14.934
+percentile,0.9962,14.9422
+percentile,0.9963,14.9504
+percentile,0.9964,14.9668
+percentile,0.9965,14.9914
+percentile,0.9966,15.0077
+percentile,0.9967,15.0323
+percentile,0.9968,15.0569
+percentile,0.9969,15.0733
+percentile,0.997,15.0815
+percentile,0.9971,15.0897
+percentile,0.9972,15.1142
+percentile,0.9973,15.1306
+percentile,0.9974,15.1552
+percentile,0.9975,15.1716
+percentile,0.9976,15.188
+percentile,0.9977,15.2125
+percentile,0.9978,15.2289
+percentile,0.9979,15.2617
+percentile,0.998,15.2945
+percentile,0.9981,15.3272
+percentile,0.9982,15.3518
+percentile,0.9983,15.3764
+percentile,0.9984,15.4092
+percentile,0.9985,15.4337
+percentile,0.9986,15.4583
+percentile,0.9987,15.4829
+percentile,0.9988,15.4993
+percentile,0.9989,15.5156
+percentile,0.999,15.532
+percentile,0.9991,15.5648
+percentile,0.9992,15.614
+percentile,0.9993,15.6467
+percentile,0.9994,15.6877
+percentile,0.9995,15.7286
+percentile,0.9996,15.7696
+percentile,0.9997,15.9334
+percentile,0.9998,16.0645
+percentile,0.9999,16.2693
+------------------------------
+Percentile: 5%, 10%, 25%, 50%, 75%, 90%, 95%
+Latency[msec]: 3946.49, 4509.69, 5816.32, 7888.9, 10166.3, 11927.6, 12804.1
+min=1403.9[msec],median=7888.9[msec],max=16465.9[msec]
+End time: 1508274372
+
+podnum=40
+Start time: 1508275729
+wrk2 -c800 -t40 -d30s -s/root/kube-lb-bench/Kuruwa/33th_try/result.lua -R 180000 http://172.16.72.2:8888/
+Running 30s test @ http://172.16.72.2:8888/
+  40 threads and 800 connections
+  Thread calibration: mean lat.: 1744.515ms, rate sampling interval: 6377ms
+  Thread calibration: mean lat.: 1869.876ms, rate sampling interval: 7319ms
+  Thread calibration: mean lat.: 1799.279ms, rate sampling interval: 6983ms
+  Thread calibration: mean lat.: 1873.470ms, rate sampling interval: 7344ms
+  Thread calibration: mean lat.: 1800.379ms, rate sampling interval: 6631ms
+  Thread calibration: mean lat.: 1903.228ms, rate sampling interval: 7274ms
+  Thread calibration: mean lat.: 1843.900ms, rate sampling interval: 7389ms
+  Thread calibration: mean lat.: 1976.538ms, rate sampling interval: 7430ms
+  Thread calibration: mean lat.: 1917.708ms, rate sampling interval: 7274ms
+  Thread calibration: mean lat.: 1800.712ms, rate sampling interval: 7081ms
+  Thread calibration: mean lat.: 1747.045ms, rate sampling interval: 6832ms
+  Thread calibration: mean lat.: 1869.363ms, rate sampling interval: 6926ms
+  Thread calibration: mean lat.: 1811.734ms, rate sampling interval: 6811ms
+  Thread calibration: mean lat.: 1913.145ms, rate sampling interval: 6967ms
+  Thread calibration: mean lat.: 1886.066ms, rate sampling interval: 7163ms
+  Thread calibration: mean lat.: 1933.637ms, rate sampling interval: 7430ms
+  Thread calibration: mean lat.: 1816.500ms, rate sampling interval: 7393ms
+  Thread calibration: mean lat.: 1931.921ms, rate sampling interval: 6774ms
+  Thread calibration: mean lat.: 1946.896ms, rate sampling interval: 7155ms
+  Thread calibration: mean lat.: 1875.016ms, rate sampling interval: 7401ms
+  Thread calibration: mean lat.: 2020.800ms, rate sampling interval: 7856ms
+  Thread calibration: mean lat.: 1845.107ms, rate sampling interval: 7479ms
+  Thread calibration: mean lat.: 1783.400ms, rate sampling interval: 6299ms
+  Thread calibration: mean lat.: 1900.773ms, rate sampling interval: 7172ms
+  Thread calibration: mean lat.: 1692.561ms, rate sampling interval: 6397ms
+  Thread calibration: mean lat.: 1869.826ms, rate sampling interval: 6914ms
+  Thread calibration: mean lat.: 1983.019ms, rate sampling interval: 7196ms
+  Thread calibration: mean lat.: 1717.422ms, rate sampling interval: 6680ms
+  Thread calibration: mean lat.: 1970.495ms, rate sampling interval: 7110ms
+  Thread calibration: mean lat.: 1851.979ms, rate sampling interval: 6885ms
+  Thread calibration: mean lat.: 1846.499ms, rate sampling interval: 7081ms
+  Thread calibration: mean lat.: 1948.826ms, rate sampling interval: 7098ms
+  Thread calibration: mean lat.: 1719.639ms, rate sampling interval: 6254ms
+  Thread calibration: mean lat.: 1793.735ms, rate sampling interval: 7012ms
+  Thread calibration: mean lat.: 1875.809ms, rate sampling interval: 7024ms
+  Thread calibration: mean lat.: 1825.092ms, rate sampling interval: 6545ms
+  Thread calibration: mean lat.: 1888.510ms, rate sampling interval: 7413ms
+  Thread calibration: mean lat.: 1986.520ms, rate sampling interval: 7720ms
+  Thread calibration: mean lat.: 1864.870ms, rate sampling interval: 7131ms
+  Thread calibration: mean lat.: 1820.650ms, rate sampling interval: 6705ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     8.04s     2.77s   16.74s    62.40%
+    Req/Sec     2.59k   155.20     3.02k    67.44%
+  3157776 requests in 29.98s, 745.73MB read
+Requests/sec: 105327.17
+Transfer/sec:     24.87MB
+------------------------------
+percentile,0.0001,1.68448
+percentile,0.0002,1.7111
+percentile,0.0003,1.77971
+percentile,0.0004,1.82682
+percentile,0.0005,1.85958
+percentile,0.0006,1.87801
+percentile,0.0007,1.92
+percentile,0.0008,1.95584
+percentile,0.0009,1.99578
+percentile,0.001,2.03981
+percentile,0.0011,2.0695
+percentile,0.0012,2.08793
+percentile,0.0013,2.10739
+percentile,0.0014,2.12582
+percentile,0.0015,2.15245
+percentile,0.0016,2.17702
+percentile,0.0017,2.19955
+percentile,0.0018,2.21593
+percentile,0.0019,2.23027
+percentile,0.002,2.24461
+percentile,0.0021,2.26304
+percentile,0.0022,2.28352
+percentile,0.0023,2.304
+percentile,0.0024,2.31629
+percentile,0.0025,2.33062
+percentile,0.0026,2.34496
+percentile,0.0027,2.35725
+percentile,0.0028,2.37158
+percentile,0.0029,2.38387
+percentile,0.003,2.39821
+percentile,0.0031,2.4105
+percentile,0.0032,2.42074
+percentile,0.0033,2.43302
+percentile,0.0034,2.44122
+percentile,0.0035,2.4535
+percentile,0.0036,2.46579
+percentile,0.0037,2.47603
+percentile,0.0038,2.48832
+percentile,0.0039,2.50061
+percentile,0.004,2.5088
+percentile,0.0041,2.51904
+percentile,0.0042,2.52518
+percentile,0.0043,2.53337
+percentile,0.0044,2.54157
+percentile,0.0045,2.54976
+percentile,0.0046,2.55795
+percentile,0.0047,2.56614
+percentile,0.0048,2.57434
+percentile,0.0049,2.58048
+percentile,0.005,2.58867
+percentile,0.0051,2.59482
+percentile,0.0052,2.60096
+percentile,0.0053,2.6071
+percentile,0.0054,2.61325
+percentile,0.0055,2.61734
+percentile,0.0056,2.62349
+percentile,0.0057,2.62758
+percentile,0.0058,2.63373
+percentile,0.0059,2.63782
+percentile,0.006,2.64397
+percentile,0.0061,2.65011
+percentile,0.0062,2.65625
+percentile,0.0063,2.66035
+percentile,0.0064,2.66854
+percentile,0.0065,2.67469
+percentile,0.0066,2.68288
+percentile,0.0067,2.68902
+percentile,0.0068,2.69517
+percentile,0.0069,2.70336
+percentile,0.007,2.7095
+percentile,0.0071,2.71769
+percentile,0.0072,2.72384
+percentile,0.0073,2.72998
+percentile,0.0074,2.73613
+percentile,0.0075,2.74227
+percentile,0.0076,2.75046
+percentile,0.0077,2.75661
+percentile,0.0078,2.76275
+percentile,0.0079,2.76685
+percentile,0.008,2.77094
+percentile,0.0081,2.77709
+percentile,0.0082,2.78323
+percentile,0.0083,2.79142
+percentile,0.0084,2.79757
+percentile,0.0085,2.80371
+percentile,0.0086,2.80781
+percentile,0.0087,2.8119
+percentile,0.0088,2.81805
+percentile,0.0089,2.82214
+percentile,0.009,2.82419
+percentile,0.0091,2.83033
+percentile,0.0092,2.83443
+percentile,0.0093,2.84057
+percentile,0.0094,2.84467
+percentile,0.0095,2.84877
+percentile,0.0096,2.85491
+percentile,0.0097,2.85901
+percentile,0.0098,2.86515
+percentile,0.0099,2.87129
+percentile,0.01,2.87744
+percentile,0.02,3.2727
+percentile,0.03,3.52256
+percentile,0.04,3.72531
+percentile,0.05,3.87891
+percentile,0.06,4.02637
+percentile,0.07,4.15744
+percentile,0.08,4.26803
+percentile,0.09,4.37043
+percentile,0.1,4.46873
+percentile,0.11,4.56704
+percentile,0.12,4.64896
+percentile,0.13,4.74317
+percentile,0.14,4.83328
+percentile,0.15,4.92749
+percentile,0.16,5.0217
+percentile,0.17,5.10361
+percentile,0.18,5.18144
+percentile,0.19,5.26336
+percentile,0.2,5.34938
+percentile,0.21,5.43949
+percentile,0.22,5.5296
+percentile,0.23,5.61152
+percentile,0.24,5.70163
+percentile,0.25,5.79174
+percentile,0.26,5.87366
+percentile,0.27,5.95558
+percentile,0.28,6.0375
+percentile,0.29,6.11942
+percentile,0.3,6.20134
+percentile,0.31,6.29146
+percentile,0.32,6.37338
+percentile,0.33,6.46758
+percentile,0.34,6.54541
+percentile,0.35,6.62733
+percentile,0.36,6.70925
+percentile,0.37,6.79526
+percentile,0.38,6.87718
+percentile,0.39,6.9632
+percentile,0.4,7.04102
+percentile,0.41,7.13113
+percentile,0.42,7.22125
+percentile,0.43,7.31136
+percentile,0.44,7.40147
+percentile,0.45,7.48749
+percentile,0.46,7.56941
+percentile,0.47,7.64723
+percentile,0.48,7.72506
+percentile,0.49,7.81107
+percentile,0.5,7.89709
+percentile,0.51,7.9831
+percentile,0.52,8.07321
+percentile,0.53,8.16742
+percentile,0.54,8.24934
+percentile,0.55,8.33945
+percentile,0.56,8.42957
+percentile,0.57,8.52787
+percentile,0.58,8.61798
+percentile,0.59,8.7081
+percentile,0.6,8.8064
+percentile,0.61,8.89651
+percentile,0.62,8.98662
+percentile,0.63,9.07673
+percentile,0.64,9.15865
+percentile,0.65,9.24057
+percentile,0.66,9.33069
+percentile,0.67,9.41261
+percentile,0.68,9.50272
+percentile,0.69,9.59283
+percentile,0.7,9.68294
+percentile,0.71,9.77305
+percentile,0.72,9.86317
+percentile,0.73,9.96147
+percentile,0.74,10.0516
+percentile,0.75,10.1581
+percentile,0.76,10.2564
+percentile,0.77,10.3629
+percentile,0.78,10.4694
+percentile,0.79,10.5841
+percentile,0.8,10.6824
+percentile,0.81,10.7807
+percentile,0.82,10.879
+percentile,0.83,10.9855
+percentile,0.84,11.1002
+percentile,0.85,11.2148
+percentile,0.86,11.3377
+percentile,0.87,11.4524
+percentile,0.88,11.5835
+percentile,0.89,11.7228
+percentile,0.9,11.862
+percentile,0.91,12.0095
+percentile,0.92,12.1569
+percentile,0.93,12.3126
+percentile,0.94,12.4928
+percentile,0.95,12.6976
+percentile,0.96,12.9516
+percentile,0.97,13.2137
+percentile,0.98,13.566
+percentile,0.99,14.0493
+percentile,0.9901,14.0493
+percentile,0.9902,14.0575
+percentile,0.9903,14.0575
+percentile,0.9904,14.0657
+percentile,0.9905,14.0739
+percentile,0.9906,14.082
+percentile,0.9907,14.0902
+percentile,0.9908,14.0984
+percentile,0.9909,14.1066
+percentile,0.991,14.1148
+percentile,0.9911,14.123
+percentile,0.9912,14.1312
+percentile,0.9913,14.1312
+percentile,0.9914,14.1394
+percentile,0.9915,14.1476
+percentile,0.9916,14.1558
+percentile,0.9917,14.164
+percentile,0.9918,14.1722
+percentile,0.9919,14.1804
+percentile,0.992,14.1804
+percentile,0.9921,14.1885
+percentile,0.9922,14.1967
+percentile,0.9923,14.2049
+percentile,0.9924,14.2213
+percentile,0.9925,14.2295
+percentile,0.9926,14.2459
+percentile,0.9927,14.2541
+percentile,0.9928,14.2623
+percentile,0.9929,14.2787
+percentile,0.993,14.2868
+percentile,0.9931,14.295
+percentile,0.9932,14.3114
+percentile,0.9933,14.3278
+percentile,0.9934,14.336
+percentile,0.9935,14.3442
+percentile,0.9936,14.3606
+percentile,0.9937,14.3688
+percentile,0.9938,14.377
+percentile,0.9939,14.3933
+percentile,0.994,14.4015
+percentile,0.9941,14.4179
+percentile,0.9942,14.4261
+percentile,0.9943,14.4343
+percentile,0.9944,14.4507
+percentile,0.9945,14.4589
+percentile,0.9946,14.4753
+percentile,0.9947,14.4916
+percentile,0.9948,14.4998
+percentile,0.9949,14.5162
+percentile,0.995,14.5244
+percentile,0.9951,14.5326
+percentile,0.9952,14.549
+percentile,0.9953,14.5572
+percentile,0.9954,14.5736
+percentile,0.9955,14.5818
+percentile,0.9956,14.59
+percentile,0.9957,14.5981
+percentile,0.9958,14.6063
+percentile,0.9959,14.6227
+percentile,0.996,14.6473
+percentile,0.9961,14.6637
+percentile,0.9962,14.6801
+percentile,0.9963,14.6964
+percentile,0.9964,14.7128
+percentile,0.9965,14.7292
+percentile,0.9966,14.7456
+percentile,0.9967,14.7702
+percentile,0.9968,14.7948
+percentile,0.9969,14.8193
+percentile,0.997,14.8439
+percentile,0.9971,14.8767
+percentile,0.9972,14.9094
+percentile,0.9973,14.9422
+percentile,0.9974,14.9832
+percentile,0.9975,15.0159
+percentile,0.9976,15.0323
+percentile,0.9977,15.0487
+percentile,0.9978,15.0651
+percentile,0.9979,15.0897
+percentile,0.998,15.1142
+percentile,0.9981,15.1388
+percentile,0.9982,15.147
+percentile,0.9983,15.1716
+percentile,0.9984,15.1962
+percentile,0.9985,15.2125
+percentile,0.9986,15.2289
+percentile,0.9987,15.2453
+percentile,0.9988,15.2699
+percentile,0.9989,15.3108
+percentile,0.999,15.3436
+percentile,0.9991,15.3764
+percentile,0.9992,15.4092
+percentile,0.9993,15.4419
+percentile,0.9994,15.5156
+percentile,0.9995,15.5812
+percentile,0.9996,15.6549
+percentile,0.9997,15.8106
+percentile,0.9998,15.9089
+percentile,0.9999,16.0317
+------------------------------
+Percentile: 5%, 10%, 25%, 50%, 75%, 90%, 95%
+Latency[msec]: 3878.91, 4468.73, 5791.74, 7897.09, 10158.1, 11862, 12697.6
+min=1415.17[msec],median=7897.09[msec],max=16744.4[msec]
+End time: 1508275759
+

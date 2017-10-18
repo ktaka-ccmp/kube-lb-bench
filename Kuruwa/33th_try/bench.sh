@@ -150,6 +150,6 @@ bench_set_set(){
 	echo
 }
 
-RSS=0;RPS=1;RFS=0 ; bench_set_set
-#RSS=1;RPS=0;RFS=0 ; bench_set_set
+#RSS=0;RPS=1;RFS=0 ; bench_set_set
+RSS=1;RPS=0;RFS=0 ; bench_set_set
 
