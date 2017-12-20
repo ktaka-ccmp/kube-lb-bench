@@ -1,0 +1,28 @@
+podnum=1
+Start time: 1513270928
+wrk -c800 -t40 -d30s http://35.197.33.30/
+Running 30s test @ http://35.197.33.30/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    65.59ms  186.64ms   1.99s    90.48%
+    Req/Sec   659.08    424.81     8.18k    75.74%
+  740217 requests in 30.09s, 174.33MB read
+  Socket errors: connect 0, read 108, write 190, timeout 422
+Requests/sec:  24598.31
+Transfer/sec:      5.79MB
+End time: 1513270958
+
+podnum=2
+Start time: 1513271127
+wrk -c800 -t40 -d30s http://35.197.33.30/
+Running 30s test @ http://35.197.33.30/
+  40 threads and 800 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    73.10ms  200.74ms   1.99s    89.96%
+    Req/Sec     0.95k   647.22    11.04k    75.23%
+  1105429 requests in 30.09s, 260.34MB read
+  Socket errors: connect 0, read 0, write 341, timeout 240
+Requests/sec:  36737.63
+Transfer/sec:      8.65MB
+End time: 1513271157
+
