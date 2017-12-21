@@ -4,7 +4,7 @@ cmd="'hostname; wrk -c800 -t40 -d30s http://35.197.33.30/'"
 
 measure(){
 #parallel --will-cite -j 70 -u ssh {} "$cmd" 
-parallel --will-cite -j 70 ssh {} "$cmd" 
+parallel -j 70 ssh {} "$cmd" 
 }
 
 for i in {7..1} ; do
