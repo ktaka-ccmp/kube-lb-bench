@@ -42,10 +42,12 @@ file=single.log
 }
 
 set_ipvs(){
-ipvs_addr=$($kbctl get po -o wide |grep ipvs|awk '{print $6}')
+#ipvs_addr=$($kbctl get po -o wide |grep ipvs|awk '{print $6}')
+eval $(kubectl -s 10.0.0.100:8080 get po -o wide  |grep ipvs|awk '{print "ipvs_addr="$6"; node="$7}')
+node_addr=$(getent hosts $node |awk '{ print $1 }')
 url=http://${ipvs_addr}:8888/
 file=ipvs_cpu16$num.log
-#sudo ip route replace ${ipvs_addr}/32 via 10.0.255.2
+sudo ip route replace ${ipvs_addr}/32 via $node_addr
 }
 
 set_lv16(){
@@ -96,24 +98,8 @@ for cid in $cids ; do
 done
 }
 
-lvs_restart(){
-for lv in kt-lvs002 ; do 
-	ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo svc -t /etc/service/ipvs ; sudo svc -t /etc/service/flanneld/ '
-done
-}
-
-lvs_check(){
-for lv in kt-lvs002 ; do 
-        workers=$(ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo ipvsadm -L -n|egrep :80 |wc -l')
-        if [ $workers != $repl ]; then
-		ssh -i ~/.ssh/id_rsa_k12 $lv 'sudo svc -t /etc/service/ipvs ; sudo svc -t /etc/service/flanneld/ '
-		sleep 15
-                lvs_check
-        fi
-done
-}
-
 pod_check
+ipvs_check
 
 for try in {0..1} ; do
 num=_$try
