@@ -39,17 +39,17 @@ chk_url(){
 
 set_ipvs(){
 url=http://104.196.229.104:18888/
-file=ipvs_cpu16$num.log
+file=ipvs_cpu08$num.log
 }
 
 set_px16(){
 url=http://35.185.254.238:30920/
-file=proxy_cpu16$num.log
+file=proxy_cpu08$num.log
 }
 
 set_kt-v101-16(){
 url=http://35.227.172.31:30920/
-file=kt-v101_cpu16$num.log
+file=kt-v101_cpu08$num.log
 }
 
 bench_set(){
