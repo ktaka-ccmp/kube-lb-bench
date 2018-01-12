@@ -452,6 +452,45 @@ plt.savefig('latency_cdf_rss_10pods.png')
 plt.show()
 
 
+# In[20]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+
+plt.style.use('seaborn-poster')
+fig = plt.figure(figsize=(20, 10))
+ax1 = fig.add_subplot(111)
+
+dt = np.loadtxt("rss_rps_rfs_0_1_0/latency_ipvs_40_160000.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+ax1.plot(dt[1], dt[0], color='r', ls='-',lw='1.5',marker='', label='160krps ipvs')
+dt = np.loadtxt("rss_rps_rfs_0_1_0/latency_proxy_40_160000.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+ax1.plot(dt[1], dt[0], color='r', ls='--',lw='1.5',marker='', label='160krps iptables')
+dt = np.loadtxt("rss_rps_rfs_0_1_0/latency_ipvs_40_180000.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+ax1.plot(dt[1], dt[0], color='b', ls='-',lw='1.5',marker='', label='180krps ipvs')
+dt = np.loadtxt("rss_rps_rfs_0_1_0/latency_proxy_40_180000.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+ax1.plot(dt[1], dt[0], color='b', ls='--',lw='1.5',marker='', label='180krps iptables')
+dt = np.loadtxt("rss_rps_rfs_0_1_0/latency_ipvs_40_200000.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+
+ax1.legend(loc=2, prop={'size': 14})
+
+#ax1.set_title('Latency CDF for 40 pods flannel:host-gw,  rps=on, rss=off')
+
+ax1.set_ylabel('Percentile')
+ax1.set_xlabel('Latency [sec]')
+ax1.set_xlim(0,0.004001)
+ax1.set_xticks(np.arange(0,0.004001,0.001)) 
+ax1.set_yticks(np.arange(0,1.01,0.25)) 
+
+ax1.grid(ls='--', lw='0.5')
+ax1.grid(ls='--', lw='0.5')
+
+#fig.suptitle('Latency CDF for 40 pods flannel:host-gw,  rps=on, rss=off\n', fontsize=24)
+#plt.savefig('latency_cdf_rps_40pods.png')
+plt.show()
+
+
 # In[ ]:
 
 
