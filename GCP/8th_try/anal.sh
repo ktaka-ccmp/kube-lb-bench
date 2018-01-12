@@ -1,22 +1,25 @@
-#/bin/bash
+#!/bin/bash
 
 anal(){
+echo \"\# of client\",\"Throughpu [req/s]\"
 
-echo \"Epoch\",\"Req/sec\"
-egrep "Start time: |Requ" $file \
-|awk '/^Start/ { printf("%s,", $0); next } 1' \
-| sed -E -e 's/Start time: //g' -e 's/Requests\/sec:[[:space:]]+//g'
+for i in {1..11}; do
+	total=0
+	echo -n $i","
+	egrep Requests  gcplb.$i.log |\
+	(while read dummy line ; do 
+ 		total=$( bc <<< "$total + $line")
+	done 
+	echo $total)
+done
 }
 
 anal_outer(){
-for file in *.log ; do 
-	echo 	"anal > ${file%.log}.csv "
-	anal > ${file%.log}.csv
-done 
-
+	echo 	"anal > $dir.csv "
+	anal > $dir.csv
 }
 
-for dir in rss_* ; do 
+for dir in node[0-9]* ; do 
 echo $dir 
 (cd $dir 
 anal_outer 

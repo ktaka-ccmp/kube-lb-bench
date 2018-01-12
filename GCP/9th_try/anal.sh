@@ -1,11 +1,13 @@
 #/bin/bash
 
+
 anal(){
 
-echo \"Epoch\",\"Req/sec\"
-egrep "Start time: |Requ" $file \
-|awk '/^Start/ { printf("%s,", $0); next } 1' \
-| sed -E -e 's/Start time: //g' -e 's/Requests\/sec:[[:space:]]+//g'
+echo \"# of pods\",\"Req/sec\"
+egrep "podnum|Requ" $file \
+|awk '/^podnum/ { printf("%s,", $0); next } 1' \
+|egrep -v "podnum=.*,podnum" \
+| sed -E -e 's/podnum=//g' -e 's/Requests\/sec:[[:space:]]+//g'
 }
 
 anal_outer(){
