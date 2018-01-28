@@ -64,7 +64,7 @@ fig.tight_layout()  # タイトルとラベルが被るのを解消
 plt.savefig('HPCAsiaFigsForSlides/ipvs_1figs.png', bbox_inches="tight", dpi=300)
 
 
-# In[13]:
+# In[1]:
 
 import numpy as np
 import pandas as pd
@@ -100,7 +100,7 @@ sns.set_context("talk")
 
 get_ipython().magic('matplotlib inline')
 
-fig = plt.figure(figsize=(6, 4.5))
+fig = plt.figure(figsize=(6, 6))
 
 ax1 = fig.add_subplot(111)
 
@@ -244,12 +244,45 @@ plt.savefig('HPCAsiaFigsForSlides//performance_limitation.png', bbox_inches="tig
 plt.show()
 
 
-# In[ ]:
+# In[17]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+
+import seaborn as sns
+sns.set_style("white")
+sns.set_context("talk")
+
+fig = plt.figure(figsize=(5, 5))
+ax1 = fig.add_subplot(111)
+
+dt = np.loadtxt("33th_try/rss_rps_rfs_0_1_0/latency_ipvs_40_180000.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+ax1.plot(dt[1], dt[0], color='r', ls='-',lw='1.5',marker='', label='IPVS')
+dt = np.loadtxt("33th_try/rss_rps_rfs_0_1_0/latency_proxy_40_180000.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+ax1.plot(dt[1], dt[0], color='b', ls='-',lw='1.5',marker='', label='iptables DNAT')
+
+ax1.legend(loc=1, bbox_to_anchor=(0.5, 0.97))
+
+#ax1.set_title('Latency CDF for 40 pods flannel:host-gw,  rps=on, rss=off')
+
+ax1.set_ylabel('Percentile')
+ax1.set_xlabel('Latency [sec]')
+ax1.set_xlim(0,0.003001)
+ax1.set_xticks(np.arange(0,0.003001,0.001)) 
+ax1.set_yticks(np.arange(0,1.01,0.25)) 
+
+ax1.grid(ls='--', lw='0.5')
+ax1.grid(ls='--', lw='0.5')
+
+#ax1.text(0.55,0.04,'Experimental condtions:\n40 pods, host-gw, rps=on, rss=off',transform=ax1.transAxes)
+ax1.text(0.35,0.04,'@180k[req/s] const. load\nhost-gw, rps',transform=ax1.transAxes)
+plt.savefig('HPCAsiaFigsForSlides/latency_cdf_rps_40pods_180k.png', bbox_inches="tight", dpi=300)
+plt.show()
 
 
-
-
-# In[78]:
+# In[19]:
 
 import numpy as np
 import pandas as pd
@@ -268,7 +301,7 @@ ax1.plot(dt[1], dt[0], color='r', ls='-',lw='1.5',marker='', label='IPVS')
 dt = np.loadtxt("33th_try/rss_rps_rfs_0_1_0/latency_proxy_40_160000.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
 ax1.plot(dt[1], dt[0], color='b', ls='-',lw='1.5',marker='', label='iptables DNAT')
 
-ax1.legend(loc=1, bbox_to_anchor=(1.03, 0.83))
+ax1.legend(loc=1, bbox_to_anchor=(0.5, 0.97))
 
 #ax1.set_title('Latency CDF for 40 pods flannel:host-gw,  rps=on, rss=off')
 
@@ -282,8 +315,8 @@ ax1.grid(ls='--', lw='0.5')
 ax1.grid(ls='--', lw='0.5')
 
 #ax1.text(0.55,0.04,'Experimental condtions:\n40 pods, host-gw, rps=on, rss=off',transform=ax1.transAxes)
-ax1.text(0.27,0.04,'@160k[req/s] constant load',transform=ax1.transAxes)
-plt.savefig('HPCAsiaFigsForSlides/latency_cdf_rps_40pods.png', bbox_inches="tight", dpi=300)
+ax1.text(0.35,0.04,'@160k[req/s] const. load\nhost-gw, rps',transform=ax1.transAxes)
+plt.savefig('HPCAsiaFigsForSlides/latency_cdf_rps_40pods_160k.png', bbox_inches="tight", dpi=300)
 plt.show()
 
 
