@@ -1,0 +1,264 @@
+podnum=1
+Start time: 1539534999
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    72.25ms   28.66ms 512.70ms   82.48%
+    Req/Sec   279.25    104.92     5.19k    75.68%
+  787538 requests in 30.09s, 185.51MB read
+  Socket errors: connect 0, read 0, write 103, timeout 0
+Requests/sec:  26170.05
+Transfer/sec:      6.16MB
+End time: 1539535029
+
+podnum=2
+Start time: 1539535220
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    41.60ms   14.37ms 332.08ms   88.02%
+    Req/Sec   418.98    180.19    10.23k    76.79%
+  1239213 requests in 30.10s, 291.26MB read
+  Socket errors: connect 0, read 0, write 0, timeout 1001
+Requests/sec:  41171.74
+Transfer/sec:      9.68MB
+End time: 1539535251
+
+podnum=4
+Start time: 1539535447
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    20.27ms    5.78ms 273.75ms   91.66%
+    Req/Sec     1.00k   224.28    21.39k    97.56%
+  3005130 requests in 30.10s, 707.22MB read
+Requests/sec:  99842.31
+Transfer/sec:     23.50MB
+End time: 1539535477
+
+podnum=6
+Start time: 1539535681
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.29ms    1.84ms  62.27ms   84.53%
+    Req/Sec     1.64k   381.24    34.34k    98.30%
+  4912386 requests in 30.08s, 1.13GB read
+Requests/sec: 163334.21
+Transfer/sec:     38.48MB
+End time: 1539535712
+
+podnum=8
+Start time: 1539535912
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.14ms    1.18ms 223.78ms   96.04%
+    Req/Sec     2.20k   354.98    32.42k    98.44%
+  6604206 requests in 30.09s, 1.52GB read
+Requests/sec: 219480.41
+Transfer/sec:     51.70MB
+End time: 1539535943
+
+podnum=10
+Start time: 1539536145
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.85ms    1.44ms 217.06ms   83.72%
+    Req/Sec     2.56k   476.83    39.86k    97.93%
+  7677979 requests in 30.10s, 1.77GB read
+Requests/sec: 255090.00
+Transfer/sec:     60.07MB
+End time: 1539536175
+
+podnum=12
+Start time: 1539536377
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.45ms    1.66ms 221.91ms   97.63%
+    Req/Sec     3.12k   621.24    50.72k    98.23%
+  9364284 requests in 30.08s, 2.15GB read
+Requests/sec: 311311.97
+Transfer/sec:     73.33MB
+End time: 1539536407
+
+podnum=14
+Start time: 1539536607
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.53ms    1.00ms 218.85ms   90.84%
+    Req/Sec     3.63k   543.19    47.98k    97.64%
+  10869966 requests in 30.09s, 2.50GB read
+Requests/sec: 361306.62
+Transfer/sec:     85.13MB
+End time: 1539536637
+
+podnum=16
+Start time: 1539536837
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    15.48ms   37.86ms 449.18ms   92.28%
+    Req/Sec     3.86k   686.64    44.69k    94.63%
+  11560128 requests in 30.10s, 2.66GB read
+Requests/sec: 384115.84
+Transfer/sec:     90.48MB
+End time: 1539536867
+
+podnum=18
+Start time: 1539537072
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    16.81ms   40.00ms 671.27ms   91.38%
+    Req/Sec     3.89k   768.29    47.44k    95.51%
+  11659002 requests in 30.10s, 2.68GB read
+Requests/sec: 387341.01
+Transfer/sec:     91.24MB
+End time: 1539537103
+
+podnum=20
+Start time: 1539537308
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    16.78ms   40.08ms 662.13ms   91.43%
+    Req/Sec     3.89k   752.25    45.96k    95.68%
+  11669241 requests in 30.10s, 2.68GB read
+Requests/sec: 387727.92
+Transfer/sec:     91.33MB
+End time: 1539537338
+
+podnum=22
+Start time: 1539537540
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.04ms   40.42ms 670.50ms   91.31%
+    Req/Sec     3.87k   715.55    46.20k    93.33%
+  11608474 requests in 30.10s, 2.67GB read
+  Socket errors: connect 0, read 0, write 10, timeout 0
+Requests/sec: 385685.58
+Transfer/sec:     90.85MB
+End time: 1539537571
+
+podnum=24
+Start time: 1539537777
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.57ms   41.22ms 685.78ms   90.96%
+    Req/Sec     3.89k   678.11    44.81k    91.75%
+  11742638 requests in 30.10s, 2.70GB read
+Requests/sec: 390144.80
+Transfer/sec:     91.90MB
+End time: 1539537807
+
+podnum=26
+Start time: 1539538011
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.58ms   41.55ms   1.56s    90.99%
+    Req/Sec     3.89k   678.30    51.77k    93.13%
+  11648810 requests in 30.10s, 2.68GB read
+Requests/sec: 387010.16
+Transfer/sec:     91.18MB
+End time: 1539538042
+
+podnum=28
+Start time: 1539538248
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.70ms   41.43ms 656.05ms   90.87%
+    Req/Sec     3.89k   669.09    44.43k    92.32%
+  11650326 requests in 30.10s, 2.68GB read
+Requests/sec: 387051.17
+Transfer/sec:     91.21MB
+End time: 1539538278
+
+podnum=30
+Start time: 1539538488
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.74ms   41.56ms 452.37ms   90.87%
+    Req/Sec     3.89k   670.53    42.89k    91.79%
+  11666751 requests in 30.10s, 2.69GB read
+Requests/sec: 387603.18
+Transfer/sec:     91.38MB
+End time: 1539538518
+
+podnum=35
+Start time: 1539538723
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.83ms   41.56ms 662.42ms   90.77%
+    Req/Sec     3.89k   743.99    52.75k    93.69%
+  11652858 requests in 30.10s, 2.68GB read
+Requests/sec: 387146.15
+Transfer/sec:     91.31MB
+End time: 1539538753
+
+podnum=40
+Start time: 1539538956
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    18.12ms   42.10ms 867.39ms   90.73%
+    Req/Sec     3.88k   722.32    45.67k    91.84%
+  11612573 requests in 30.10s, 2.68GB read
+Requests/sec: 385834.62
+Transfer/sec:     91.03MB
+End time: 1539538987
+
+podnum=48
+Start time: 1539539191
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    15.13ms   38.01ms 848.79ms   92.20%
+    Req/Sec     3.88k   700.78    47.18k    88.06%
+  11694521 requests in 30.10s, 2.70GB read
+  Socket errors: connect 0, read 0, write 0, timeout 335
+Requests/sec: 388518.68
+Transfer/sec:     91.70MB
+End time: 1539539222
+
+podnum=96
+Start time: 1539539427
+wrk -c2000 -t100 -d30s http://10.1.1.1:8888/
+Running 30s test @ http://10.1.1.1:8888/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    18.17ms   42.14ms 644.45ms   90.60%
+    Req/Sec     3.88k   662.70    39.75k    89.17%
+  11649081 requests in 30.10s, 2.69GB read
+Requests/sec: 387023.05
+Transfer/sec:     91.44MB
+End time: 1539539458
+
