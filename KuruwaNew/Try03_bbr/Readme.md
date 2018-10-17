@@ -1,5 +1,11 @@
 flannel: flannel host-gw mode 
-rps=1 means fefe
+rps=1 means fffe
 rfs=0
-lvs on 10GBT machine(k12) w single node(k03).
-bbr
+
+lvs: k12  (w ixgbe @10Gbps)
+node: k04
+client: k11
+
+/proc/sys/net/ipv4/tcp_congestion_control
+	(client, ipvs, node) = (bbr, bbr, bbr)
+

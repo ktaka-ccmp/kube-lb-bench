@@ -4,8 +4,8 @@ wait=1
 
 con=2000
 thr=100
-#dur=30s
-dur=10s
+dur=30s
+#dur=10s
 
 ulimit -n 65536
 
@@ -76,13 +76,13 @@ done
 
 bench_set(){
 
-for try in {0..0} ; do
-for ipvs in {1..1}; do
-for repl in 1 $(seq 2 2 40) 44 48 72 ; do 
+for repl in 1 $(seq 2 2 40) 44 48 72 96 ; do 
 
 echo start measurement for $repl
 $kbctl scale deploy/tea-rc --replicas=0
 $kbctl scale deploy/tea-rc --replicas=$repl
+
+for ipvs in {1..4}; do
 
 $kbctl scale deploy/ipvs-controller --replicas=0
 $kbctl scale deploy/ipvs-controller --replicas=$ipvs
@@ -91,12 +91,13 @@ ipvsctr_check
 pod_check
 ipvs_check
 
-num=${ipvs}_$try
-set_ipvs ; bench
-
-echo end measurement for try= $try, ipvs= $ipvs , repl= $repl
-echo 
+for try in {0..5} ; do
+	num=${ipvs}_$try
+	set_ipvs ; bench
 done
+
+echo end measurement for ipvs= $ipvs , repl= $repl
+echo 
 done
 done
 }
@@ -123,5 +124,5 @@ bench_set_set(){
 	echo
 }
 
-RSS=1;RPS=0;RFS=0;XPS=0 ; bench_set_set
+RSS=0;RPS=1;RFS=1;XPS=1 ; bench_set_set
 
