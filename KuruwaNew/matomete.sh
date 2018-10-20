@@ -2,7 +2,8 @@
 
 
 #DIRS="Try01_bbr Try01_cubic Try02_bbr Try02_cubic Try03_bbr Try03_cubic"
-DIRS="Try01_bbr Try03_bbr Try03_cubic Try02_bbr Try02_cubic"
+#DIRS="Try01_bbr Try03_bbr Try03_cubic Try02_bbr Try02_cubic"
+DIRS="Try02_cubic Try02_bbr Try01_bbr Try03_cubic Try03_bbr"
 log=exec.log
 
 for dir in $DIRS ; do 

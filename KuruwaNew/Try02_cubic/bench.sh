@@ -87,6 +87,10 @@ $kbctl scale deploy/tea-rc --replicas=$repl
 $kbctl scale deploy/ipvs-controller --replicas=0
 $kbctl scale deploy/ipvs-controller --replicas=$ipvs
 
+sleep 3
+$kbctl scale deploy/tea-rc --replicas=$repl
+$kbctl scale deploy/ipvs-controller --replicas=$ipvs
+
 ipvsctr_check
 pod_check
 ipvs_check

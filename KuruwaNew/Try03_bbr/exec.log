@@ -1,0 +1,1718 @@
+k03: bbr
+k04: bbr
+k05: bbr
+k06: bbr
+k07: bbr
+k08: bbr
+k09: bbr
+k10: bbr
+k12: bbr
+k13: bbr
+k14: bbr
+k11: bbr
+NAME      STATUS    ROLES     AGE       VERSION   LABELS
+k03       Ready     <none>    23d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k03
+k04       Ready     <none>    23d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k04
+k05       Ready     <none>    23d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k05,web=yes
+k06       Ready     <none>    23d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k06
+k07       Ready     <none>    23d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k07
+k08       Ready     <none>    23d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k08
+k09       Ready     <none>    23d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k09
+k10       Ready     <none>    23d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k10
+k12       Ready     <none>    15d       v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k12,lvs=yes
+k13       Ready     <none>    7d        v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k13
+k14       Ready     <none>    7d        v1.10.6   beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=k14
+
+Execute "./setup.sh -e" , to set parameters
+Measurement for RSS=1;RPS=0;RFS=0;XPS=0 
+Start time: Sun Oct 21 00:17:34 JST 2018
+start measurement for 1
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6497      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.2
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 1
+
+start measurement for 2
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4195      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.4
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 2
+
+start measurement for 4
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   5517      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 4
+
+start measurement for 6
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5941      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.10
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 6
+
+start measurement for 8
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6741      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 8
+
+start measurement for 10
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4460      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.9
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 10
+
+start measurement for 12
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4894      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.23
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 12
+
+start measurement for 14
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6172      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.24
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 14
+
+start measurement for 16
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   5970      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 16
+
+start measurement for 18
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4485      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.35
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 18
+
+start measurement for 20
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   3737      0 --:--:-- --:--:-- --:--:--  4333
+172.16.91.39
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 20
+
+start measurement for 22
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4276      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.35
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 22
+
+start measurement for 24
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4632      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.47
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 24
+
+start measurement for 26
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7817      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.40
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 26
+
+start measurement for 28
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6996      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.31
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 28
+
+start measurement for 30
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6753      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.51
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 30
+
+start measurement for 32
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6274      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.63
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 32
+
+start measurement for 34
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6103      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.66
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 34
+
+start measurement for 36
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6426      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.13
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 36
+
+start measurement for 38
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   8338      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.25
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 38
+
+start measurement for 40
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7053      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.60
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 40
+
+start measurement for 44
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4952      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.50
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 44
+
+start measurement for 48
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7710      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.49
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 48
+
+start measurement for 72
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4722      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.25
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 5, ipvs= 1 , repl= 72
+
+start measurement for 1
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   3978      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.2
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 1
+
+start measurement for 2
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4735      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.4
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 2
+
+start measurement for 4
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6924      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 4
+
+start measurement for 6
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   5633      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.9
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 6
+
+start measurement for 8
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4801      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.2
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 8
+
+start measurement for 10
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6060      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.8
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 10
+
+start measurement for 12
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4986      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.23
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 12
+
+start measurement for 14
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4647      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.8
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 14
+
+start measurement for 16
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7692      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.31
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 16
+
+start measurement for 18
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4536      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.9
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 18
+
+start measurement for 20
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7432      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.21
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 20
+
+start measurement for 22
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7692      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.33
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 22
+
+start measurement for 24
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   5061      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.6
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 24
+
+start measurement for 26
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4394      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.42
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 26
+
+start measurement for 28
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6867      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.46
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 28
+
+start measurement for 30
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5210      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.49
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 30
+
+start measurement for 32
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4975      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.54
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 32
+
+start measurement for 34
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   3102      0 --:--:-- --:--:-- --:--:--  3250
+172.16.91.32
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 34
+
+start measurement for 36
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5834      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.63
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 36
+
+start measurement for 38
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7629      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.50
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 38
+
+start measurement for 40
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4892      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.62
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 40
+
+start measurement for 44
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6760      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.72
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 44
+
+start measurement for 48
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7941      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.87
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 48
+
+start measurement for 72
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5183      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.52
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 6, ipvs= 1 , repl= 72
+
+start measurement for 1
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7238      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.60
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 1
+
+start measurement for 2
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   5176      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.2
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 2
+
+start measurement for 4
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4232      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 4
+
+start measurement for 6
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6737      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.9
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 6
+
+start measurement for 8
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6760      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.15
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 8
+
+start measurement for 10
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4946      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.19
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 10
+
+start measurement for 12
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4842      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 12
+
+start measurement for 14
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5136      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.11
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 14
+
+start measurement for 16
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6393      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 16
+
+start measurement for 18
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7917      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.33
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 18
+
+start measurement for 20
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4190      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.39
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 20
+
+start measurement for 22
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5394      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.43
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 22
+
+start measurement for 24
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5443      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.47
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 24
+
+start measurement for 26
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6885      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.51
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 26
+
+start measurement for 28
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6629      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.38
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 28
+
+start measurement for 30
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6799      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.18
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 30
+
+start measurement for 32
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6827      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.53
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 32
+
+start measurement for 34
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5925      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.59
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 34
+
+start measurement for 36
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7049      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.53
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 36
+
+start measurement for 38
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6592      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.49
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 38
+
+start measurement for 40
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   7181      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 40
+
+start measurement for 44
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7897      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.83
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 44
+
+start measurement for 48
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   8191      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.61
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 48
+
+start measurement for 72
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5446      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.39
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 7, ipvs= 1 , repl= 72
+
+start measurement for 1
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6959      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.54
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 1
+
+start measurement for 2
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6779      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.3
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 2
+
+start measurement for 4
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4189      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.4
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 4
+
+start measurement for 6
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7817      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.10
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 6
+
+start measurement for 8
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4805      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 8
+
+start measurement for 10
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4765      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.17
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 10
+
+start measurement for 12
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5316      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.22
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 12
+
+start measurement for 14
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4996      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.24
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 14
+
+start measurement for 16
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7303      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.23
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 16
+
+start measurement for 18
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5334      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.32
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 18
+
+start measurement for 20
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4258      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.39
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 20
+
+start measurement for 22
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6172      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.32
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 22
+
+start measurement for 24
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   3397      0 --:--:-- --:--:-- --:--:--  4333
+172.16.91.47
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 24
+
+start measurement for 26
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4524      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.32
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 26
+
+start measurement for 28
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4371      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.52
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 28
+
+start measurement for 30
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4818      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.56
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 30
+
+start measurement for 32
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4821      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.62
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 32
+
+start measurement for 34
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5901      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.66
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 34
+
+start measurement for 36
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6214      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.38
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 36
+
+start measurement for 38
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6948      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.75
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 38
+
+start measurement for 40
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4852      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.61
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 40
+
+start measurement for 44
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5736      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.80
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 44
+
+start measurement for 48
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5443      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.54
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 48
+
+start measurement for 72
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5070      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.55
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 8, ipvs= 1 , repl= 72
+
+start measurement for 1
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:10 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:11 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:12 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:13 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:14 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:15 --:--:--     0curl: (7) Failed to connect to 10.1.1.1 port 8888: Connection timed out
+Retrying ....
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5971      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.62
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 1
+
+start measurement for 2
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:10 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:11 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:12 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:13 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:14 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:15 --:--:--     0curl: (7) Failed to connect to 10.1.1.1 port 8888: Connection timed out
+Retrying ....
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   5997      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.3
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 2
+
+start measurement for 4
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6629      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.7
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 4
+
+start measurement for 6
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   3978      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.8
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 6
+
+start measurement for 8
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6353      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.15
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 8
+
+start measurement for 10
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5826      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.19
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 10
+
+start measurement for 12
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4641      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.23
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 12
+
+start measurement for 14
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4830      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.25
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 14
+
+start measurement for 16
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6598      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.29
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 16
+
+start measurement for 18
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7348      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.35
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 18
+
+start measurement for 20
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+error: Scaling the resource failed with: could not update the scale for deployments.extensions ipvs-controller: Operation cannot be fulfilled on deployments.extensions "ipvs-controller": the object has been modified; please apply your changes to the latest version and try again; Current resource version 8936824
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5462      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.28
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 20
+
+start measurement for 22
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5365      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.34
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 22
+
+start measurement for 24
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   6039      0 --:--:-- --:--:-- --:--:-- 12000
+172.16.91.5
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 24
+
+start measurement for 26
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6659      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.51
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 26
+
+start measurement for 28
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   4333      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.2
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 28
+
+start measurement for 30
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7198      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.59
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 30
+
+start measurement for 32
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   3329      0 --:--:-- --:--:-- --:--:--  4333
+172.16.91.60
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 32
+
+start measurement for 34
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7226      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.24
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 34
+
+start measurement for 36
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   7150      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.71
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 36
+
+start measurement for 38
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    12  100    12    0     0   5078      0 --:--:-- --:--:-- --:--:--  6000
+172.16.91.9
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 38
+
+start measurement for 40
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   4879      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.68
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 40
+
+start measurement for 44
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5347      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.85
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 44
+
+start measurement for 48
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   6585      0 --:--:-- --:--:-- --:--:-- 13000
+172.16.91.63
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 48
+
+start measurement for 72
+deployment.extensions "tea-rc" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "ipvs-controller" scaled
+deployment.extensions "tea-rc" scaled
+deployment.extensions "ipvs-controller" scaled
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    13  100    13    0     0   5647      0 --:--:-- --:--:-- --:--:--  6500
+172.16.91.54
+wrk -c2000 -t100 -d10s http://10.1.1.1:8888/
+end measurement for try= 9, ipvs= 1 , repl= 72
+
+Elapsed time: 02:59:26
+
