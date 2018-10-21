@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[11]:
+# In[35]:
 
 import numpy as np
 import pandas as pd
@@ -36,67 +36,7 @@ def y_fmt(y, pos):
                 #return y
     return y
 
-fig = plt.figure(figsize=(12, 8))
-ax1 = fig.add_subplot(111)
-cubic10 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
-cubic20 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs2_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
-cubic30 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs3_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
-cubic40 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs4_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
-
-bbr10 = np.loadtxt("Try01_bbr/rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
-bbr20 = np.loadtxt("Try01_bbr/rss_rps_rfs_xps_0_1_1_1/ipvs2_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
-bbr30 = np.loadtxt("Try01_bbr/rss_rps_rfs_xps_0_1_1_1/ipvs3_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
-bbr40 = np.loadtxt("Try01_bbr/rss_rps_rfs_xps_0_1_1_1/ipvs4_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
-
-ax1.plot(*cubic10, color='r')
-ax1.plot(*cubic20, color='r')
-ax1.plot(*cubic30, color='r')
-ax1.plot(*cubic40, color='r')
-
-ax1.plot(*bbr10, color='b')
-ax1.plot(*bbr20, color='b')
-ax1.plot(*bbr30, color='b')
-ax1.plot(*bbr40, color='b')
-
-plt.show()
-
-
-# In[26]:
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-get_ipython().magic('matplotlib inline')
-
-import seaborn as sns
-sns.set_style("white")
-sns.set_context("paper")
-
-from matplotlib.ticker import FuncFormatter
-
-def y_fmt(y, pos):
-    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
-    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
-    if y == 0:
-        return str(0)
-    for i, d in enumerate(decades):
-        if np.abs(y) >=d:
-            val = y/float(d)
-            signf = len(str(val).split(".")[1])
-            if signf == 0:
-                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
-            else:
-                if signf == 1:
-#                    print (val, signf)
-                    if str(val).split(".")[1] == "0":
-                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
-                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
-                return tx.format(val=val, suffix=suffix[i])
-
-                #return y
-    return y
-
-fig = plt.figure(figsize=(12, 8))
+fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
 
 d0 = np.loadtxt("Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
@@ -137,12 +77,20 @@ ax1.plot(cub[0], cub[1::1].T,  color='r', ls='', marker='.')
 ax1.plot(bbr[0], mbbr ,  color='b', ls='-', marker='', label='bbr')
 ax1.plot(bbr[0], bbr[1::1].T,  color='b', ls='', marker='.')
 
-ax1.legend(loc=(0.85,0.8))
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+
+ax1.set_ylim(0,400000)
+ax1.set_ylabel('Throughput [req/sec]')
+ax1.set_xlabel('Number of nginx worker containers(#pods)')
+ax1.legend(loc=(0.8,0.87))
+plt.title('ipvs performance on 10G nic host')
+
+plt.savefig('ECMP_FIGS/10G_lb.png', bbox_inches="tight", dpi=300)
 
 plt.show()
 
 
-# In[24]:
+# In[37]:
 
 import numpy as np
 import pandas as pd
@@ -177,7 +125,7 @@ def y_fmt(y, pos):
                 #return y
     return y
 
-fig = plt.figure(figsize=(12, 8))
+fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
 
 d0 = np.loadtxt("Try03_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
@@ -218,12 +166,20 @@ ax1.plot(cub[0], cub[1::1].T,  color='r', ls='', marker='.')
 ax1.plot(bbr[0], mbbr ,  color='b', ls='-', marker='', label='bbr')
 ax1.plot(bbr[0], bbr[1::1].T,  color='b', ls='', marker='.')
 
-ax1.legend()
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+
+ax1.set_ylim(0,300000)
+ax1.set_ylabel('Throughput [req/sec]')
+ax1.set_xlabel('Number of nginx worker containers(#pods)')
+ax1.legend(loc=(0.8,0.87))
+plt.title('Single node performance w10G nic load balancer')
+
+plt.savefig('ECMP_FIGS/10G_lb_single_node.png', bbox_inches="tight", dpi=300)
 
 plt.show()
 
 
-# In[21]:
+# In[39]:
 
 import numpy as np
 import pandas as pd
@@ -346,7 +302,7 @@ ax1.set_xlabel('Number of nginx worker containers(#pods)')
 ax1.legend()
 plt.title('Load balancer scalability')
 
-plt.savefig('IEICE_Figs/ecmp_lb.png', bbox_inches="tight", dpi=300)
+plt.savefig('ECMP_FIGS/ecmp_lb_cubic.png', bbox_inches="tight", dpi=300)
 plt.show()
 
 
@@ -365,11 +321,11 @@ ax1.set_xlabel('Number of load balancers')
 plt.title('Load balancer scalability')
 ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
 
-plt.savefig('IEICE_Figs/ecmp_lb_plateau.png', bbox_inches="tight", dpi=300)
+plt.savefig('ECMP_FIGS/ecmp_lb_plateau.png', bbox_inches="tight", dpi=300)
 #plt.show()
 
 
-# In[8]:
+# In[28]:
 
 fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
@@ -388,13 +344,29 @@ d9 = np.loadtxt("Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_9.csv",usecols=(0, 1)
 dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
 m=np.mean(dt[1::1], axis=0)
 
-bbr10g = dt ; mbrr10g = m
+cb10g = dt ; mcb10g = m
 
-ax1.plot(bbr10g[0], mbrr10g ,  color='r', ls='-', marker='', label='node with 10G nic(ixgbe)')
-ax1.plot(bbr10g[0], bbr10g[1::1].T,  color='r', ls='', marker='.')
+d0 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
 
-ax1.plot(dt1[0], m1,  color='b', ls='-', marker='', label='node with 1G nic(tg3)')
-ax1.plot(dt1[0], dt1[1::1].T,  color='b', ls='', marker='.')
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+cb1=dt; mcb1=m
+
+ax1.plot(cb10g[0], mcb10g ,  color='r', ls='-', marker='', label='node with 10G nic(ixgbe)')
+ax1.plot(cb10g[0], cb10g[1::1].T,  color='r', ls='', marker='.')
+
+ax1.plot(cb1[0], mcb1,  color='b', ls='-', marker='', label='node with 1G nic(tg3)')
+ax1.plot(cb1[0], cb1[1::1].T,  color='b', ls='', marker='.')
 
 ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
 
@@ -404,10 +376,10 @@ ax1.set_xlabel('Number of nginx worker containers(#pods)')
 ax1.legend()
 plt.title('Load balancer throughput \w 10Gbps NIC')
 
-plt.savefig('IEICE_Figs/10G_ipvs.png', bbox_inches="tight", dpi=300)
+plt.savefig('ECMP_FIGS/10G_ipvs.png', bbox_inches="tight", dpi=300)
 
 
-# In[22]:
+# In[38]:
 
 import numpy as np
 import pandas as pd
@@ -508,8 +480,8 @@ m=np.mean(dt[1::1], axis=0)
 
 dt4=dt; m4=m
 
-#fig = plt.figure(figsize=(6, 4))
-fig = plt.figure(figsize=(12, 8))
+fig = plt.figure(figsize=(6, 4))
+#fig = plt.figure(figsize=(12, 8))
 ax1 = fig.add_subplot(111)
 
 ax1.plot(dt1[0], m1,  color='r', ls='-', marker='', label='#lb = 1')
@@ -530,9 +502,9 @@ ax1.set_yticks(np.arange(0, 1000001, 200000))
 ax1.set_ylabel('Throughput [req/sec]')
 ax1.set_xlabel('Number of nginx worker containers(#pods)')
 ax1.legend()
-plt.title('Load balancer scalability')
+plt.title('Load balancer scalability BBR')
 
-#plt.savefig('IEICE_Figs/ecmp_lb_bbr.png', bbox_inches="tight", dpi=300)
+plt.savefig('ECMP_FIGS/ecmp_lb_bbr.png', bbox_inches="tight", dpi=300)
 plt.show()
 
 
