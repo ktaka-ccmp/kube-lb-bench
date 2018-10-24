@@ -76,9 +76,9 @@ done
 
 bench_set(){
 
-for try in {0..0} ; do
+for try in {0..9} ; do
 #for ipvs in {1..4}; do
-for ipvs in {4..4}; do
+for ipvs in {5..5}; do
 for repl in 1 $(seq 2 2 40) 44 48 72 96 ; do 
 
 echo start measurement for $repl
