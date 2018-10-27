@@ -4,6 +4,10 @@ kbctl="kubectl -s 192.168.0.102:8080 "
 wkdir=response_$(date +"%H%M")
 
 set_ipvs(){
+prev=1
+echo $kbctl scale deploy/ipvs-controller --replicas=1
+$kbctl scale deploy/ipvs-controller --replicas=1
+
 while true ; do 
 	for i in $(shuf -i 1-4); do
 		[[ $i == $prev ]] && continue 
