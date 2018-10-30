@@ -732,7 +732,7 @@ plt.savefig('ECMP_FIGS/ecmp_lb_cubic_ieice.png', bbox_inches="tight", dpi=300)
 plt.show()
 
 
-# In[226]:
+# In[257]:
 
 import numpy as np
 import pandas as pd
@@ -775,7 +775,7 @@ d1 = np.loadtxt("Try01_cubic/response_0844/rps.csv",usecols=(0,1), delimiter=','
 fig = plt.figure(figsize=(12, 8))
 ax1 = fig.add_subplot(111)
 
-ax1.plot(d0[0]-1540511067, d0[1],  color='r', ls='-', marker='', label='#pods')
+ax1.plot(d0[0]-d0[0][0], d0[1],  color='r', ls='-', marker='', label='#pods')
 ax1.legend(loc=(0.8,0.85))
 ax1.set_xlim(110,330)
 ax1.set_ylim(0,20)
@@ -798,7 +798,7 @@ ax1.xaxis.set_minor_locator(MultipleLocator(10))
 ax1.tick_params(which='major', direction='in', length=5, width='2',top='off')
 
 ax2 = ax1.twinx()
-ax2.plot(d1[0]-1540511067, d1[1],  color='b', ls='-', marker='.', label='response')
+ax2.plot(d1[0]-d0[0][0], d1[1],  color='b', ls='-', marker='.', label='response')
 ax2.legend(loc=(0.8,0.75))
 ax2.set_xlim(110,330)
 ax2.set_ylim(0,1000000)
@@ -813,39 +813,48 @@ ax2.yaxis.set_major_formatter(FuncFormatter(y_fmt))
 plt.show()
 
 
-# In[225]:
+# In[304]:
 
 #fig = plt.figure(figsize=(6, 4))
 fig = plt.figure(figsize=(12, 8))
 ax1 = fig.add_subplot(111)
 
 d3 = np.loadtxt("Try01_cubic/response_0844/lbnum2.csv",usecols=(0,3), delimiter=',', unpack=True, skiprows=0)
+d4 = np.loadtxt("Try01_cubic/response_1836/lbnum2.csv",usecols=(0,3), delimiter=',', unpack=True, skiprows=0)
 
-ax1.plot(d3[0]-1540511067, d3[1],  color='r', ls='-', marker='.', label='delay')
+ax1.plot(d3[0]-d3[0][0], d3[1],  color='r', ls='-', marker='.', label='delay')
+ax1.plot(d4[0]-d4[0][0], d4[1],  color='b', ls='-', marker='.', label='delay')
 #ax1.legend(loc=(0.8,0.85))
 ax1.legend()
-ax1.set_xlim(-10,6000)
-ax1.set_ylim(-1,8)
-ax1.set_yticks(np.arange(0, 8.1, 2))
+#ax1.set_xlim(-10,85000)
+#ax1.set_ylim(-1,10.1)
+#ax1.set_yticks(np.arange(0, 8.1, 2))
 ax1.set_ylabel('ECMP delay[sec]')
 ax1.set_xlabel('Time [sec]')
 ax1.grid(True,axis='y')
 plt.show()
 
 
-# In[252]:
+# In[305]:
 
 fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
 
+
+from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLocator)
+ax1.xaxis.set_major_locator(MultipleLocator(1))
+ax1.xaxis.set_minor_locator(MultipleLocator(0.5))
+ax1.tick_params(which='major', direction='in', length=5, width='1',top='off')
+#ax1.tick_params(which='minor', direction='in', length=5, width='1',top='off')
+
 #d3 = np.loadtxt("Try01_cubic/response_0844/lbnum2.csv",usecols=(0,3), delimiter=',', unpack=True, skiprows=0)
 d3 = np.loadtxt("Try01_cubic/response_1836/lbnum2.csv",usecols=(0,3), delimiter=',', unpack=True, skiprows=0)
 
-ax1.hist(d3[1], bins=6, range=(0, 6), label='delay count')
+ax1.hist(d3[1], bins=10, range=(0, 10), label='delay count')
 ax1.legend(loc=(0.75,0.85))
-ax1.set_xlim(-1,7)
+ax1.set_xlim(-1,11)
 ax1.set_ylabel('Count')
-ax1.set_xlabel('Delay [sec]')
+ax1.set_xlabel('Routing update delay on router [sec]')
 
 plt.savefig('ECMP_FIGS/ecmp_delay_histgram_ieice.png', bbox_inches="tight", dpi=300)
 
@@ -853,7 +862,7 @@ plt.show()
 
 
 
-# In[251]:
+# In[258]:
 
 import numpy as np
 import pandas as pd
@@ -896,7 +905,7 @@ fig = plt.figure(figsize=(6, 4))
 #fig = plt.figure(figsize=(12, 8))
 ax1 = fig.add_subplot(111)
 
-ax1.plot(d0[0]-1540511067, d0[1],  color='r', ls='-', marker='', label='#ipvs pods')
+ax1.plot(d0[0]-d0[0][0], d0[1],  color='r', ls='-', marker='', label='#ipvs pods')
 ax1.set_xlim(60,1860)
 #ax1.plot((d0[0]-1540511067)/60, d0[1],  color='r', ls='-', marker='', label='#ipvs pods')
 #ax1.set_xlim(1,31)
@@ -914,7 +923,7 @@ ax1.tick_params(which='minor', direction='in', length=5, width='1',top='off')
 ax1.tick_params(which='major', direction='in', length=5, width='2',top='off')
 
 ax2 = ax1.twinx()
-ax2.plot(d1[0]-1540511067, d1[1],  color='b', ls='-', marker='', label='Throughput')
+ax2.plot(d1[0]-d0[0][0], d1[1],  color='b', ls='-', marker='', label='Throughput')
 ax2.set_xlim(60,1860)
 #ax2.plot((d1[0]-1540511067)/60, d1[1],  color='b', ls='-', marker='', label='Throughput')
 #ax2.set_xlim(1,31)

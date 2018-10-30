@@ -2,36 +2,45 @@
 
 in=./lbnum.csv
 out=./lbnum2.csv
-delay=
+delay=na
 pd_prev=
 tm_prev=
+tm0=na
+DURATION=72000
 
 output(){
 	echo $tm,$pd,$rt,$delay
 }
 
+IFS=, read -r tm0 pd rt < $in
+#echo $tm0
+
 while IFS=, read -r tm pd rt ; do
+
+#[[ "$(( $tm - $tm0 ))" -gt "$DURATION" ]] && echo $tm >&2 
+[[ "$(( $tm - $tm0 ))" -gt "$DURATION" ]] && break 
 
 if [ "$pd" == "$rt" ] ; then
 
 	if [ "$pd" != "$pd_prev" -a "$pd_prev" != "" ] ; then
-		delay=$(( $tm - $tm_prev -1 )).5
+		delay=$(( $tm - $tm_prev ))
 		output
-		delay=-1
-	elif [ "$delay" != "-1" -a "$delay" != "" ]; then
-		echo $tm,$pd1,$rt1,$delay
-		delay=-1
+		delay=na
+	elif [ "$delay" != "na" -a "$delay" != "" ]; then
+		tm_tmp=$tm
+		tm=$tm1; pd=$pd1; rt=$rt1
+		output
+		tm=$tm_tmp
+		delay=na
 	else
-		delay=-1
-#		output
+		delay=na
 	fi
 	tm_prev=$tm
 else
 	if [ "$pd" != "$pd_prev" -a "$pd_prev" != "" ] ; then
 		tm1=$tm; pd1=$pd; rt1=$rt
 	fi
-	delay=$(( $tm - $tm_prev -1)).5
-#	output
+	delay=$(( $tm - $tm_prev ))
 fi
 
 pd_prev=$pd
