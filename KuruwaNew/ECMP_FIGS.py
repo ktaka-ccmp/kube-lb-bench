@@ -586,7 +586,7 @@ plt.savefig('ECMP_FIGS/ecmp_lb_bbr_vs_cubic.png', bbox_inches="tight", dpi=300)
 plt.show()
 
 
-# In[16]:
+# In[1]:
 
 import numpy as np
 import pandas as pd
@@ -724,7 +724,7 @@ ax1.set_ylim(0,800000)
 
 ax1.set_yticks(np.arange(0, 800001, 200000))
 ax1.set_ylabel('Throughput [req/sec]')
-ax1.set_xlabel('Number of pods')
+ax1.set_xlabel('Number of nginx pods')
 ax1.legend(loc=(0.6,0.75), ncol=2)
 #plt.title('Load balancer scalability BBR/CUBIC')
 
