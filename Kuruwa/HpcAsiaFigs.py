@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[66]:
+# In[3]:
 
 import numpy as np
 import pandas as pd
@@ -43,7 +43,7 @@ ax1 = fig.add_subplot(311)
 ax2 = fig.add_subplot(312)
 ax3 = fig.add_subplot(313)
 
-df1 = np.loadtxt("9th_try/rss_rps_rfs_0_1_0/ipvs_cpu08_3.csv", delimiter=',', unpack=True, skiprows=1)
+df1 = np.loadtxt("24th_try/rss_rps_rfs_0_1_0/ipvs_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
 df2 = np.loadtxt("24th_try/rss_rps_rfs_1_0_0/ipvs_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
 df3 = np.loadtxt("24th_try/rss_rps_rfs_0_0_0/ipvs_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
 ax1.plot(*df1, color='r', label='(RSS,RPS)=(off,on)')
