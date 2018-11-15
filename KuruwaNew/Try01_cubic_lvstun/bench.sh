@@ -76,8 +76,8 @@ done
 
 bench_set(){
 
-for try in {0..1} ; do
-#for ipvs in {1..4}; do
+for try in {0..0} ; do
+#for ipvs in {2..4}; do
 for ipvs in {1..1}; do
 for repl in 1 $(seq 2 2 40) $(seq 44 4 100) ; do 
 #for repl in 120 140 160 180 200 ; do 

@@ -6,8 +6,8 @@ proc_fs=/proc/sys/net/ipv4/tcp_congestion_control
 kbctl="kubectl -s 192.168.0.102:8080 "
 
 K8S="03 04 05 06 07 08 09 10 12 13 14"
-WEB="03 04 05 06 07 08 09 13 14"
-LVS="10"
+WEB="03 04 05 06 13 14"
+LVS="07 08 09 10"
 ALL="$K8S 11"
 
 set_param(){
