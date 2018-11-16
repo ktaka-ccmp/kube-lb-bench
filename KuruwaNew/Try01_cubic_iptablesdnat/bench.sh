@@ -39,9 +39,9 @@ chk_url(){
 }
 
 set_ipvs(){
-#url=http://10.1.1.1:8888/
-url=http://10.1.1.1:80/
-file=ipvs$num.log
+ip route replace 10.254.0.10/32 via 192.168.0.110
+url=http://10.254.0.10:81/
+file=iptdnat$num.log
 }
 
 ipvsctr_check(){
@@ -76,7 +76,6 @@ done
 
 bench_set(){
 
-for ipvs in {2..4}; do
 for try in {0..9} ; do
 for repl in 1 $(seq 2 2 40) $(seq 44 4 100) ; do 
 
@@ -84,23 +83,13 @@ echo start measurement for $repl
 $kbctl scale deploy/tea-rc --replicas=0
 $kbctl scale deploy/tea-rc --replicas=$repl
 
-$kbctl scale deploy/ipvs-controller --replicas=0
-$kbctl scale deploy/ipvs-controller --replicas=$ipvs
-
-sleep 3
-$kbctl scale deploy/tea-rc --replicas=$repl
-$kbctl scale deploy/ipvs-controller --replicas=$ipvs
-
-ipvsctr_check
 pod_check
-ipvs_check
 
 num=${ipvs}_$try
 set_ipvs ; bench
 
-echo end measurement for try= $try, ipvs= $ipvs , repl= $repl
+echo end measurement for try= $try, repl= $repl
 echo 
-done
 done
 done
 }
