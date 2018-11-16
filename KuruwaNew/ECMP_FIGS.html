@@ -16849,6 +16849,553 @@ JFkIIYQolyQLIYQQ5ZJkIYQQolz/D0uyQVBOCl5KAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">magic</span><span class="p">(</span><span class="s1">&#39;matplotlib inline&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">FuncFormatter</span>
+
+<span class="k">def</span> <span class="nf">y_fmt</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="n">decades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="n">e9</span><span class="p">,</span> <span class="mi">1</span><span class="n">e6</span><span class="p">,</span> <span class="mi">1</span><span class="n">e3</span><span class="p">,</span> <span class="mi">1</span><span class="n">e0</span><span class="p">,</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">9</span> <span class="p">]</span>
+    <span class="n">suffix</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span> <span class="p">,</span> <span class="s2">&quot;m&quot;</span> <span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;n&quot;</span>  <span class="p">]</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">decades</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;=</span><span class="n">d</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+            <span class="n">signf</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">signf</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{val:d}</span><span class="s1"> </span><span class="si">{suffix}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">signf</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="c1">#                    print (val, signf)</span>
+                    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">:</span>
+                       <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{val:d}</span><span class="s1"> </span><span class="si">{suffix}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">)),</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> 
+                <span class="n">tx</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span><span class="o">+</span><span class="s2">&quot;val:.</span><span class="si">{signf}</span><span class="s2">f&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">signf</span> <span class="o">=</span> <span class="n">signf</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;} </span><span class="si">{suffix}</span><span class="s2">&quot;</span>
+                <span class="k">return</span> <span class="n">tx</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="o">=</span><span class="n">val</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+                <span class="c1">#return y</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">d0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_0.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_1.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_2.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_3.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_4.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_5.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_6.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_7.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d8</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_8.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d9</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_9.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># dt=np.delete(np.concatenate((d0, d1, d2, d3, d4), axis=0), [2,4,6,8],0)</span>
+<span class="c1"># dt=d0</span>
+<span class="n">m</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">cb10gtun</span> <span class="o">=</span> <span class="n">dt</span> <span class="p">;</span> <span class="n">mcb10gtun</span> <span class="o">=</span> <span class="n">m</span>
+
+<span class="n">d0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_2.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_3.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_4.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_5.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_6.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_7.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d8</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_8.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d9</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_9.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># dt=np.delete(np.concatenate((d0, d1, d2), axis=0), [2,4],0)</span>
+<span class="n">dt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># dt=d0</span>
+<span class="n">m</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">cb1gtun</span><span class="o">=</span><span class="n">dt</span><span class="p">;</span> <span class="n">mcb1gtun</span><span class="o">=</span><span class="n">m</span>
+
+<span class="n">d0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_0.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_1.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_2.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_3.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_4.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_5.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_6.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_7.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d8</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_8.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d9</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_9.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">m</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">cb10g</span> <span class="o">=</span> <span class="n">dt</span> <span class="p">;</span> <span class="n">mcb10g</span> <span class="o">=</span> <span class="n">m</span>
+
+<span class="n">d0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_2.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_3.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_4.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_5.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_6.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_7.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d8</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_8.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">d9</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_9.csv&quot;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">d0</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">d3</span><span class="p">,</span> <span class="n">d4</span><span class="p">,</span> <span class="n">d5</span><span class="p">,</span> <span class="n">d6</span><span class="p">,</span> <span class="n">d7</span><span class="p">,</span> <span class="n">d8</span><span class="p">,</span> <span class="n">d9</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">m</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">cb1</span><span class="o">=</span><span class="n">dt</span><span class="p">;</span> <span class="n">mcb1</span><span class="o">=</span><span class="n">m</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb10g</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mcb10g</span> <span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;node with 10G nic(ixgbe)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb10g</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cb10g</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mcb1</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;node with 1G nic(tg3)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cb1</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb10gtun</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mcb10gtun</span> <span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;node with 10G nic(ixgbe) rps tun&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb10gtun</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cb10gtun</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb1gtun</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mcb1gtun</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;node with 1G nic(tg3) tun&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cb1gtun</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cb1gtun</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">y_fmt</span><span class="p">))</span>
+
+<span class="c1"># ax1.set_xlim(0,60)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000001</span><span class="p">,</span> <span class="mi">100000</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Throughput [req/sec]&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of nginx worker containers(#pods)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;LVS-TUN(L3DSR) performance level&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ECMP_FIGS/10G_ipvs_tun.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYsAAAETCAYAAADH1SqlAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlcFPX/wPHXsqCoCAgiXmhimlcqmV+zQzM8+vKz8qIs
+LxLTb2r2zTO8ElNR0a+plBdkZqVZXqVlmZZmaaahqamZBwKCeHGpsLDM749xL2FZWF0OfT8fj3nM
+7sx+Zt4zuzvvOT8fjaIoCkIIIUQhnEo7ACGEEGWfJAshhBA2SbIQQghhkyQLIYQQNkmyEEIIYZMk
+CyGEEDZJshBW7d+/n7CwMIthX375JdOnT883bMGCBWRlZTF+/HhCQ0N5+eWXmTp1Kjk5ORafPXbs
+GAMGDGDAgAG0bNmSgQMHMnDgQJKSknjmmWcsPrtx40aioqIAaNKkCfv27TOOi4qKYtOmTQBkZWUx
+ZcoUgHzTAEhJSWHQoEH069ePGTNmAJCYmEjbtm0ZOHAgAwYMoF+/fuzevdtYZunSpbz66qsMGDCA
+YcOGkZSUBMCAAQPo27cvAwcOpH///vTq1YsTJ04AMHnyZLKzs4u4dm2bO3cuPXv2NE6/rEpMTGTA
+gAF3PB3z71uUPc6lHYAoX/7973+zdOlS8vLycHJS9zU2b97MrFmz2LBhA/Xr12fu3LkAzJkzhy++
++IJXXnnFWL558+asXr0agMDAQD7++GPjOI1GY3W+lStXZubMmXz55ZdUrFjRYlx0dDQ9evSwOo0V
+K1bQv39/unTpwsSJE/n555/x9/enadOmxvmnp6fTr18/mjRpQkZGBnv37mXVqlUA/Pjjj8yZM4f3
+3nsPgAULFlCrVi0A9uzZwwcffMCiRYt4/vnniYmJYfjw4cVYo9Z9//33fPfdd2i12rsyPUcq7LsT
+9wZJFqJYqlSpQtu2bdmzZw8dOnQgISEBJycn/Pz8qFmzJl999RUtW7akbdu2jB079q5t6Dw9PXnu
+uedYsGABb7/9tsW4H374gZEjR1otO2nSJABycnK4fPkybm5u+T7j7u5OUFAQu3btIjAwkPj4eDZv
+3sxTTz1Fp06d6NChg/GzeXl5xtcXL17Ew8MDgLZt2zJz5kyLZJGYmMiYMWPw8PDg0qVL9OzZkwED
+BnDixAlmzpwJQJ06dZgxYwZff/0169evR6/X06FDB1JSUhg6dChLlixh/PjxXLp0ybg8zZo1IzAw
+kHr16tG+fXt+/vlnmjRpwokTJ/Dz88PHx4f9+/dTo0YNFi5cyPHjx5k7dy56vZ6srCzee+89EhIS
++PDDD9FoNCQkJDB48GB69uzJ999/z7Jly1AUhcDAQEaMGMFHH33Etm3bABg4cCBBQUEFruutW7ey
+evVqNBoN3bp1o3///jz//PN8/fXXaLVapk6dSlBQEJ6envmWX5RtchpKFFvv3r35+uuvAdi0aRO9
+e/cG1FNAISEhfPrpp3Ts2JE33niDixcv3tG8DHusGo2GIUOGcODAAf7880/j+LNnz1KtWjWb00lN
+TeW5554jNTUVf3//Aj/j5eVFamoqXl5eLFq0iL179/LCCy/Qu3dvDh06ZPzcmDFjeOmll+jYsSOH
+Dh1i9OjRxhg9PT05d+6cxXQvXLjAe++9x+eff87nn3/O5cuXmTZtGrNmzWL16tX4+fmxfv16AGrU
+qMGaNWt4/fXX8fHxISYmhs8//5yGDRvy6aefMmPGDOMpt4sXL/L+++8zdOhQAB5//HFWr17NX3/9
+xb/+9S/WrFnD+fPnuXLlCqdPnyY8PJyPP/6Yp59+mp9++glQT9EtWbKE6OhoVqxYgV6vJzIyklWr
+VrFhwwZ0Oh0nTpxg165drF27lo8//pjo6GgyMzMLXMfR0dGsXr2azz77jJ9//pnz58/ToUMHdu/e
+jU6n48iRIzz22GNWl1+UXXJkIYrt0UcfZebMmdy8eZOdO3eydu1aAA4dOsRTTz3Fs88+i16vJyYm
+hsjISLp06cInn3yCRqNh7ty51KxZs8Dpurq6kpOTg4uLCwA3btywOOXk5OTEu+++y8SJE417+qmp
+qXh7e9uM2dPTk23btrFlyxYiIiJ444038n3mwoULPPjgg5w/fx4PDw9mz54NwL59+xg7diw//vgj
+YDoN9cEHH3D69GmLZFW9enXS0tIsptusWTMqVaoEQOPGjUlISODMmTNMmjQJRVHQ6XQ8/vjj1KtX
+jwYNGuSL68yZMwQGBgLQoEEDrl27BqiJpXLlysbPNW7cGICqVasap1O1alWys7OpUaMG8+fPp3Ll
+yiQnJ9OpUycAHnroIQB8fX3Jzs42rk/D0ddbb73Ft99+S1xcHAMHDkRRFHJyckhISKBJkyYWcZ4/
+f56UlBRCQ0NRFIWMjAzi4+Pp2bMnS5YsQafTGZfD2vKLskuOLIRdnn32WRYvXkyrVq2oUKECAF9/
+/TWffvopAFqtFn9/fypWrEi3bt1YvXo1H3/8sUWiuL1asqZNmxo3yIqi8Ouvv9K8eXOLzzZt2pQO
+HTqwbt06QD0ayMjIsDpNgOnTpxMbGwuop9EMRyvmn01NTWX79u106NCB48ePM3PmTPR6PaBuoKtU
+qZJvHsOHD+fq1asWe8UZGRl4eXlZzP/UqVPk5OSg0+k4deoUDzzwAP7+/ixYsIDVq1czfPhw2rVr
+B1ie+zfMp0GDBsb4z549i7u7e75lvL2s+TQURSEiIoJJkyYRERFB9erVC1xPAN7e3qSmpnLjxg0A
+Ro0ahY+PD82aNePjjz9m9erVBAUFUbdu3Xxl/fz88PPzY9WqVaxevZrevXvTqFEjHnroIS5dusSG
+DRvo2bMngNXlF2WXHFmIQv3000/06dMHRVHQaDR88cUXaDQaevToQdeuXfnss8+Mn33rrbeYNm0a
+vXr1wtXVFS8vr3x3Tpm7feM2duxYJk2axIcffoher+epp56iffv2+T47YsQIfvjhBwDq169vPJdv
++Jx5vMOHD6dfv3688847aLVaXF1dmTFjBjqdjpMnTzJw4ECcnJxQFIWpU6fi4eFBt27d+Oeff+jV
+qxdVqlRBq9Uya9asAmOeNm0aISEhBAYG4unpydWrV/Hz87P4jFarZcSIEVy9epXQ0FA8PT2ZNGkS
+//3vf8nNzaVy5cpERkYa77i6ff307duXt99+m/79+5OTk2Ncp+axFPZao9Hw3HPPMWjQIKpVq0a1
+atW4dOkSTZs2LfB7mTBhAoMHDwbUmxAeffRR/vjjD1555RWysrJ45plnCrzuU61aNV566SVeeeUV
+dDodLVq0oH///gAEBQXx3XffUadOHYAiLb8oWzRS66wo76KiomjTpo0xsZSWX3/9lSNHjjBs2DDj
+sMTERMLCwizu+hKiPJLTUKLcGzx4sPGCe2nasmULgwYNKu0whHCIEj+yiIuL47///S8bN260GB4W
+FkZaWhoffPABoD6gEx0dzdatW0syPCGEEAUo0SOLy5cv8+WXX1rcwWFOo9EYzz8fPHiQ2rVrl2R4
+QgghrCjRC9zVq1dnzJgxvPbaawWO79WrFxs3biQwMJAHH3yw0Hv0s7KyOHr0KD4+PuXiCVchhCht
+er2eS5cu0aJFC1xdXYtVtlTuhrJ25qt169Zs3ryZ69evExISwp49e6xO4+jRo/Tr189RIQohxD3r
+008/5dFHHy1WmVJJFoXVI9O2bVuOHz9OtWrVCv2cj48PoC60tYe8hBBCmCQnJ9OvXz/j9rM4yu2t
+swkJCQQGBrJjx44CHxASQghh6U62m3LrrBBCCJskWQghhLBJkoUQQgibJFkIIYSwSZKFEKLUJCcn
+l3YIoogkWQgh7JKYmMg777xjV9k5c+Zw4cIFlixZAsCQIUOsfvbSpUu88sorXLlyBVCb8Z0yZQrj
+xo0jLi4OgFWrVjFu3DimTJnCmDFjjMOtWbZsGenp6fmG37hxg0WLFnH8+PEi1zdWWOwAmZmZLF68
+uEjTKsukinIhypvTpyE11f7ynp7QsGGBo6Kiorh69SpVq1ZFo9Hwxhtv8M477+Dq6kpaWhrvvPMO
+3333HQcOHMDJyQkXFxeSk5NZsmQJzs7OVKxYkfHjxwNqGyFz5swhIiKCbt26ERMTw4EDB3B3d+ef
+f/7hl19+4ejRo5w+fZqzZ88yY8YMzp49y8yZM43PTun1epYvX07VqlWNMW7atImVK1eSkJDA8uXL
+CQoK4sqVK0RGRhrne/r0aerXr28sExQURI8ePTh27Bhjx47l3Llz5OTk8NFHH3HhwgWSk5OZPHky
+a9eu5fnnnyclJYWkpCRiYmLw8PBAq9WSlpbGU089xaJFi/D29ua3335j69atnDlzhoiICC5fvsy4
+ceM4e/Ys27dvR6/X8/DDD9OnTx88PT2JjY0lICDA/u+tlEmyEKI8uXQJGjcGs3bAi83JCZKTwcqD
+WV27duWxxx5j8ODB/PLLLzRq1IhBgwbxww8/sHnzZn7++WeWLl3K6dOn+fjjj/nkk08AtWGpc+fO
+cenSJXx8fPD09ESn0xEXF0eDBg345ZdfOHToEOHh4axZs4YnnniCY8eO0bBhQ3x8fJg8eTKbN29m
+//79PP/884DaFsikSZMICwszxmdoSbFmzZqkpKRw5MgRnnjiCUB9SPfo0aO4uLjQpk0bYxkvLy+G
+Dh3KV199xcGDBwG1LfVDhw7x3nvvkZKSgpOTE4cPH2bUqFGkpKSg0WgIDQ1l1KhRuLi4MH/+fCZM
+mMDMmTNxc3MzNuRUs2ZNwsLCOHz4MGvXruXQoUO0bNkSgN9++40+ffrwyCOPsG3bNkkWQogS4uMD
+f/9950cWhTzBa6jo08mp8LPUzs7q5kNRFIKCgmjXrh2bN2/Gw8PD+JmAgACWLl3KiBEjWLlyJVWq
+VKFChQrGxqkMzwQbGlNycXFBp9MVOl9DXElJSdSoUYPmzZuzc+dO2rVrR79+/dDpdAwfPtyijKEe
+JGdnZ7KzswGMLSECZGdnc+PGDWMiMtDpdOTk5JCbm4tOp7OIzVDDhKHJXGdnZ5ydndHr9bz++utU
+rFjRWLu2s7OzzfVZ1kmyEKK8sXIK6W7TaDQ8+eSTfP/998yZM4fr168zfvx4qlatyuTJk3F2dkaj
+0dC/f39mzpzJ9u3bcXFx4YUXXjBOo3PnzixfvpyIiAiysrJ49tlnjdOuWrUqf//9N3/++WehVfvc
+7oUXXmDy5MnGeGrVqsWpU6cYPnw4lSpVQqfTGVv6M1+W21+7uLjQtGlTZsyYwZUrV5g4cSIPP/ww
+Z86cMX523rx5hISEoCgK8+bNY+jQobzzzjv4+PgYm56Nj49n2bJlJCcnM3LkSAICApgwYQKVK1fm
+ySefBNR23A3tj5dXUt2HEELcotPpiI6OzndkYrB79252796Ni4sL3t7eNi9ug9ou+9q1a63Wtl2S
+7mS7KUcWQghxS4UKFawmCoAOHTrQoUOHYk2zatWqZSJR3KnyfRJNCCFEiZBkIYQQwiZJFkIIIWyS
+ZCGEKDVlpbqPq1ev2rxl934nyUIIYZfSqu4jISGBCRMmMHHiRN5++22WL19e6LwuX77Mhx9+WOC4
+TZs2ceLECSIjI8nIyCjwMwsXLmTWrFlMnDiRzMxMjhw5wpYtW4qymPcUh9wNdfjwYVauXImPjw8B
+AQEEBQURExNDYmIimZmZhIWFodPpmDNnDp6enjRs2NCiPe0hQ4YQHR3tiNCEKPccWNtHuajuY8aM
+GcyaNQsvLy9AvZ01JyfH+EDd7csQHBzM+fPnuXjxIu+99x4VKlSgXr16BAcHExsbS6dOnfjrr7/Y
+tGkTTz/9tLE6j3379vHNN9/QtGlTunbtSkxMDMeOHaNdu3asWbOGwMBA4wN59wOHJIstW7bw+uuv
+89BDDzF69GieeeYZfv/9d5YuXcr+/ftZt24d2dnZDBw4kNatWzN06FD69u2LVqsF1Idm0tLSjJWF
++fn5OSJMIcqdEqjto8xX95GTk4OXl5dx43/16lW8vb1p3rx5gcvw4osvoigKn332Ga+++iqNGzfm
+2LFj7N+/nyZNmuDh4UGzZs3o0aMHc+fOzVedR9euXVm7di1bt241PnDYqFEjDh48aHzo7n7gkGQR
+EhLC+++/j4eHBzdu3CA9PZ3q1asD4OvrS0pKCjk5OdSqVQsAd3d3MjIy8PT0BNS9iZCQEGbPni2J
+QggzJVDbR5mv7sPFxYXExETq1KlDREQEUVFRxqepC1uGnJwc4+sLFy6g1WqNy2CI5fbqPPR6PbGx
+sfTt25eAgABWrFhBWFiY8en1+4lDkkVSUhLDhw+nbt26/Oc//8HLy4vUW7/u5ORkfH19ycvLIykp
+CV9fX9LT03F3d7eYxvjx41mxYgXz5s1zRIhClFslVNtHma3uY8qUKcyfP5+8vDw0Gg0+Pj40a9bM
+6jIY+q+88goLFy6kUqVK+Pv706dPHyIjIwkODuaBBx5g+fLl+arz0Gq1fPvtt3z77bdcv36dQYMG
+AXD8+HFefPFFe1dtueSQ6j7i4+OZO3cu7u7utG7dmuDgYFavXs2ZM2dIT08nPDycrKwsIiIicHNz
+o0WLFgQHBxvLv/baa6xYsYIPPviAevXq0b1793zzkOo+hBB36rvvvqN+/fo0adIEKFp1HocPH+bS
+pUt07ty5pMO9Y3ey3ZS6oYQQ4j5xJ9tNuXVWCCGETZIshBBC2CTJQghRasrKE9zlRVJSUqnNW5KF
+EMIupfUE9+bNm43PYMXFxQGwatUqxo0bx5QpUxgzZoxxuDXLli0jPT093/AbN26waNEijh8/ztdf
+f12kZbHVpkVmZiaLFy8u0rRsmTp16l2Zjj2kPQshyhsHPsJdHp7g3rRpEytXriQhIYHly5cTFBTE
+lStXiIyMNM739OnT1K9f31gmKCiIHj16cOzYMcaOHcu5c+fIycnho48+4sKFCyQnJzN58mTWrl3L
+888/T0pKCklJScTExODh4YFWqyUtLY2nnnrK+IT3b7/9xtatWzlz5gwRERFcvnyZcePGcfbsWbZv
+345er+fhhx+mT58+eHp68scff/DII48AsHHjRr755hvatGnDoUOHaN68ORkZGXTq1IlKlSqxbt06
+FEUhMDDQeNfV3r17iYuL4/DhwyxevJjo6GgOHz7Mzz//TJ06ddizZw/+/v5cvHiR6dOn2//7sEKS
+hRDlSQk8wl3Wn+A2VOtRs2ZNUlJSOHLkCE888QQAn376KUePHsXFxYU2bdoYy3h5eTF06FC++uor
+Dh48CEBeXh6HDh3ivffeIyUlBScnJw4fPsyoUaNISUlBo9EQGhrKqFGjcHFxYf78+UyYMCHfE941
+a9YkLCyMw4cPs3btWg4dOkTLli0B+O233+jTpw+PPPII27ZtMyYLUJ9Beemllxg2bBgjRoxAo9Ew
+atQoevToQU5ODt26dePhhx82fr59+/bUr1+fVq1a5XsuRaPR8Pjjj9O7d29CQ0Pt+FHYJslCiPKk
+BB7hLutPcBviSkpKokaNGjRv3pydO3fSrl07+vXrh06ny9fanaurqzHm7OxsQD1qMcjOzubGjRvG
+RGSg0+nIyckhNzcXnU6X7wlvwFg/lLOzM87Ozuj1el5//XUqVqzIxo0bjeNuX5+Go6W8vDz0ej2K
+ouDk5ESDBg0YPnw4f/zxB3PnzmX+/PnGMob1lXdrZ8HwsLOiKMY4HPVkuSQLIcqbEnqEu6w+wf3C
+Cy8wefJkYzy1atXi1KlTDB8+nEqVKqHT6Rg8eHC+Zbn9tYuLC02bNmXGjBlcuXKFiRMn8vDDD3Pm
+zBnjZ+fNm0dISAiKojBv3rx8T3iD+hDysmXLSE5OZuTIkQQEBDBhwgQqV65srDtq3759BAYGFrg8
+ubm5zJ07l9TUVEJDQ7l69SqrVq2iTp06tG3b1uKz2dnZ7N69m5YtWzJx4kScnZ2pUaNGgct3t8lD
+eUIIcYtOpyM6OtpqO9xFecL7dhkZGaxdu9ZqO9yGGitKgjzBLclCCCFskie4hRBCOJQkCyGEEDZJ
+shBCCGGTJAshRKkpK9V9XL161eYtu4W5fv261Ta87xWSLIQQdimt6j4SEhKYMGECEydO5O2332b5
+8uWFzuvy5ct8+OGHBY7btGkTJ06cIDIy0urGfuHChcyaNYuJEyeSmZnJkSNH2LJli8VnVq5caXHL
+7b1InrMQopxxYG0f5aK6jxkzZjBr1iy8vLwA9XbWnJwc4wN1ty9DcHAw58+fN7bZXaFCBerVq0dw
+cDCxsbF06tSJv/76i02bNvH0008bq/PYt28f33zzDU2bNqVr167ExMRw7Ngx2rVrx5o1awgMDKRS
+pUooisK+ffu4evUqZ86coWLFigQFBTFkyBCio6N5+eWXefrpp/n7778ZNGiQ8enu8sYhyeLixYtE
+RUUZn8qcMGECMTExJCYmkpmZSVhYGDqdjjlz5uDp6UnDhg3p16+fsbxhJQshLJVAbR9lvrqPnJwc
+vLy8jBv/q1ev4u3tTfPmzQtchhdffBFFUfjss8949dVXady4MceOHWP//v00adIEDw8PmjVrRo8e
+PZg7d26+6jy6du3K2rVr2bp1q/GBw0aNGnHw4EGefPJJNBoNjz32GB06dOD06dPGGAwPx2m1WoYN
+G8aBAwfYs2ePJAtzZ86cYd++fbRo0YImTZqg0+k4cOAAS5YsYf/+/axbt47s7GwGDhxI69atGTp0
+KH379kWr1QLqSk5LSzPWLOnn5+eIMIUod0qgto8yX92Hi4sLiYmJ1KlTh4iICKKiooxPUxe2DDk5
+OcbXFy5cQKvVGpfBEMvt1Xno9XpiY2Pp27cvAQEBrFixgrCwMOPT6+YURUGr1ZKbmwvAtWvXAFNV
+Iy4uLsZqOsojhySLmjVrsnLlSurWrUtoaCi9evXC29sbAF9fX1JSUsjJyaFWrVoAuLu7k5GRgaen
+J6AeeoaEhDB79mxJFELcpoRq+yiz1X1MmTKF+fPnk5eXh0ajwcfHh2bNmlldBkP/lVdeYeHChVSq
+VAl/f3/69OlDZGQkwcHBPPDAAyxfvjxfdR5arZZvv/2Wb7/9luvXrzNo0CAAjh8/zosvvmicT/36
+9YmJiSEsLIzJkydz5MgRY2JwVPUbJU5xgHfffVf566+/FEVRlFGjRimZmZnKiBEjFEVRlH379inL
+li1TlixZosTGxiqKoiivvfaaotfrjeVfffVV5ddff1XGjBljdR7x8fFK48aNlfj4eEcsghDiPrBt
+2zbl+PHjxve7du1S3n33XWX27NnKihUrCixz6NAhZfv27SUV4l11J9tNhxxZ9OrVi4ULF1KnTh1a
+tWpFlSpVaNeuHeHh4aSnpxMeHk5WVhYRERFs3LiRLl26WBwuarVa2rdvT2xsLFu2bKF79+6OCFMI
+cZ/r1q2bxfsOHTrQoUOHQsu0atXKkSGVWVI3lBBC3CekbighhBAOJclCCCGETZIshBBC2CTJQggh
+hE2SLIQQQtgkyUIIe0RFgb+/2hfiPiDJQgh7/O9/cPYsLFhQ2pEIUSIkWQhhz1FCmzbg7Kz2iyM4
+GFxc1L4j2TsfOWK6M/auv/Kw3u/68+QlRKr7uAf06aMozs5q/25YvFhRGjRQ+8VRpYqigNovKm9v
+tYy3d/HmpdGo5TSaopdp3Vot07q1Y+ejKIpSoYJarkKFopepU0ctU6dO8eZlz/dlz2/G3t+FPfMy
+/C6qVy/evOz9PRVT/MyZdm83JVmIu6OwP5a1cc7O6h/E2Tl/mcL+4NY2Tvb+UcHU3bypKDqdopjV
+VVYgezaqt8+rrJUp6XlVrlz8JG1PErT3uyrs92mNvRt9e3ZY7BDv41O26oYS96FNmyA3V+3fbsMG
+tQGGDRssh/fooX7+VrsBFqZNgytX1P7IkZbjEhMt+wa3qoQ29vPy1GkkJpq6CxfyvzdXqZLleycn
+0GpNneG9oSprnQ5uNdSDoXZRjcby9e3DDAICoEIFtatYseB+hQqWZd58E/R6ddny8qy/1mjUzbeT
+E4SGgqurOk1bnaGcRgO3tQZnsTy3DzOU2bFDXT/OzqZ1Zu21oVrx69dN5e2Vm6t+15cuQUqKZd/8
+u5o1C3x91e/M19fU3b6eAapUgbQ0uFV9epHcqo7c2C8qQ4xm1ag7RGYmVKtmV1FJFuLuKGzD7+ys
+/hmcrfzcCqqezNBgQ2qq+oc/fNjUmXv8cXUj5+pqahFIr4cHHlATwe1/vho1oE4dqF0bHntMfT19
+ulrG2RlWrDBtdPV666+nTYPsbHXew4eb9q0Ny2Pt9axZpljatVOnodOpXXY23LypLrP5MHPbt5uS
+liFxmfcNrw0bcIA//1SnY63T6wv+Tp57ruDvyxpFgc6di1fGQKtVN862usqV1eRSsSJ07GhKClev
+5v8dOTvnb7gjMrLgxkCqVcufRNLS1HGpqeq1BMP6dXJS16/5e0NnviOzaJGaEG/eVPuFvTb8TnU6
+SEiAotTbFBAAhw5B69YQG1u09VzQd11EkizE3WX+h1UUOHjQNEyvh65d1T9haqraig/Al1+qzb9V
+rap2bm6mH7Ver27gQU0ILVpYzq9RI3WDl5VlGqbRwIsvqonA0NWuDbVqFbwHuXGj+qdr0QJCQoq2
+nIaW27KzYerUopUBdZkNSXXp0qKViYpS77oaPRpGjChamSpV1I2Qqyv8/nvhn9XrTYnjqafg2DF1
+XXz3neXnrNU5+uijatN7NWvCzz+bEmtubuGvn31WTb5OTuoyXr+ev8vMVPvXrpmGgfp9164NrVqp
+vw8fH1Pf8NrTM/8R3bVratmUFLh4UY374kXL10lJ+Te+b72lxmqe/G0ZP149Uq1c2dQ3f+3pqf4m
+K1dWf38Gfn7q/+GZZyAwEDp1glvtAVkwlDEva8uzz8KJE0X/vBlJFuLuWL9e/ROtXw+//qomgA0b
+IC7O9Bm9Xk0EdeuCh4cpWYC6F5uRYerMffaZulFo3FjdW6xYUd0Dq1ABVq0yfa5CBXUPzcUF5s4t
+eux//mnZL4oKFUwx2KM4lT3v2gXnz8NPPxU9WVSqpCaLWy3GFUqrNW3IDKeGbtxQN8ZFkZxs6j/4
+YNHKgOXiAVJiAAAgAElEQVQR5+uvF62Mk5PplNWaNUUr07q1ukENCFDfu7pCvXpqVxit1pTMzI9Q
+DQnDcMrP0CmKOs2rV9WN++XLRYsPYPVq0/cVEwM7d8L336s7FBqNugyG5PHUU8U7NWbu/ffVadjD
+AddQSoRc4C5jDBceDV2NGooybJiifP+99QughV0YNdwBFBCQf5y1i4j23gFkz4XWxYsVxd9fUaKi
+ijcvJyd1Xk5Oji1jzx1UimK6GSE4uPjzKui7KsydLFdx5nWnd0MVZ13YU6awcmfPKkpMjKK88oqi
+1KxpuuD+xBOK4uurvm/QQFG2bVOUn35SlH37FOXQIUU5eVJR4uIU5eJFRUlLU2/ayMu7o7uh5MhC
+3DnD6Y6bN9U9y+hoePJJdc8M1D39nJzi7YUXdg62Uyf1VM4zz1gOL87etLk5c0yneYqjOKckDFxd
+1Rhvv5B+t8scPWrZL6qDB9XTRAcPFr1MUc+X365XL+vXuawxXEcw9IvC/AHK22+WKEzHjup6sNEY
+kgV71l9h5R54AAYPVjtFgePH1ZsIduwwffbsWfX0ki2G6yr+/sWLzaDY6aUIPvnkE+Xtt99WxowZ
+o3Tq1ElRFEWJjo5WwsPDlXHjxilXr15VkpOTlbfeeksJDw9XPvnkE4vyoaGhNuchRxZlyDvvqHuH
+desWvPdmbS+8sL2wwvYGGzRQN9P+/kWbjyNYi8EWe2K0p4y9e7gluQ7tYc9y2btM9twGe7ePLApj
++A3Wr68o584pyokTihIbqyh79yrKjz8qyjffKMqGDYry2Wfq0cn77yvxLi5l8zmLyMhI5fjx40p2
+drbyn//8R1EURfntt9+UpUuXKgsXLrRogzs3N9dYbsiQIUpqaqryxhtvKOfPny9w2pIsyoi4OEVx
+dVUUDw/rG097TgMU9kctCxu0shBDWWHvaR572Juk7WHPczv2Putjz3LZkWDin3/e7u2mw6r7OHPm
+DHq9niZNmpCamor3rav5vr6+pKSkcPnyZWrVqgWAu7s7GWYXNfV6PSEhIYwYMQI/Pz9HhSjuhvHj
+wd1dPTVkrfqLO6lHqaB770eOhNOni36x1xHKQgyOYE+1EyVZT9bo0Wp8xT1laI9p09R5TZtW/LLF
+PT1pz3LZc8rr/feLF5cZhyWLzz77jAEDBgDg7e1N6q17m5OTk/H19aV27dokJSUBkJ6ejru7u0X5
+8ePHs2LFCkeFJ+6G3bvh888hIkK9ZTI3F378Mf/n7Pkj3MkfVdjPng1/SW7ASzJJ2zMvw+82PNzx
+87K3fjI7aRSluCmwaF599VVWrlxpfL969WrOnDlDeno64eHhZGVlERERgZubGy1atCDYrMKz1157
+jRUrVvDBBx9Qr149unfvnm/6d9LwuLgL9Hr1/nqtFvbvV+9rv3Kl+LcMirLFnmc6ROnw91cTu7+/
+mmiK4I62m8U+cVVGyDWLUrZ8uXqO9Zdf1Pf2XtgTQtjHjutmcuusKFmpqTBpErzyilrdBth/y6AQ
+wj4jRxbvVmCA996zu24oac9CFN+776rVLsyZYxpWkuethRD2Ma8Wp5isHlns2rXLZuGOHTvaPWNR
+DhkqLgM1YZif87RnL0cIYb+oKPWGhNGji/7fK25tuGasJovw8HB69eplteDGjRvZsWOH3TMW5ZB5
+hWVjxpReHEII+55M/+9/LetTKwaryWLixIl0vlXd8OXLl6levTr//PMPD96qKKxJkyZ2zVCUU4bq
+vw2KU/WEEOLuGz26+NXUDBxod7Kwes3CkCjCwsL44YcfANi6dStTb1XH3NneeutF+RMfD926lXYU
+QghzJfxgqM0L3GfOnKFv374AvPnmm5w9e9bhQYkyQlHg44/h4YfVNg4qVlSHV6lSunEJIUqczWTh
+4eHBF198wfHjx9mwYQNu9tajLsqPgAC1mo1q1WDQIAgKUmsvnTdPvePJ/C4oIcR9wWaymD9/Ptev
+X+eLL74gNTWVyMjIkohLlCbDhey0NFi3Tm18yMvr3q0PSQhhk81kodFouHnzJlqtlgceeICrV6+W
+RFyitERHW743q4ZFCHH/spksxo8fT6NGjfjrr7+oXbs2EyZMKIm4RGnYsAGGDTO9v73GV3tqJBVC
+3BNsJovMzEw6d+6MVqulSZMmODtLDSH3pJ074eWX1VbLDC3N3d7iXElWRS2EKFNsJov69euzYMEC
+rl27RnR0tNTwei86cABeeEFtCP7TT03PUNz+tKdU6SHEfcvmYcK7777LDz/8gJubG/Xq1WPw4MEl
+EZcoKSdPwr//DU2awMaN6u2x06YV/LCPVOkhxH3L5pHFqVOn8PHxoW3btmzZsoXffvutJOISjhYc
+rDacEhCgtkHx7bdQtao6Tu56EkLcxmaymDJlCh4eHnzwwQeMHTuW9++gWT5RhqxfrzZgdPMmfP89
+VK9e2hEJIcowm6ehnJyccHNzo3LlytSrV4/MzEybE01MTOSDDz7Azc0NT09PXn/9dWJiYkhMTCQz
+M5OwsDB0Oh1z5szB09OThg0b0q9fP2P5IUOGEH37LZzi7rl61bKN4Hr1Si8WIUS5YPPIonPnzrz1
+1lu89tprzJ07l549e9qc6MqVK6lXrx7p6em0adMGnU7HgQMHmDp1Kn369GHdunV8/vnnDBw4kKlT
+p7Jr1y70er2xvEajIS0tjVGjRhEfH39nSygsJSeDVC0vhCgmq0cWkyZNolmzZnTs2NF4Ubt58+ZF
+mmhcXBx9+vQhNDSUwYMHM3/+fLy9vQHw9fUlJSWFnJwcatWqBYC7uzsZGRl4enoCoNfrCQkJYfbs
+2fj5+d3RAgoz589D586QkVHakQghyhmrRxYzZsygVatW/Pjjj4SFhTF16lTWr19PYmKizYn6+PhQ
+pUoVnJ2dcXNzw9vbm9TUVACSk5Px9fWldu3aJCUlAZCeno67u7vFNMaPH8+KFSvuZNmEuX/+UW+N
+zc6G3buhdWt1eEBA6cYlhCgXrB5ZaDQaWrRoQYsWLQDIzc3l0KFDbNq0iRE27pIJDQ1l/vz5VK1a
+laCgIJycnGjXrh3h4eGkp6cTHh5OVlYWERERbNy4kS5duuDkZMpbWq2W9u3bExsby5YtW+jevftd
+Wtz7jKElrb59YeVK9W6nH35Qr1HExpZ2dEKIckSjKOZXOvMbPHgwGRkZVKpUiRs3bgCgKAoajYYv
+v/yyRIIsSEJCAoGBgezYsUMeFLTG2Vm94wmgRQvYvh1q1izdmIQQpeZOtps274by9fVlwoQJPPTQ
+Q5w/f57FixdLzbPlhdlNA/z0k/o8hRBC2MHm3VAnT56kUaNGANSsWZO4uDiHByXugtxc02tnZ0kU
+Qog7YvPI4sUXX6R3797UrFmTlJQUhpnXSirKLvObA8wThxBC2MFmsujbty8dOnTgwoUL+Pn54evr
+WxJxiTtx9SpMnlzaUQgh7iE2k0VMTAyHDh0iISGBl19+maNHjzJ9+vSSiE3Ya9o00Omge3fYtk2t
+dlwIIe6AzWsWO3fuZPHixbi5ufHiiy9y8uTJkohL2OvoUfjgA5g0Cb7+GnJy1KZRhRDiDthMFs7O
+zsTFxaHRaLh06RKut7dxIMoORYH//hfq11f7Qghxl9g8DRUeHk5kZCTXrl1j2rRpTJZz4WXX5s2w
+Ywds2pS/4SIhhLgDNpPFJ598QpS0uVz2ZWXBmDFq3U/PP1/a0Qgh7jE2k0VSUhI7duzAz8/PWCXH
+gw8+6PDARDEtWABxcfDVV6DRlHY0Qoh7jM1k4e7uzg8//GAxLCIiwmEBCTs89xxs2QING0IRawYW
+QojisJosPvroI0JCQqwmBsN4UQZs2aL2z54t3TiEEPcsq8li2bJlxFqpmVRRFA4cOCDJoiwwbxM9
+L6/04hBC3NOsJovSrFFWFJGiwFtvlXYUQoj7gNVkUadOnZKMQ9hj3TrYu7e0oxBC3AdsPpQnyqis
+LJgwAYKCpNU7IYTD2UwWCxcutHgvd0KVEe+9BwkJMG+e2uqdosAff5R2VEKIe5TV01CbNm1i9erV
+nD17lp9//hlDg3oPPPCAzYleuHCB4cOH07RpU2rUqMFbb71FTEwMiYmJZGZmEhYWhk6nY86cOXh6
+etKwYUP69etnLD9kyBCio6PvfOnuVRcvwqxZ8J//QNOmpR2NEOI+YDVZ9OjRgx49evDdd9/RrVu3
+Yk30999/x8fHB4CAgAB0Oh0HDhxgyZIl7N+/n3Xr1pGdnc3AgQNp3bo1Q4cOpW/fvmi1WkBt/zst
+LY0pU6Ywbtw4/Pz87mAR70FTpoCTk1q7rBBClACbD+UtX76cFWYN6Xh4eBATE1NomZYtW/LEE0/g
+7e1NSEgIDz30EN63Wmrz9fUlJSWFnJwcatWqBagP/mVkZODp6QmAXq8nJCSE2bNnS6K43Z9/QkwM
+REZC9eqlHY0Q4j5h85rF+vXr+fLLL/nyyy+ZOXNmke6SOn78ODqdDo1GQ5UqVahevTqpqakAJCcn
+4+vrS+3atUlKSgIgPT0dd3d3i2mMHz/eIkkJ1OsSY8aAvz+MHFna0RRZVJQa8t2qYuxuT08IYZvN
+Iwtz9evX5+jRo0X63Ny5c/H29qZjx464uLjQrl07wsPDSU9PJzw8nKysLCIiIti4cSNdunQx1jsF
+oNVqad++PbGxsWzZsoXu3bsXf8nuNVFRMGOGer1iwwaoUMFmkeBgtQLaHj3giy/U1lWvXIHLl+Hp
+p9W+tzesXq3mIVD7L74IN25AlSrwzTfg4qJ2TzyhtqlUoQLs368+A5iXp5YxH7d7t2l6AG++qX7u
+zTfh8cfVM2harVomIwPc3NQyOTlqjLm58MwzoNern9u2zXK5xo6F7GwYNw6aNDEN79EDrl9X416/
+Xo3BEF9h/ZAQuHkTKldWK+51dYWKFa33K1ZU15Fh3a5bp8as05m6nJyC33fpYopx0yY1BvN4Cnrd
+u7fad3JS52X+XZm/Nh82YgRcuwbVqqnNm4BaZZih2jBrr/v2VWN1cYE1awqez+2vQ0PV9VepEnzy
+ifqdabVq0++G17e/d3aGxx4z/Wb27FG/77y8wvsvvGBaF1u2mKZn+E0V9L5bN0hJgRo1YPv2oq1z
+RVF/F//8o9ais2SJOn9Dl5tr+d7QDRtmWn9Ll6rr1cnJdj84WJ2nRgNbt+ZfnoK6rl0LXq7Cum7d
+wN7GTjWK4cq1Fb1790Zz65ek1+vp3bs3/fv3t29ud1FCQgKBgYHs2LGDunXrlnY4jle9urqld3ZW
+/2G3vpPz59XmKwxCQ9UN/c2b6sbIoFo1deMhhLh/OTsn4O9v33bT5pHF+vXruXjxImfOnKFevXry
+sF5puXJF7ev1oNFw6hTMng0ff2z5scOH1T3kSpUsh48dCz4+as6pXh06dDCNi4uz3Ls0v0z011/q
+nlJODjz6qGn43r3q3o+ha9PGNO7QIbVvmF6rVqZxv/9u2lN8/HHT8P371Txo6Jo1M4375x/LZTGv
+9Nh8nPnws2eLtken0YCXl+X0srPVx1iysgp+nZ2t3ohmsGSJund8e+fikn9Yy5aW8zKsd0MsBb2/
+dWkPgEuXTOu2sCMFDw9TmbQ0y71LsP7efK8zJcX2kYhGA7cuNRrLFLTnXdCe+L/+ZSr3xx+mvenC
++ubbt7g4y6MOQ3f7+8ceM5X59df869fa64cfNpU7fdr2nr5Wa9mMjE5XtCNbRVH/mwbnzuVfhoI6
+8//PL79Y//2Yd23bYj/Fhnnz5imhoaHK/PnzldDQUGXp0qW2ipSI+Ph4pXHjxkp8fHxph+J4V64o
+ffhccUandGGb8vLLiuLkpCg1aijKnDmWB5rmrA1XFEVxdVWHV6qUf5yHhzrO09NyeJ066vC6dfOX
+KWycVquO02qLNh9FUZTWrdVxAQH5xzk7q+NcXIo+vcLYU87JSS3j5OT4eRW2Lqwp7PstTGHfozX2
+rnd75lWS68La76ww9iyToihKnz7q/IKDi17GnuWqVs3+7abNZBF8W/QvvfRSsWfiCPdVsnjzTQXy
+jBv+unUVZdEiRbl+XR29eLGi+PsrSlSUZTF7foCOYC2+8qxBA/W78Pcv7UiEKLo72W7aPA3VsGFD
+tm3bRqtWrfj777/x8vLin1vH/tIIUgk4eZILURuABbcGKJw+rbG4vj1yZME3R33xRUkEaJu1+Mqz
+0aPV9qZGjy7tSIQoGUW6G2rXrl3s2rULsHzOQqr+KAHjxjG24iK4YRpUhBuhhIPdiwlQiMLYTBYR
+ERFcvXqVrKws47DatWs7NChxyw8/8OPXGayhB1DoTWtCCOFQNpPFpEmTOH/+PF5eXiiKgkajyVe5
+oHAAvZ6ct8YzotJ6HmulULeuhk2boGdPaV9bCFHybCaLuLg4Pvnkk5KIRZiLiWHh0Wc46fQAv7+v
+4ZFHSjsgIcT9zGqyMFzE9vb2ZuvWrTz00EPGcXJh28HS0kgMiyLc+Tf+M1QShRCi9FlNFoaL2JUr
+V2bPnj3s2bPHOE4ubDvYrFmMTZ2Mq2cFZswo7WCEEKKQZGFICKdOnTJW9wFqvU2ZmZm4ubk5Prr7
+0Zkz7PzfIdbmzeHDeWo1HUIIUdpsXrOYMmUKGRkZNGnShJMnT6LRaFAUhR49ejBkyJCSiPH+ERWF
+bvxkRubto/2/9AwapC3tiIQQAihCFeWurq5s3ryZ+fPns3nzZnx9ffnqq6/Yvn17ScR3Xwl+w5dK
+N69wPK8x7y/V4mTz2xFCiJJhc3OUmZlpbHfiwoULZGRkcP36dXJychwe3H1Fr2c9vclDC2gICCjt
+gIQQwsTmaagZM2YQGRlJSkoK1apVIzw8nJ07d/Lmm2+WRHz3j1WrUHj11hsFkOcphBBlh81kcfHi
+RXr16mXx/oUXXnBoUPedjAy+HvMjMPjWAEkUQoiyxWayOHLkCACKonDq1CkAOnbsWKSJjx07lmee
+eYagoCBiYmJITEwkMzOTsLAwdDodc+bMwdPTk4YNG9KvXz9juSFDhhAdHW3P8pRLGe/MY0TqLCAP
+cLK4+0wIIcoCm8li5G21pb366qtWPmnpo48+okqVKgDodDoOHDjAkiVL2L9/P+vWrSM7O5uBAwfS
+unVrhg4dSt++fdFq1bt/NBoNaWlpTJkyhXHjxuFn3hrPvebsWaYsrM5lZ1/emeTE6tVSk6kQouyx
+mSw+/fRT4+srV65w8+ZNmxPduXMnVatWpXXr1gCkpqbi7e0NgK+vLykpKeTk5FDrVhNg7u7uZGRk
+4HmryS29Xk9ISAizZ8++txMFsD90GYvyZjF7Wg7jp8C0aaUdkRBC5GczWVSuXNl4WqRatWoMHDjQ
+5kS//vprPDw8OHPmDC4uLrRr147U1FQAkpOT8fX1JS8vj6SkJHx9fUlPT8fd3d1iGuPHj2fFihXM
+mzfPnuUqF3J27Gboj31p6ZfKW2972S4ghBClxGayeOKJJ1i+fDnnzp2jbt26PG7e8KsVCxaoDfVs
+2rSJChUq4O3tTbt27QgPDyc9PZ3w8HCysrKIiIhg48aNdOnSBSezhwq0Wi3t27cnNjaWLVu20L17
+9ztYxDJKr2fBgD/4k1H89oXaXrMQQpRVGkVRCm0oITQ0lJCQEFq0aMGff/7JRx99xMqVK0sqPqsS
+EhIIDAxkx44d1DVvxb2cOBPxOS0mPsfQ4FTeWyftgwghHO9Otps2H8rLzs7mqaeeolq1anTs2BGd
+Tmd3oEKlpKXz+rQaVK98g3djJFEIIco+m6eh6tSpw/z582nZsiV//vlnudyLL0uCPb9nQ1ogeXTi
+qyWXqFq1tCMSQgjbbCaLQYMGkZiYyLlz53j44Yfp3LlzScR1z/oyrTPqAZ3Cc4N9SjscIYQokiJV
+9/HZZ5+VRCz3CXngTghR/thMFjdu3KBHjx7Uq1cPQNrgvgNHYvYDbUs7DCGEKDabyeL9998viTju
+eUqunjffhApko6MiAZVOAE1LOywhhCgSm8ni2rVrrF+/nqysLOMwaVa1+DaO3MGP17vydeRxuo9t
+iiQKIUR5YjNZTJ06lQkTJuDlJU8Y2yvrYhpjVjxEt1qH+b8xrUo7HCGEKDabz1l4e3vTtm1bGjVq
+ZOxE8fyvz68k5NVmwSc1KBcVykZFgb+/2hdCCApJFqNGjeLNN9/k0qVLvPDCC7z55pvGYaLoEn8+
+w6w9TzGy3QGaPlOr8A1xYeMCAkCjocAm9IKD1fpCgoOLNhygbl11egU9NzNtGpw9m79Ww8KmZ+9y
+WVPY8lqbXmFlClPYctkTnyga2Sm5M/b8bu+A1eo+jhw5YvXUU506dRwaVFGU+eo+goNh0yYGuKxh
+W3Yn/j5fiWp1KkPFiqDTQYUKkJ1tWaZ6dbhyBapVg59+grQ0SE1VO/MKHBctUjdUGg04OcHw4aZx
+a9eq065QAczr1PriC8jKUrvsbDCven7FCjUuV1e137Mn5OWp0/7jD9PwBg1MZY4fhxs31O76dQgK
+MpVZtAhu3lTndfMmzJplKrdsGXh4qN0LL5jWxdat6nQyM9X+sGGmMsuXqzEY4ujRAxRFXf4dO0zr
+4umnTWV++w20WnB2Vvvmr28f5utriv3UKTWm7GxTZ/7e8HrQINO8liwxxeCIDhw7/dKKo0ED0OvV
+7+HcOdP6tFYDUWE1ExW3zN0aXprzbtrU9mduc0fbTcWKAQMGWBtVJsTHxyuNGzdW4uPjSzuUgmk0
+yq88poCiLH11n2m4+rWq3apVijJ5sqK8+KKiBARYjiusc3FRFK1WUZycFEWjKXo5Q6fVFr9Mcafv
+5qYoPj6K4ufn2HlJJ510Rd4s3cl20+oF7ry8PLKyslAUJd+4SpUqFS8j3YfyFHiThbTkMEO8NkDw
+PDh92vJDgwZBzZrQqBE88gjExprG/fqraQ/c0xPc3Ezjbq+fy/xCyLVr6vicHMtTTJcvm/bMnZ3V
+vfmcHLV//brlnnRts/qq9u5Vh2VlwbPPmob/9BNUrgxVqqh986OO3Fzr8eXmQnq6etRkXuaff9Rp
+ubmp07vVEBag7n0aYsjKsozv5EnTX8Z8T+uPP9Ryer06z9tfmw/r3dtU7vvv1XVUoYLav/214X2V
+Kuo8NRr1qARKe3NhuytrMZof+W7ZYv03Y2t4cT5bGtN2VHxFbLH0brGaLE6ePMnQoUONyUKj0aAo
+ChqNho8//rjEAiyXzp7FjQxuUoUqZKD9Yq16bvaRR9SNYkaGeurj77/BvB2PmBjT6/btLadZpw4k
+JhZ8jcHbWz195e2tJhYDFxdTQrjV+JRR8+Zw6BA0a6YmD2dndQN4u8ceM712clI3jFpt/h+q+bjb
+tW6tzisgQB1frZramcfXsKFlGY3GtDF2coJKldTu9uVq3Dj//MD+awlduhTtc5UqqafgKle2jLlc
+3MFQBv3f/5V2BOWPh4e602X+n3cka4cc/fv3L/ZhSkkqs6eh8vKUtPbdFPXYQlEgr+hlFy9WFH9/
+RYmKyj+uQQN1f8zfP/+4Pn0UxdlZUYKDiz49Z2d1es7ORZ+et7daxtu7eLFbU1gZe8a1bq3GFxBQ
+9Bjsjb2wdSGKxtrvTDjMnWw3rSaLSZMm3VFQjlZmk8WyZcpo5tmXLApjbyKxxp4/qj0b1XuVrAtR
+Dt3JdtNm40f2iIuLY+HChXh5edG8eXN69uxJTEwMiYmJZGZmEhYWhk6nY86cOXh6etKwYUP69etn
+LD9kyBCio6MLnUeZvBsqPp5jD/Wi1c296NGiVhqooChmpyaiouB//4PRoy3vSLoTUVGwYIE6zREj
+7s40hRD3HIc2fmSPzMxMxowZw9tvv8327dvR6XT8/vvvTJ06lT59+rBu3To+//xzBg4cyNSpU9m1
+axd6vd5YXqPRkJaWxqhRo4iPj3dEiHefoqAMHcYb2ZHU1ybQ0vUkoNyqA8qMtWcY7sTIkerFc0kU
+QggHcUiyaN68Oc7OzgwbNozWrVuTmppK9erVAfD19SUlJYXLly9Tq1YtANzd3cnIyDCW1+v1hISE
+MGLECPz8/BwR4t23ejVfbHPjx7ynWTj8bw5H/oDSoCF/zN1R8OflQqgQohxxSLI4ceIEFStWJCYm
+hqNHj+Li4kJqaioAycnJ+Pr6Urt2bZKSkgBIT0/H3fyuIGD8+PGsWLHCEeHdfUlJZL4Rxmin9+he
+dRfdFwSqp5rOnlVPD5mbNk29M+puHlkIIYSD2axI0B46nY6pU6fi6+uLn58f1apVo127doSHh5Oe
+nk54eDhZWVlERESwceNGunTpgpOTKW9ptVrat29PbGwsW7Zsobv5/dhljaLA668zM2s0l/O8eC/q
+1tPBo0ebriOYGzny7l2rEEKIEuKQC9wlocxc4P78c072ncrDHOHtB9cz/dTLpReLEEIU4k62mw45
+srhv1K6NkpTEKM131FYu8Pba1qUdkRBCOIRDrlncN5KS2EQPvle6sqDbd1RuIw0aCSHuTXJkYa/D
+h+nFejbSE1+S6LGqZ2lHJIQQDiPJwl6TJrGRrwENF6mJxlduhRVC3LvkNJQ9fv6ZlK37SzsKIYQo
+MZIsiktRICyMOR6zzAeWWjhCCFESJFkU19atJP5ylg/S+/Ms2/DnNFEaaWpWCHFvk2RRHHo9hIUx
+yzMSV+Uma4bs5LR/V0YsblLakQkhhEPJBe7iWLOGc0czWEEfpj34KZ4rIoHI0o5KCCEcTo4siio7
+G6ZMYbrnAjxJZdSqNqUdkRBClBhJFkW1fDl/n3NhVerzhLXZjtvjLUs7IiGEKDFyGqooMjLg3XeZ
+5vERNdOS+c8nT5Z2REIIUaLkyMKW4GDw9OTIJV/Wpj3L5MC9VGpSv7SjEkKIEiVHFrZ8+SUAU5lO
+fU08oas7lXJAQghR8uTIoggO0IZN9OSdPseoUMu7tMMRQogSJ0cWhbl8GReyycUFyKN/jBxVCCHu
+T3JkUZgFC24lCg2gwblqpdKOSAghSoVDjixiY2NZu3Ytbm5ueHl5MWLECGJiYkhMTCQzM5OwsDB0
+OvSOCxcAABZJSURBVB1z5szB09OThg0b0q9fP2P5IUOGEB0d7YjQiu7qVfIWLgZmlG4cQghRBjjk
+yCI9PZ133nmHKVOm8Mcff6DT6fj999+ZOnUqffr0Yd26dXz++ecMHDiQqVOnsmvXLvR6vbG8RqMh
+LS2NUaNGER8f74gQbVu4kDVZPQENWnIJ5ovSiUMIIcoAhxxZdOzYEYClS5fy/PPPk5qaSvXq1QHw
+9fUlJSWFnJwcatWqBYC7uzsZGRl4enoCoNfrCQkJYfbs2fj5+TkixMKlpnJjwTLezjvAC24/sLHG
+MHLfGM2VK3Djhtpdvw7/+pdaXZRWC99/r1ZIa9C5s+n1N99AXp7aPf+8afiBA+DhAe7uat/TE7Ky
+wNUVEhIgLc3UdTK7XLJ1Kzg7q/N1dobAQFMc332nvs7Lg3//27KMRmPq/v1vNV6NBnbsACcn9bWT
+Ezz1lKnc7t1qX1HgmWdM89mxw3J5zeMzH6co0KWLaZz5egoKMk3vm29MsQE8+6xp3M6dlvF17QqZ
+meDmBj/9ZBr36KOmMgcPmuZ/e3f78A4dQKeDChVg1y7Ln4K1FuqfftpU5qefLMdpCmjapKBhjvps
+eSkfGAgXL4Kvr/qbMbC2zq0Nt6fM3RpemvM2/G5dXeHmTevx3TWKA2RmZioTJ05U9u7dqyiKouTm
+5iojRoxQFEVR9u3bpyxbtkxZsmSJEhsbqyiKorz22muKXq83ln/11VeVX3/9VRkzZozVecTHxyuN
+GzdW4uPj7/4CTJ+uvKuZojijUx7irwI2N9JJJ510ZacrqjvZbjrkyGLmzJmcP3+eDRs2sHnzZiIi
+ImjXrh3h4eGkp6cTHh5OVlYWERERbNy4kS5duuDkZDojptVqad++PbGxsWzZsoXu3bs7IsyCpaeT
+FPkJs5WDDKizk5WJ3Yyj1q2DKlWgcmW1a9fOVOzvv017ThoNPPigadz58+rer5MT1K5tGr5/P6Sn
+m44eBg82jVu3Tj3aMBx5NGtmGhcXp+5B5+aq/aZmTX+fOqXuWWu1UL++ZQzmP68GDUzjTp5Uh+Xl
+qf3mzU3jjh0zLZd5DCdOWK62JmYV7/79t2k9ADRqZBp3+rRpnL9//uGKovbN19/x46Yjs7w8aNXK
+NO73301xP/aYafjevab5mB+xFPT+kUdM5Q4dIp+C9pTNYzh82PTaEP/t7sbwe23aT5pVhLBnj+W4
+4hzd2Fvmbg0vrXm3bm09HocodnopIxx2ZDFzpjKYGKUaVxQ/bUKh2bt1a3V4QED+cYsXK4q/v6JE
+RRVtuK3pFcaecn36KIqzs6IEBxc9dnvjs2d6hY3z8FDHeXrenfjq1FHL1a3r2DLCkqurug4rVSrt
+SMone36Dd7Ld1CiKtbxftiUkJBAYGMiOHTuoW7fu3ZloRgaHagfxSOYunnP6hqzO3fn7bzh3Tt0L
+Nuz9OkpUFPzvfzB6NIwc6dh5CSHuP3ey3ZTnLMwoHyxhVOZM/DlDWusOrF8PY8aoiWL0aMfP/3//
+g7NnYcECx89LCCGKQ5KFwfXrfBJ+mp/pwL88TvLld+64ual7+KdPw4gRjg9h9OiSS0xCCFEcUt3H
+LbXcrqFlMo+xl1m/d+XWnb4lauRIOf0khCibJFkAuRk3yaUCyfigRc8DjVxKOyQhhChT5DQUsDL0
+Zy7jA2g4T32bnxdCiPvNfZ8s8m5m89GXVUo7DCGEKNPu+2Tx+YjdnFJMT41pKJd3EgshhEPd18ki
+LzuHhR95cIkahLkuwJ/TLPacWtphCSFEmXNfJ4uvxuwiUalFV5edzKq5mNM8yAivNaUdlhBClDn3
+bbJQcnKZucybBPx4e8gVoh79CH/nOKLarCzt0IQQosy5b2+d3TZxN1dy69NGc5CnI7oRGuDO2VxY
+cLAe8qiDEEJYui+PLBR9HlMXeXOWhoz/91E0Hu7y9LQQQhTivjyy+HH6bq7p6uDPaXov6gjI09NC
+CFGY++/IIi+PSXM9OIs/b7X+EW3DB0o7IiGEKPPuu2SxZ84vJGd5Uo1rDJ7forTDEUKIcsFhySIu
+Lo6ePXsa38fExDB9+nTGjx/PtWvXuHjxIqNHj2b69Ol8+umnFmWHDBnimKAUhSmzXEmiFiNqb6Jy
+p3a2ywghxP+3d+dBTV57A8e/ARUIYZGlICBUaC0KLn3HatGqo63ejqO3C3ZU1FBr1Y5e60LVcYvQ
+RaRT6gaVFlELUtE6Ql8t1uUtVbtYF6xrXSgKLqCExYAUMSHvH5bci2IRrookv8+Mk0Cek/N7DvH8
+cp7nOecRDydZaLVaNm/ejFKpBKC6uppDhw6h0WgYPnw4mzZtYuPGjajVajQaDXv27MFgMJjKKxQK
+rl+/zrvvvsvFixcfWFwvttnL6QpvrKjhX5Fuf3+fRCGEECYPJVm4ubkRERFhShZlZWW4uroC4OHh
+wbVr19BqtbRr1w4AR0dHysvLTeUNBgNvvvkmU6ZMoX379g8kJqOhhu/1/ajAgeFsxn3cI7yvtxBC
+tHAP9ZxF7R1bXV1dKSsrA6CwsBAPDw+8vLwoKCgAQKfT4ejoWKfs7NmzSUxMfGCxZEz9PxTUUIGK
+VEZBK4u8EEwIIZrkofaYir8O81hbW9OrVy+ioqLQ6XRERUVRVVVFdHQ06enpDBo0CCurf+cta2tr
+QkJCOHLkCNu2bWPo0P9uFFCeV8K/EoIwYgUoqLHMK4aFEKLJFMbar/8tTGNuPB7RfTdrjz5LKS6A
+AjBiNMr5CiGEZWlMv3kns7909rcNv7P8aD9KccWHS4CRZ8lu7rCEEKJFMevjMTX6GiZOMOBEOZ34
+nb2ur2NVXAQ+PsCDu8pKCCHMnVmPLFaP/4VzN7ypQMXqUd9jpb0GRiM8wMtxhRDCEpjtyOLaueu8
+lxzMDVS877yUwC9khUAhhGgqsx1ZzBx6FltuEswJZqf9D6hUzR2SEEK0WGaZLLJW55B5NoBiXEl6
+/Vta/2Ngc4ckhBAtmtkdhvJpXchlfQdaY2CmQyI91sq640II8d8yu5HFZb0HYEUbbhK1/im4Y2a4
+EEKIxjOrZHFqr/avZwpuoEL5z5eaNR4hhDAXZpMsDAZQD9U2vKEQQohGM4tkERcHTzj+yaVyZ8AI
+GLFC39xhCSGE2TCLZBEzqwiPylwqUZLj9BxGrDD4+Dd3WEIIYTbM4mqoy1UuGHFHgYGAssPNHY4Q
+QpgdsxhZGP/aDaN57I4QQjx2pHcVQgjRILNIFsNsd9GKW/zTbldzhyKEEGbpsTxncfXqVWJiYnB2
+diYgIIDRo0f/7fb/++fgv54N/tvthBBCNM1jObLYuHEjarUajUbDnj17MBgMzR2SEEJYtMdyZKHV
+amnXrh0Ajo6OlJeX4+zsXGeb2gRSWFj4yOMTQoiWqLa/bMoX8McyWXh5eVFYWIiHhwc6nQ7HetZ3
+KioqAmjwEJUQQoi6ioqK8PPza1QZhdFoND6keJpMq9USHR2NSqUiODiYN954465tqqqqOHHiBO7u
+7lhbWzdDlEII0bIYDAaKiooIDg7G1ta2UWUfy2QhhBDi8fJYnuAWQgjxeJFkIYQQokGSLIQQQjTo
+sbwaqiGNnbRnbo4cOUJaWhoqlQoXFxdsbW25fPkyFRUVzJ07l7Zt2zZ3iI/ce++9x8CBAykoKLDY
+trh8+TKfffYZKpUKJycnbGxsLLYtrl69SlxcHCqVCgA3NzeLbIu8vDymT59Oeno6SUlJddqgurq6
+Uf1oixxZWPqkPZ1Ox6JFi1i4cCHZ2dkcOnQIjUZDaGgomzZtau7wHrl169Zhb28PYNFtsXbtWnx9
+fdHpdAQHB1t0W+Tm5rJ//34KCwtxcnKyyLbQarVs3rwZpVJJdXU1Bw8eRKPRMHz4cDZt2tTofrRF
+Jov6Ju1Zkv79+6NUKklISGDYsGG4uroC4OnpaZp/Yim+//57HBwc6N69OzU1NRbdFnl5efTv358P
+P/yQ1atXW3RbeHp6snbtWpYuXcqBAwdMIwlLags3NzciIiJQKpVcv34dNzc3ADw8PLh27Vqj+9EW
+eRjqfibtmbMbN26wePFihg0bxnPPPcfu3buB27Mzn3jiiWaO7tHaunUrTk5O5ObmAphGGJbYFu7u
+7tjb22NtbY2trS1lZWWAZbZFamoqoaGhAKhUKq5cuQJYZlsAuLq61vk8eHh4UFNTQ0FBwX33oy1y
+nsX9TNozZ/PmzSM/Px8vLy+sra3p3Lkzubm56HQ6oqKiTMdpLUlGRgZt2rShuLjYYtvijz/+YOXK
+lTg4ONCrVy9KS0stti1OnTrFihUr8Pb2xtvbm9atW1tsW0yYMIHExERSUlLqtEFVVVWj+tEWmSyE
+EEI8Wi3ynIUQQohHS5KFEEKIBkmyEEII0SBJFkIIIRokyUIIIUSDJFkIk/T0dMaMGWP6+cCBA8TE
+xDTpvWqvcX9QoqOjGTVqFJWVlY0qt2/fPtM8lEchLi6OPXv2PLL6AE6fPs2ZM2fu+VpaWtoDq6u4
+uJj4+HgAjh07RmpqKkePHiU1NbVJ73evz8nXX3/N8ePHmxynePAkWYg6cnJy2Lp1q+lnhULRpPdp
+arl7OXjwIBs2bECpVDaqXN++fXnppZceaCyPm927d1NQUFDva4GBgYwcOfKB1ZWYmGjq4M+cOUPH
+jh35/fff6dSpU5Pe716fk1dffZU1a9Y0OU7x4LXIGdzi4VGr1SQlJTFw4EDT7w4cOEBWVhZz5swh
+PT2dyspKlEole/bsMd0f3dvbmx9//JHXXnuNsWPHUlpayjvvvENpaSnz58+na9eurFixgl9//RUb
+GxsWL15Mfn4+sbGxWFlZER8fj4uLCwApKSls3boVa2trIiIiOHfuHBcuXGDRokVERUUBtxfNmzdv
+HnZ2dhQUFBAbG4unpyfTpk1Dr9dja2tLv379UCqVpnh/+OEHysvL0ev1fPHFF0RFRTFgwAB8fX1Z
+tmwZCQkJAJw4cYKMjAwWLFjAW2+9hVqtJiQkhGnTpvHBBx8wa9YsDAYDPj4+LF68mPj4eH777Tfs
+7e15+umnAcjMzGTfvn1ER0ezceNGMjIysLa2ZuHChahUKqZMmYJSqUSj0RAYGAjATz/9xLJlyzAY
+DEyePJlu3brVW9fFixcpKCjAycmJmJgYtmzZws6dO+nVqxdLlizh0qVLlJaWEhkZSVVVFVlZWQwY
+MIA1a9Zw69YtdDodq1atQqVSMWfOHEpLS/Hw8CA6OpqEhATTvgwaNIj169dTU1NDREQEPXv25Ny5
+c3h6ehIVFcWuXbvw9/cnNzeXXr16kZeXx65duygvL8fOzo64uDjy8/PRaDQoFAp69OjBjBkzyMrK
+YuXKlfj4+FBVVQXAjBkz0Gq12NnZsXz5cuzs7GjdujWFhYV4eno+ss+/uDcZWYg6nJycGDt2LCtX
+rqzz+/q+Abq4uJCUlERZWRkhISGkpaXx7bffAvDnn3+ydOlSVqxYwdKlSzl9+jT5+fmkpqYya9Ys
+4uLigNvr12zYsMGUKEpKStixYwebNm0iPj6eTz75hFGjRuHv729KFLVKSkpISEhg0qRJbNu2jfT0
+dIYMGcKXX36Ju7v7XXG7urqyZs0aOnTowJEjR5g7dy6rV68mOjqayMhI03ZBQUHk5OSg1+u5fv06
+2dnZHDx4kOeff57PP/+c8ePHk5KSgpubG7t27QJuj2CWL18OwP79+/nuu+9YvHgxJSUlZGZmsmHD
+BpYtW8ann35qquerr74yJQqA+Ph41qxZQ1paGrm5ufesq2PHjiQnJ1NVVUVxcTGvv/46ERERVFdX
+8+yzz5KUlMT06dPZvn17nTYwGo0kJSUxePBgsrKy2LhxIy+88ALJyckEBQWRmZlZZ1927tzJ+++/
+z6pVq7h16xa5ubmm9aYWLVpE7969SU5OJiQkhNjYWOD2ukMpKSn06NGDHTt2EBsby0cffURqaioX
+L17k5MmTJCYmsn79eiIjI6msrKSiogKtVktSUhLjxo1Dp9MB0KFDB44ePXrPz6p4tGRkIe4SGhrK
+6NGjad++/V2v/eeE/4CAAOD2ekx+fn60adOmzmt2dnbY2dlRUVHB+fPnOXbsGGq1GgBnZ2cAfH19
+67z/pUuXTB2oi4sLer3+rnprdejQAbidcI4fP8758+dNSxZ06dLFVPbOeN3d3amursbR0ZGuXbtS
+VFRU59urQqHA3d2dffv2MWzYMPbv349eryc0NJQlS5bQtWtXAIKDg7lw4cJd+5GdnY29vT0KhYJL
+ly5x4cIF1Go1RqORW7du1bvfAHq9HgcHBwAmTpzIhAkT6q2rdj/c3Ny4efOmqbydnR3Hjh3jl19+
+oaqq6q5v5P7+/qZylZWVnD9/nhMnTrB161aqq6sZNGhQndhmzZpFfHw8165dQ61Wo9PpTH+3RYsW
+sX//fsaMGUN+fj4RERH07duXbt26AdC5c2cOHz5McXGx6e8UHBxMXl4eer0epVKJUqnEy8sLlUpF
+WFgYU6ZMwcHBgQULFgC3k3tt4hDNT0YWol7z5s0znci0sbGhuLgYgHPnzt1X+QsXLlBdXc2VK1do
+27Ytvr6+9OnTh+TkZD7++GP69+8P3D1i8fb2Np2sLSkpqTdJ1LqzrK+vLydPngQwPf5d+fz8fHJy
+cmjVqhXZ2dl1XuvTpw8JCQn07NmTNm3akJOTQ0BAAH5+fhw7dgy4fYLXx8cHACurf/9Xmjx5Ms88
+8wwZGRl4eXnRuXNnkpOTSUhI4OWXX75nPFZWVlRUVHDz5k1mzpx5z7rqG+XV1NSwd+9ebGxsiImJ
+oUePHqZ9r328s5yfnx/jx48nOTmZadOm0b179zr78s0336DRaIiPjychIQFnZ2fTyqRjxoxBrVab
+DtXFxsZiNBo5e/YscHttJj8/P1xdXU2LPB4/fhwfHx8UCgXl5eXodDoKCgrQarUUFBSQmJhISEiI
+aURUXl5uMfedaAkkWYh6BQUFMXjwYNPzoqIi1Go1Wq0WqNvx1Nd5OTs7M3XqVGbOnElERARBQUHY
+29szduxYpk6dylNPPVVvva6urgwePJiRI0cyadIk0+Ghhk6YKxQKhg8fzo4dOxg3bhznz5+nVatW
+pnL1lY+KimLu3LnMnj2bmJiYOiORPn36kJubS6dOnejSpQteXl7A7UXZ1q5dS1hYGOXl5QwZMqTe
+eKZMmcK6deuwtbWld+/ejB49mrFjx5q+tdcXz/Tp03n77bcJDw/nlVdeYeLEifdVV2BgIMuXL6dL
+ly78/PPPhIWFkZ2djVarRaFQmP7dacSIEWRmZjJmzBgSExNNI49aAQEBjBw5kgkTJhAWFsaTTz7J
+1atXATh79iwdO3Y0PdY6cuQI4eHhnDx5kqFDhzJz5kw0Gg0jR47E39+frl27Mn36dMLDw5k/fz5t
+27bFzc2NU6dOMWLECLZv386LL74I3L6SqzaBieYnCwkKs3H48GHs7e0JDAxk4cKFDBw4kAEDBjR3
+WGYlOjqa8PBwU/L8T7UXPzyIO1dWV1czd+5c07kQ0fxkZCHMRrt27YiMjCQsLIwbN27Qr1+/5g7J
+7IwfP54tW7Y89HoyMjIIDw9/6PWI+ycjCyGEEA2SkYUQQogGSbIQQgjRIEkWQgghGiTJQgghRIMk
+WQghhGiQJAshhBAN+n+ZNH7URcXy/gAAAABJRU5ErkJggg==
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
