@@ -116,5 +116,5 @@ bench_set_set(){
 	echo
 }
 
-RSS=0;RPS=1;RFS=1;XPS=1 ; bench_set_set
+RSS=1;RPS=0;RFS=0;XPS=0 ; bench_set_set
 
