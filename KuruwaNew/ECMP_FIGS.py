@@ -1113,7 +1113,7 @@ plt.title('LVS-TUN(L3DSR) performance level')
 plt.savefig('ECMP_FIGS/10G_ipvs_tun.png', bbox_inches="tight", dpi=300)
 
 
-# In[10]:
+# In[9]:
 
 import numpy as np
 import pandas as pd
@@ -1150,6 +1150,48 @@ def y_fmt(y, pos):
 
 fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
+
+# d0 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+# d1 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_1.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+# d2 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_2.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+# d3 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_3.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+# d4 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_4.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d0 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_1.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_2.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_3.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_4.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_5.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_6.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_7.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_8.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_9.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+# dt=np.delete(np.concatenate((d0, d1, d2, d3, d4), axis=0), [2,4,6,8],0)
+# dt=d0
+m=np.mean(dt[1::1], axis=0)
+
+cb10gdnat = dt ; mcb10gdnat = m
+
+d0 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+# dt=np.delete(np.concatenate((d0, d1, d2), axis=0), [2,4],0)
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+# dt=d0
+m=np.mean(dt[1::1], axis=0)
+
+cb1gdnat=dt; mcb1gdnat=m
+
 
 d0 = np.loadtxt("Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
 d1 = np.loadtxt("Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_1.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
@@ -1219,19 +1261,23 @@ m=np.mean(dt[1::1], axis=0)
 
 cb1=dt; mcb1=m
 
-ax1.plot(cb10g[0], mcb10g ,  color='r', ls='-', marker='', label='node with 10G nic(ixgbe)')
-ax1.plot(cb10g[0], cb10g[1::1].T,  color='r', ls='', marker='.')
+ax1.plot(cb10g[0], mcb10g ,  color='r', ls='-', marker='', label='ipvs @10G(ixgbe)')
+# ax1.plot(cb10g[0], cb10g[1::1].T,  color='r', ls='', marker='.')
 
-ax1.plot(cb1[0], mcb1,  color='b', ls='-', marker='', label='node with 1G nic(tg3)')
-ax1.plot(cb1[0], cb1[1::1].T,  color='b', ls='', marker='.')
+ax1.plot(cb1[0], mcb1,  color='r', ls='-', marker='', label='ipvs @1G(tg3)')
+# ax1.plot(cb1[0], cb1[1::1].T,  color='r', ls='', marker='.')
 
+ax1.plot(cb10gtun[0], mcb10gtun ,  color='b', ls='-', marker='', label='L3DSR @10G (ixgbe)')
+# ax1.plot(cb10gtun[0], cb10gtun[1::1].T,  color='b', ls='', marker='.')
 
-ax1.plot(cb10gtun[0], mcb10gtun ,  color='r', ls='-', marker='', label='node with 10G nic(ixgbe) rps tun')
-ax1.plot(cb10gtun[0], cb10gtun[1::1].T,  color='r', ls='', marker='.')
+ax1.plot(cb1gtun[0], mcb1gtun,  color='b', ls='-', marker='', label='L3DSR @1G(tg3)')
+# ax1.plot(cb1gtun[0], cb1gtun[1::1].T,  color='b', ls='', marker='.')
 
-ax1.plot(cb1gtun[0], mcb1gtun,  color='b', ls='-', marker='', label='node with 1G nic(tg3) tun')
-ax1.plot(cb1gtun[0], cb1gtun[1::1].T,  color='b', ls='', marker='.')
+ax1.plot(cb10gdnat[0], mcb10gdnat ,  color='g', ls='-', marker='', label='DNAT @10G(ixgbe)')
+# ax1.plot(cb10gdnat[0], cb10gdnat[1::1].T,  color='g', ls='', marker='.')
 
+ax1.plot(cb1gdnat[0], mcb1gdnat,  color='g', ls='-', marker='', label='DNAT @1G(tg3)')
+# ax1.plot(cb1gdnat[0], cb1gdnat[1::1].T,  color='g', ls='', marker='.')
 
 ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
 
