@@ -1291,6 +1291,152 @@ plt.title('LVS-TUN(L3DSR) performance level')
 plt.savefig('ECMP_FIGS/10G_ipvs_tun.png', bbox_inches="tight", dpi=300)
 
 
+# In[7]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+
+import seaborn as sns
+sns.set_style("white")
+sns.set_context("paper")
+
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
+
+d0 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+dt1=dt; m1=m
+
+d0 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs2_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+dt2=dt; m2=m
+
+d0 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs3_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+dt3=dt; m3=m
+
+d0 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs4_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+#dt=np.delete(np.concatenate((d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16],0)
+m=np.mean(dt[1::1], axis=0)
+
+dt4=dt; m4=m
+
+# d0 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d1 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d2 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d3 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d4 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d5 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d6 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d7 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d8 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+# d9 = np.loadtxt("Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs5_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+# dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+# m=np.mean(dt[1::1], axis=0)
+
+# dt5=dt; m5=m
+
+fig = plt.figure(figsize=(6, 4))
+ax1 = fig.add_subplot(111)
+
+ax1.plot(dt1[0], m1,  color='r', ls='-', marker='', label='#lb = 1')
+ax1.plot(dt1[0], dt1[1::1].T,  color='r', ls='', marker='.')
+
+ax1.plot(dt2[0], m2,  color='b', ls='-', marker='', label='#lb = 2')
+ax1.plot(dt2[0], dt2[1::1].T,  color='b', ls='', marker='.')
+
+ax1.plot(dt3[0], m3,  color='g', ls='-', marker='', label='#lb = 3')
+ax1.plot(dt3[0], dt3[1::1].T,  color='g', ls='', marker='.')
+
+ax1.plot(dt4[0], m4,  color='c', ls='-', marker='', label='#lb = 4')
+ax1.plot(dt4[0], dt4[1::1].T,  color='c', ls='', marker='.')
+
+# ax1.plot(dt5[0], m5,  color='m', ls='-', marker='', label='#lb = 5')
+# ax1.plot(dt5[0], dt5[1::1].T,  color='m', ls='', marker='.')
+
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+
+ax1.set_yticks(np.arange(0, 1000001, 200000))
+ax1.set_ylabel('Throughput [req/sec]')
+ax1.set_xlabel('Number of nginx worker containers(#pods)')
+ax1.legend(loc=(0.04,0.7))
+plt.title('Load balancer scalability')
+
+# plt.savefig('ECMP_FIGS/ecmp_lb_cubic.png', bbox_inches="tight", dpi=300)
+plt.show()
+
+
 # In[ ]:
 
 

@@ -345,7 +345,40 @@ ax.legend(loc=(0.6,0.1))
 plt.savefig('PHD_THESIS_FIGS/aws_c4_tp.png', dpi=600)
 
 
-# In[10]:
+# In[50]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+
+import seaborn as sns
+sns.set_style("white")
+sns.set_context("paper")
+
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
 
 fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
@@ -382,21 +415,104 @@ m=np.mean(dt[1::1], axis=0)
 
 cb1=dt; mcb1=m
 
-ax1.plot(cb10g[0], mcb10g ,  color='r', ls='-', marker='', label='node with 10G nic(ixgbe)')
+
+d0 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_1.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_2.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_3.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_4.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_5.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_6.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_7.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_8.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_9.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+cb10gdnat = dt ; mcb10gdnat = m
+
+ax1.plot(cb10gdnat[0], mcb10gdnat,  color='g', ls='-', marker='', label='iptables DNAT 10Gbps')
+# ax1.plot(cb10gdnat[0], cb10gdnat[1::1].T,  color='g', ls='', marker='.')
+
+ax1.plot(cb10g[0], mcb10g ,  color='r', ls='-', marker='', label='ipvs 10Gbps')
 #ax1.plot(cb10g[0], cb10g[1::1].T,  color='r', ls='', marker='.')
 
-ax1.plot(cb1[0], mcb1,  color='b', ls='-', marker='', label='node with 1G nic(tg3)')
+ax1.plot(cb1[0], mcb1,  color='b', ls='-', marker='', label='ipvs 1Gbps')
 #ax1.plot(cb1[0], cb1[1::1].T,  color='b', ls='', marker='.')
 
 ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
 
-ax1.set_yticks(np.arange(0, 400001, 100000))
+ax1.set_xlim(0,60)
+ax1.set_yticks(np.arange(0, 900001, 100000))
 ax1.set_ylabel('Throughput [req/sec]')
-ax1.set_xlabel('Number of nginx worker containers(#pods)')
-ax1.legend()
-plt.title('Load balancer throughput \w 10Gbps NIC')
+ax1.set_xlabel('Number of nginx pods')
+ax1.legend(loc=(0.65,0.65))
 
-plt.savefig('PHD_THESIS_FIGS/10G_ipvs.png', bbox_inches="tight", dpi=600)
+plt.savefig('PHD_THESIS_FIGS/ipvs_iptables_dnat_10g.png', bbox_inches="tight", dpi=600)
+
+
+# In[3]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
+
+sns.set_style("white")
+sns.set_context("paper")
+
+get_ipython().magic('matplotlib inline')
+
+fig = plt.figure(figsize=(6, 4))
+
+ax1 = fig.add_subplot(111)
+
+df1 = np.loadtxt("Kuruwa/24th_try/rss_rps_rfs_0_1_0/ipvs_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+df2 = np.loadtxt("Kuruwa/27th_try/rss_rps_rfs_0_1_0/proxy_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+df3 = np.loadtxt("Kuruwa/29th_try/rss_rps_rfs_0_1_0/nginx_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+ax1.plot(*df1, color='r', label='ipvs')
+ax1.plot(*df2, color='g', label='iptables DNAT')
+ax1.plot(*df3, color='b', label='nginx')
+
+ax1.plot(cb1[0], mcb1,  color='b', ls='-', marker='', label='node with 1G nic(tg3)')
+
+ax1.set_xticks(np.arange(0, 41, 10))   
+ax1.set_xlim(0,41)
+ax1.set_ylim(0,220000)
+ax1.set_xlabel('Number of nginx pods')
+ax1.set_ylabel('Throughput [req/s]')
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+#ax1.set_title('host-gw mode\n',y=-0.2)
+
+ax1.legend(loc=(0.70,0.65))
+
+fig.tight_layout()  # タイトルとラベルが被るのを解消
+plt.show()
 
 
 # In[33]:
@@ -714,6 +830,221 @@ ax2.legend(loc=(0.75,0.9))
 
 plt.savefig('PHD_THESIS_FIGS/ecmp_response.png', bbox_inches="tight", dpi=600)
 plt.show()
+
+
+# In[41]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+
+import seaborn as sns
+sns.set_style("white")
+sns.set_context("paper")
+
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
+
+fig = plt.figure(figsize=(6, 4))
+ax1 = fig.add_subplot(111)
+
+d0 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("KuruwaNew/Try01_cubic_iptablesdnat/rss_rps_rfs_xps_0_1_1_1/iptdnat_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+cb1gdnat=dt; mcb1gdnat=m
+
+d0 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("KuruwaNew/Try01_cubic_lvstun/rss_rps_rfs_xps_0_1_1_1/ipvs1_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+cb1gtun=dt; mcb1gtun=m
+
+d0 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_2.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_3.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_4.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_5.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_6.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_7.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_8.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("KuruwaNew/Try01_cubic/rss_rps_rfs_xps_0_1_1_1/ipvs1_9.csv",usecols=(0,1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+cb1=dt; mcb1=m
+
+ax1.plot(cb1gtun[0], mcb1gtun,  color='r', ls='-', marker='', label='ipvs l3dsr')
+# ax1.plot(cb1gtun[0], cb1gtun[1::1].T,  color='b', ls='', marker='.')
+
+ax1.plot(cb1[0], mcb1,  color='b', ls='-', marker='', label='ipvs nat')
+# ax1.plot(cb1[0], cb1[1::1].T,  color='r', ls='', marker='.')
+
+ax1.plot(cb1gdnat[0], mcb1gdnat,  color='g', ls='-', marker='', label='iptables DNAT')
+# ax1.plot(cb1gdnat[0], cb1gdnat[1::1].T,  color='g', ls='', marker='.')
+
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+
+ax1.set_xlim(0,60)
+ax1.set_yticks(np.arange(0, 600001, 100000))
+ax1.set_ylim(0,550000)
+ax1.set_ylabel('Throughput [req/sec]')
+ax1.set_xlabel('Number of nginx pods')
+ax1.legend(loc=(0.75,0.70))
+
+# plt.show()
+plt.savefig('PHD_THESIS_FIGS/ipvs_l3dsr_1g.png', bbox_inches="tight", dpi=600)
+
+
+# In[42]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+
+import seaborn as sns
+sns.set_style("white")
+sns.set_context("paper")
+
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
+
+fig = plt.figure(figsize=(6, 4))
+ax1 = fig.add_subplot(111)
+
+d0 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_1.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_2.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_3.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_4.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_5.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_6.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_7.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_8.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("KuruwaNew/Try02_cubic_iptablesdnat/rss_rps_rfs_xps_1_0_0_0/iptdnat_9.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+cb10gdnat = dt ; mcb10gdnat = m
+
+d0 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_1.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_2.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_3.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_4.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_5.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_6.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_7.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_8.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("KuruwaNew/Try02_cubic_lvstun/rss_rps_rfs_xps_1_0_0_0/ipvs1_9.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+cb10gtun = dt ; mcb10gtun = m
+
+d0 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_0.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d1 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_1.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d2 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_2.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d3 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_3.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d4 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_4.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d5 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_5.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d6 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_6.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d7 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_7.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d8 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_8.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+d9 = np.loadtxt("KuruwaNew/Try02_cubic/rss_rps_rfs_xps_1_0_0_0/ipvs1_9.csv",usecols=(0, 1), delimiter=',', unpack=True, skiprows=1)
+
+dt=np.delete(np.concatenate((d0, d1, d2, d3, d4, d5, d6, d7, d8, d9), axis=0), [2,4,6,8,10,12,14,16,18],0)
+m=np.mean(dt[1::1], axis=0)
+
+cb10g = dt ; mcb10g = m
+
+ax1.plot(cb10gdnat[0], mcb10gdnat ,  color='g', ls='-', marker='', label='iptabls DNAT')
+# ax1.plot(cb10gdnat[0], cb10gdnat[1::1].T,  color='g', ls='', marker='.')
+
+ax1.plot(cb10gtun[0], mcb10gtun ,  color='r', ls='-', marker='', label='ipvs l3dsr')
+# ax1.plot(cb10gtun[0], cb10gtun[1::1].T,  color='b', ls='', marker='.')
+
+ax1.plot(cb10g[0], mcb10g ,  color='b', ls='-', marker='', label='ipvs nat')
+# ax1.plot(cb10g[0], cb10g[1::1].T,  color='r', ls='', marker='.')
+
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+
+ax1.set_xlim(0,60)
+ax1.set_yticks(np.arange(0, 900001, 100000))
+ax1.set_ylabel('Throughput [req/sec]')
+ax1.set_xlabel('Number of nginx pods')
+ax1.legend(loc=(0.75,0.6))
+
+# plt.show()
+plt.savefig('PHD_THESIS_FIGS/ipvs_l3dsr_10g.png', bbox_inches="tight", dpi=600)
 
 
 # In[ ]:
