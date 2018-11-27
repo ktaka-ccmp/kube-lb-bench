@@ -39,11 +39,16 @@ chk_url(){
 	done
 }
 
-set_ipvs(){
-#vip=10.1.1.1 ; port=8888
+set_ipvs_tun(){
 vip=10.1.1.1 ; port=80
 url=http://$vip:$port/
-file=ipvs$num.log
+file=ipvs_tun$num.log
+}
+
+set_ipvs_nat(){
+vip=10.1.1.1 ; port=8888
+url=http://$vip:$port/
+file=ipvs_nat$num.log
 }
 
 ipvsctr_check(){
@@ -78,8 +83,8 @@ done
 
 bench_set(){
 
-for try in {0..0} ; do
-#for try in {1..9} ; do
+#for try in {0..0} ; do
+for try in {0..9} ; do
 for ipvs in {1..1}; do
 
 $kbctl scale deploy/ipvs-controller --replicas=0
@@ -95,14 +100,18 @@ sleep 3
 $kbctl scale deploy/tea-rc --replicas=$repl
 $kbctl scale deploy/ipvs-controller --replicas=$ipvs
 
-set_ipvs
-
 ipvsctr_check
 pod_check
-ipvs_check
 
-num=${ipvs}_$try
-set_ipvs ; bench
+num=_${ipvs}_$try
+
+set_ipvs_nat
+ipvs_check
+bench
+
+set_ipvs_tun
+ipvs_check
+bench
 
 echo end measurement for try= $try, ipvs= $ipvs , repl= $repl
 echo 

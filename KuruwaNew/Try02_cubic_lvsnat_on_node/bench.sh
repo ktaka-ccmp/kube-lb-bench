@@ -5,7 +5,6 @@ wait=1
 con=2000
 thr=100
 dur=30s
-#dur=10s
 
 ulimit -n 65536
 
@@ -14,6 +13,7 @@ echo 3 >  /proc/sys/net/ipv4/tcp_syn_retries
 kbctl="kubectl -s 192.168.0.102:8080 "
 
 bench(){
+	echo bench
 	chk_url
 
 	echo wrk -c$con -t$thr -d$dur $url 
@@ -40,7 +40,9 @@ chk_url(){
 }
 
 set_ipvs(){
-url=http://10.1.1.1:8888/
+vip=10.1.1.1 ; port=8888
+#vip=10.1.1.1 ; port=80
+url=http://$vip:$port/
 file=ipvs$num.log
 }
 
@@ -65,7 +67,7 @@ pod_check(){
 ipvs_check(){
 cids=$($kbctl get po -o wide |grep ipvs|egrep Runn |cut -f 1 -d ' ')
 for cid in $cids ; do 
-	workers=$($kbctl exec -it $cid -c server -- ip netns exec node ipvsadm -L -n -f 1 |egrep :80|wc -l)
+	workers=$($kbctl exec -it $cid -c server -- ip netns exec node ipvsadm -L -n -t $vip:$port |egrep "\->" | egrep :80|wc -l)
 	if [ $workers != $repl ]; then
 		sleep $wait
 		ipvs_check
@@ -76,20 +78,24 @@ done
 
 bench_set(){
 
-for try in 0 {2..9} ; do
+for try in {0..0} ; do
+#for try in {1..9} ; do
 for ipvs in {1..1}; do
-for repl in 1 $(seq 2 2 40) $(seq 44 4 100) ; do
+
+$kbctl scale deploy/ipvs-controller --replicas=0
+$kbctl scale deploy/tea-rc --replicas=0
+
+for repl in 1 $(seq 2 2 40) $(seq 44 4 100) ; do 
 
 echo start measurement for $repl
-#$kbctl scale deploy/tea-rc --replicas=0
 $kbctl scale deploy/tea-rc --replicas=$repl
-
-#$kbctl scale deploy/ipvs-controller --replicas=0
 $kbctl scale deploy/ipvs-controller --replicas=$ipvs
 
 sleep 3
 $kbctl scale deploy/tea-rc --replicas=$repl
 $kbctl scale deploy/ipvs-controller --replicas=$ipvs
+
+set_ipvs
 
 ipvsctr_check
 pod_check
