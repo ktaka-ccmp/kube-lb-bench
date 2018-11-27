@@ -7,7 +7,8 @@
 #DIRS=Try01_cubic
 #DIRS="Try02_cubic_lvstun Try01_cubic_lvstun"
 #DIRS="Try02_cubic_iptablesdnat Try01_cubic_lvstun"
-DIRS="Try01_cubic_lvstun"
+#DIRS="Try01_cubic_lvstun"
+DIRS="Try02_cubic_lvsnat_on_node Try02_cubic_lvstun_on_node"
 log=exec.log
 
 for dir in $DIRS ; do 
