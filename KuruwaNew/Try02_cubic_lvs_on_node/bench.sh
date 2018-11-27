@@ -90,7 +90,8 @@ for ipvs in {1..1}; do
 $kbctl scale deploy/ipvs-controller --replicas=0
 $kbctl scale deploy/tea-rc --replicas=0
 
-for repl in 1 $(seq 2 2 40) $(seq 44 4 100) ; do 
+#for repl in 1 $(seq 2 2 40) $(seq 44 4 100) ; do 
+for repl in 22 24 26 28 ; do 
 
 echo start measurement for $repl
 $kbctl scale deploy/tea-rc --replicas=$repl
