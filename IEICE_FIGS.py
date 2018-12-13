@@ -501,7 +501,7 @@ plt.show()
 # ipvs0[2]
 
 
-# In[9]:
+# In[4]:
 
 import numpy as np
 import pandas as pd
@@ -546,6 +546,8 @@ ax1.plot(iptd0[1], iptd0[2],  color='g', ls='-', marker='', label='iptables DNAT
 ax1.plot(ipvs0[1], ipvs0[2],  color='r', ls='-', marker='', label='ipvs')
 
 ax1.xaxis.set_major_formatter(FuncFormatter(y_fmt))
+
+ax1.set_xticks(np.arange(0, 200001, 50000))
 
 ax1.set_ylim(0,100)
 ax1.set_xlabel('Throughput [req/sec]')
