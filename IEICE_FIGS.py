@@ -434,7 +434,7 @@ plt.savefig('IEICE_FIGS/ecmp_response_ieice.png', bbox_inches="tight", dpi=300)
 plt.show()
 
 
-# In[15]:
+# In[7]:
 
 import numpy as np
 import pandas as pd
@@ -470,7 +470,9 @@ def y_fmt(y, pos):
     return y
 
 ipvs0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+ipvs1 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
 iptd0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/iptd1_0.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+iptd1 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/iptd1_1.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
 
 fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
@@ -479,8 +481,10 @@ ax1.plot(ipvs0[0], ipvs0[1],  color='r', ls='-', marker='', label='ipvs')
 ax1.plot(iptd0[0], iptd0[1],  color='b', ls='-', marker='', label='iptables DNAT')
 
 ax2 = ax1.twinx()
-ax2.plot(ipvs0[0], ipvs0[2],  color='r', ls='-', marker='', label='ipvs')
-ax2.plot(iptd0[0], iptd0[2],  color='b', ls='-', marker='', label='iptables DNAT')
+ax2.plot(ipvs0[0], ipvs0[2],  color='m', ls='-', marker='', label='ipvs')
+ax2.plot(iptd0[0], iptd0[2],  color='c', ls='-', marker='', label='iptables DNAT')
+ax2.plot(ipvs1[0], ipvs1[2],  color='r', ls='-', marker='', label='ipvs')
+ax2.plot(iptd1[0], iptd1[2],  color='b', ls='-', marker='', label='iptables DNAT')
 
 ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
 
@@ -497,7 +501,7 @@ plt.show()
 # ipvs0[2]
 
 
-# In[3]:
+# In[9]:
 
 import numpy as np
 import pandas as pd
@@ -532,21 +536,21 @@ def y_fmt(y, pos):
                 #return y
     return y
 
-ipvs0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
-iptd0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/iptd1_0.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+ipvs0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+iptd0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/iptd1_1.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
 
 fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
 
+ax1.plot(iptd0[1], iptd0[2],  color='g', ls='-', marker='', label='iptables DNAT')
 ax1.plot(ipvs0[1], ipvs0[2],  color='r', ls='-', marker='', label='ipvs')
-ax1.plot(iptd0[1], iptd0[2],  color='b', ls='-', marker='', label='iptables')
 
 ax1.xaxis.set_major_formatter(FuncFormatter(y_fmt))
 
 ax1.set_ylim(0,100)
 ax1.set_xlabel('Throughput [req/sec]')
 ax1.set_ylabel('CPU Idle [%]')
-ax1.legend(loc=(0.8,0.8))
+ax1.legend(loc=(0.7,0.85))
 
 plt.savefig('IEICE_FIGS/cpu_idle.png', bbox_inches="tight", dpi=300)
 
