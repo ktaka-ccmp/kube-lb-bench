@@ -501,7 +501,7 @@ plt.show()
 # ipvs0[2]
 
 
-# In[4]:
+# In[2]:
 
 import numpy as np
 import pandas as pd
@@ -542,8 +542,8 @@ iptd0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/iptd1_
 fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
 
-ax1.plot(iptd0[1], iptd0[2],  color='g', ls='-', marker='', label='iptables DNAT')
-ax1.plot(ipvs0[1], ipvs0[2],  color='r', ls='-', marker='', label='ipvs')
+ax1.plot(iptd0[1], iptd0[3],  color='g', ls='-', marker='', label='iptables DNAT')
+ax1.plot(ipvs0[1], ipvs0[3],  color='r', ls='-', marker='', label='ipvs')
 
 ax1.xaxis.set_major_formatter(FuncFormatter(y_fmt))
 
@@ -551,10 +551,15 @@ ax1.set_xticks(np.arange(0, 200001, 50000))
 
 ax1.set_ylim(0,100)
 ax1.set_xlabel('Throughput [req/sec]')
-ax1.set_ylabel('CPU Idle [%]')
-ax1.legend(loc=(0.7,0.85))
+ax1.set_ylabel('CPU usage [%]')
+ax1.legend(loc=(0.7,0.7))
 
-plt.savefig('IEICE_FIGS/cpu_idle.png', bbox_inches="tight", dpi=300)
+plt.savefig('IEICE_FIGS/cpu_usage.png', bbox_inches="tight", dpi=300)
+
+
+# In[ ]:
+
+
 
 
 # In[ ]:
