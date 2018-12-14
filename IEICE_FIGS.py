@@ -501,7 +501,72 @@ plt.show()
 # ipvs0[2]
 
 
-# In[2]:
+# In[4]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+
+import seaborn as sns
+sns.set_style("white")
+sns.set_context("paper")
+
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
+
+ipvs0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/ipvs1_0.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+ipvs1 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+iptd0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/iptd1_0.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+iptd1 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/iptd1_1.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+
+fig = plt.figure(figsize=(6, 4))
+ax1 = fig.add_subplot(111)
+
+ax1.plot(ipvs1[0], ipvs1[1],  color='r', ls='-', marker='', label='ipvs')
+ax1.plot(iptd1[0], iptd1[1],  color='b', ls='-', marker='', label='iptables DNAT')
+
+ax2 = ax1.twinx()
+ax2.plot(ipvs1[0], ipvs1[3],  color='r', ls='-', marker='', label='ipvs')
+ax2.plot(iptd1[0], iptd1[3],  color='b', ls='-', marker='', label='iptables DNAT')
+
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+
+ax1.set_ylim(0,250000)
+
+# ax1.set_yticks(np.arange(0, 200001, 200000))
+ax1.set_ylabel('Throughput [req/sec]')
+ax1.set_xlabel('Number of nginx pods')
+# ax1.legend(loc=(0.6,0.75), ncol=2)
+#plt.title('Load balancer scalability BBR/CUBIC')
+
+# plt.savefig('IEICE_FIGS/ecmp_lb_cubic_ieice.png', bbox_inches="tight", dpi=300)
+plt.show()
+# ipvs0[2]
+
+
+# In[43]:
 
 import numpy as np
 import pandas as pd
@@ -545,8 +610,76 @@ ax1 = fig.add_subplot(111)
 ax1.plot(iptd0[1], iptd0[3],  color='g', ls='-', marker='', label='iptables DNAT')
 ax1.plot(ipvs0[1], ipvs0[3],  color='r', ls='-', marker='', label='ipvs')
 
-ax1.xaxis.set_major_formatter(FuncFormatter(y_fmt))
+ax2 = ax1.twinx()
+ax2.plot(ipvs0[1], ipvs0[3]/ iptd0[3],  color='c', ls='-', marker='', label='Ratio')
+ax2.set_ylim(0,5)
 
+ax1.xaxis.set_major_formatter(FuncFormatter(y_fmt))
+ax1.set_xticks(np.arange(0, 200001, 50000))
+
+ax1.set_ylim(0,100)
+ax1.set_xlabel('Throughput [req/sec]')
+ax1.set_ylabel('CPU usage [%]')
+ax1.legend(loc=(0.7,0.7))
+
+#plt.savefig('IEICE_FIGS/cpu_usage.png', bbox_inches="tight", dpi=300)
+
+
+# In[44]:
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+get_ipython().magic('matplotlib inline')
+
+import seaborn as sns
+sns.set_style("white")
+sns.set_context("paper")
+
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
+
+fig = plt.figure(figsize=(6, 4))
+ax1 = fig.add_subplot(111)
+
+ipvs0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/ipvs1_1.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+iptd0 = np.loadtxt("KuruwaNew/Try01_cubic/cpuidle_rss_rps_rfs_xps_0_1_1_1/iptd1_1.csv",usecols=(0,1,2,3,4,5,6,7), delimiter=',', unpack=True, skiprows=1)
+
+cond =  iptd0[1]> 1.9e+5
+x=np.concatenate((np.extract(~cond, iptd0[1]), np.average(np.extract(cond, iptd0[1]))), axis=None)
+y=np.concatenate((np.extract(~cond, iptd0[3]), np.average(np.extract(cond, iptd0[3]))), axis=None)
+ipdt0n=np.vstack((x,y))
+
+cond =  ipvs0[1]> 1.9e+5
+x=np.concatenate((np.extract(~cond, ipvs0[1]), np.average(np.extract(cond, ipvs0[1]))), axis=None)
+y=np.concatenate((np.extract(~cond, ipvs0[3]), np.average(np.extract(cond, ipvs0[3]))), axis=None)
+ipvs0n=np.vstack((x,y))
+
+ax1.plot(ipdt0n[0], ipdt0n[1],  color='g', ls='-', marker='', label='iptables DNAT')
+ax1.plot(ipvs0n[0], ipvs0n[1],  color='r', ls='-', marker='', label='ipvs')
+
+ax1.xaxis.set_major_formatter(FuncFormatter(y_fmt))
 ax1.set_xticks(np.arange(0, 200001, 50000))
 
 ax1.set_ylim(0,100)
@@ -555,11 +688,6 @@ ax1.set_ylabel('CPU usage [%]')
 ax1.legend(loc=(0.7,0.7))
 
 plt.savefig('IEICE_FIGS/cpu_usage.png', bbox_inches="tight", dpi=300)
-
-
-# In[ ]:
-
-
 
 
 # In[ ]:
