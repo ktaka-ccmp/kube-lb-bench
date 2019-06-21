@@ -1,7 +1,8 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[76]:
+
 
 import numpy as np
 import pandas as pd
@@ -66,7 +67,74 @@ fig.tight_layout()  # タイトルとラベルが被るのを解消
 plt.savefig('PHD_THESIS_FIGS/ipvs_mcore_proccessing.png', bbox_inches="tight", dpi=600)
 
 
+# In[4]:
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
+
+
+sns.set_style("white")
+sns.set_context("paper")
+
+get_ipython().magic('matplotlib inline')
+
+fig = plt.figure(figsize=(6, 4))
+
+ax1 = fig.add_subplot(111)
+
+df1 = np.loadtxt("Kuruwa/27th_try/rss_rps_rfs_0_1_0/proxy_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+df2 = np.loadtxt("Kuruwa/27th_try/rss_rps_rfs_1_0_0/proxy_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+df3 = np.loadtxt("Kuruwa/27th_try/rss_rps_rfs_0_0_0/proxy_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+ax1.plot(*df1, color='r', label='(RSS,RPS)=(off,on)')
+ax1.plot(*df2, color='g', label='(RSS,RPS)=(on,off)')
+ax1.plot(*df3, color='b', label='(RSS,RPS)=(off,off)')
+
+
+ax1.set_xticks(np.arange(0, 41, 10))  
+ax1.set_yticks(np.arange(0, 200001, 20000))
+ax1.set_xlim(0,41)
+# ax1.set_ylim(0,220000)
+ax1.set_xlabel('Number of nginx pods')
+ax1.set_ylabel('Throughput [req/sec]')
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+
+ax1.legend(frameon=False,loc=(0.65,0.65))
+# ax1.text(0.45,0.04,'Experimental condtions:\n host-gw, (rss,rps)=(off,on)',transform=ax1.transAxes)
+ax1.text(0.6,0.04,'flannel backend: host-gw',transform=ax1.transAxes)
+
+fig.tight_layout()  # タイトルとラベルが被るのを解消
+plt.savefig('PHD_THESIS_FIGS/iptables_mcore_proccessing.png', bbox_inches="tight", dpi=600)
+
+
 # In[80]:
+
 
 import numpy as np
 import pandas as pd
@@ -129,7 +197,72 @@ fig.tight_layout()  # タイトルとラベルが被るのを解消
 plt.savefig('PHD_THESIS_FIGS/ipvs_flannel_mode.png', bbox_inches="tight", dpi=600)
 
 
+# In[1]:
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+from matplotlib.ticker import FuncFormatter
+
+def y_fmt(y, pos):
+    decades = [1e9, 1e6, 1e3, 1e0, 1e-3, 1e-6, 1e-9 ]
+    suffix  = ["G", "M", "k", "" , "m" , "u", "n"  ]
+    if y == 0:
+        return str(0)
+    for i, d in enumerate(decades):
+        if np.abs(y) >=d:
+            val = y/float(d)
+            signf = len(str(val).split(".")[1])
+            if signf == 0:
+                return '{val:d} {suffix}'.format(val=int(val), suffix=suffix[i])
+            else:
+                if signf == 1:
+#                    print (val, signf)
+                    if str(val).split(".")[1] == "0":
+                       return '{val:d} {suffix}'.format(val=int(round(val)), suffix=suffix[i]) 
+                tx = "{"+"val:.{signf}f".format(signf = signf) +"} {suffix}"
+                return tx.format(val=val, suffix=suffix[i])
+
+                #return y
+    return y
+
+sns.set_style("white")
+sns.set_context("paper")
+
+get_ipython().magic('matplotlib inline')
+
+fig = plt.figure(figsize=(6, 4))
+
+ax1 = fig.add_subplot(111)
+
+df1 = np.loadtxt("Kuruwa/27th_try/rss_rps_rfs_0_1_0/proxy_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+df2 = np.loadtxt("Kuruwa/25th_try/rss_rps_rfs_0_1_0/proxy_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+df3 = np.loadtxt("Kuruwa/26th_try/rss_rps_rfs_0_1_0/proxy_cpu16_0.csv", delimiter=',', unpack=True, skiprows=1)
+ax1.plot(*df1, color='r', label='host-gw')
+ax1.plot(*df2, color='g', label='vxlan tunnel')
+ax1.plot(*df3, color='b', label='udp tunnel')
+
+ax1.set_xticks(np.arange(0, 41, 10))
+ax1.set_yticks(np.arange(0, 200001, 20000))
+ax1.set_xlim(0,41)
+# ax1.set_ylim(0,220000)
+ax1.set_xlabel('Number of nginx pods')
+ax1.set_ylabel('Throughput [req/sec]')
+ax1.yaxis.set_major_formatter(FuncFormatter(y_fmt))
+#ax1.set_title('(a) host-gw mode\n',y=-0.3)
+
+ax1.legend(frameon=False,loc=(0.7,0.5))
+ax1.text(0.45,0.04,'Multicore settings: (rss,rps)=(off,on)',transform=ax1.transAxes)
+
+fig.tight_layout()  # タイトルとラベルが被るのを解消
+plt.savefig('PHD_THESIS_FIGS/iptables_flannel_mode.png', bbox_inches="tight", dpi=600)
+
+
 # In[79]:
+
 
 import numpy as np
 import pandas as pd
@@ -194,6 +327,7 @@ plt.savefig('PHD_THESIS_FIGS/ipvs-iptables-nginx.png', bbox_inches="tight", dpi=
 
 # In[70]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -235,6 +369,7 @@ plt.show()
 
 
 # In[71]:
+
 
 import numpy as np
 import pandas as pd
@@ -297,6 +432,7 @@ plt.savefig('PHD_THESIS_FIGS/gcp_all_tp.png', dpi=600)
 
 # In[72]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -354,6 +490,7 @@ plt.savefig('PHD_THESIS_FIGS/aws_c4_tp.png', dpi=600)
 
 
 # In[63]:
+
 
 import numpy as np
 import pandas as pd
@@ -462,6 +599,7 @@ plt.savefig('PHD_THESIS_FIGS/ipvs_iptables_dnat_10g.png', bbox_inches="tight", d
 
 # In[3]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -525,6 +663,7 @@ plt.show()
 
 # In[64]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -581,6 +720,7 @@ plt.show()
 
 
 # In[65]:
+
 
 import numpy as np
 import pandas as pd
@@ -728,6 +868,7 @@ plt.savefig('PHD_THESIS_FIGS/ecmp_lb_cubic.png', bbox_inches="tight", dpi=600)
 
 # In[66]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -760,6 +901,7 @@ plt.savefig('PHD_THESIS_FIGS/ecmp_delay_histgram.png', bbox_inches="tight", dpi=
 
 
 # In[67]:
+
 
 import numpy as np
 import pandas as pd
@@ -841,6 +983,7 @@ plt.show()
 
 
 # In[1]:
+
 
 import numpy as np
 import pandas as pd
@@ -950,10 +1093,12 @@ plt.savefig('PHD_THESIS_FIGS/ipvs_l3dsr_1g.png', bbox_inches="tight", dpi=600)
 
 # In[46]:
 
+
 mcb1[20],mcb1gtun[20],mcb1gdnat[20]
 
 
 # In[2]:
+
 
 import numpy as np
 import pandas as pd
@@ -1063,25 +1208,30 @@ plt.savefig('PHD_THESIS_FIGS/ipvs_l3dsr_10g.png', bbox_inches="tight", dpi=600)
 
 # In[41]:
 
+
 mcb10g[20],mcb10gtun[20],mcb10gdnat[20]
 
 
 # In[31]:
+
 
 mcb10gdnat
 
 
 # In[32]:
 
+
 mcb10gtun
 
 
 # In[11]:
 
+
 mcb10g
 
 
 # In[3]:
+
 
 import numpy as np
 import pandas as pd
@@ -1195,25 +1345,30 @@ plt.savefig('PHD_THESIS_FIGS/ipvs_node_l3dsr_10g.png', bbox_inches="tight", dpi=
 
 # In[44]:
 
+
 mcb10g[20],mcb10gtun[20],mcb10gdnat[20]
 
 
 # In[7]:
+
 
 mcb10gdnat
 
 
 # In[8]:
 
+
 mcb10gtun
 
 
 # In[3]:
 
+
 mcb10g
 
 
 # In[ ]:
+
 
 
 
