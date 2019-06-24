@@ -1,7 +1,8 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[9]:
+
 
 import numpy as np
 import pandas as pd
@@ -62,6 +63,7 @@ plt.savefig('IEICE_FIGS/ipvs-iptables-nginx.png', bbox_inches="tight", dpi=300)
 
 
 # In[11]:
+
 
 import numpy as np
 import pandas as pd
@@ -124,6 +126,7 @@ plt.savefig('IEICE_FIGS/gcp_all_ieice.png', dpi=300)
 
 # In[12]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -181,6 +184,7 @@ plt.savefig('IEICE_FIGS/aws_c4_ieice.png', dpi=300)
 
 
 # In[1]:
+
 
 import numpy as np
 import pandas as pd
@@ -328,6 +332,7 @@ plt.show()
 
 # In[2]:
 
+
 fig = plt.figure(figsize=(6, 4))
 ax1 = fig.add_subplot(111)
 
@@ -352,8 +357,8 @@ plt.savefig('IEICE_FIGS/ecmp_delay_histgram_ieice.png', bbox_inches="tight", dpi
 plt.show()
 
 
-
 # In[2]:
+
 
 import numpy as np
 import pandas as pd
@@ -436,6 +441,7 @@ plt.show()
 
 # In[7]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -503,6 +509,7 @@ plt.show()
 
 # In[4]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -568,6 +575,7 @@ plt.show()
 
 # In[43]:
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -626,6 +634,7 @@ ax1.legend(loc=(0.7,0.7))
 
 
 # In[44]:
+
 
 import numpy as np
 import pandas as pd
@@ -691,6 +700,7 @@ plt.savefig('IEICE_FIGS/cpu_usage.png', bbox_inches="tight", dpi=300)
 
 
 # In[ ]:
+
 
 
 
