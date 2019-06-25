@@ -29,7 +29,7 @@ for file in ${prefix}*.log ; do
 
 #		echo "$pod $rps $t1 $t2"
 		echo -n "$pod,$rps,"
-		awk "/$t1/,/$t2/" dstat_$pod.csv \
+		awk "/$t1/,/$t2/" $file.dstat_$pod.csv \
 		| awk -F, '{idle+=$4} {siq+=$7} {eth0_rx+=$8} {eth0_tx+=$9} {d0_rx+=$8} {d0_tx+=$9} END \
 		{print idle/NR,siq/NR,eth0_rx/NR,eth0_tx/NR,d0_rx/NR,d0_tx/NR}' OFS=,  
 	done >> ${file%.log}.csv
@@ -42,6 +42,7 @@ for dir in cpuidle_rss_* ; do
 echo $dir 
 (cd $dir 
 prefix=ipvs ; anal_outer 
+prefix=ipvstun ; anal_outer 
 prefix=iptd ; anal_outer 
 )
 done

@@ -15,6 +15,8 @@ echo 3 >  /proc/sys/net/ipv4/tcp_syn_retries
 kbctl="kubectl -s 192.168.0.102:8080 "
 
 bench(){
+	dstat_begin
+
 	chk_url
 
 	echo wrk -c$con -t$thr -d$dur $url 
@@ -28,6 +30,8 @@ bench(){
 	echo -n "End time: " >> $file
 	date +%s >> $file
 	echo >> $file
+
+	dstat_end
 }
 
 chk_url(){
@@ -42,17 +46,17 @@ chk_url(){
 
 set_ipvs(){
 url=http://10.1.1.1:8888/
-file=ipvs$num.log
+file=ipvs_$num.log
 }
 
 set_ipvstun(){
 url=http://10.1.1.1/
-file=ipvstun$num.log
+file=ipvstun_$num.log
 }
 
 set_iptd(){
 url=http://10.254.0.10:81/
-file=iptd$num.log
+file=iptd_$num.log
 }
 
 ipvsctr_check(){
@@ -121,8 +125,8 @@ done
 }
 
 dstat_end(){
-wait
-scp $hst:~/dstat_$repl.csv ./
+	wait
+	scp $hst:~/dstat_$repl.csv ./$file.dstat_$repl.csv
 }
 
 bench_set(){
@@ -145,17 +149,15 @@ $kbctl scale deploy/tea-rc --replicas=$repl
 $kbctl scale deploy/ipvs-controller --replicas=$ipvs
 
 pod_check
-#ipvsctr_check
-#ipvs_check
+ipvsctr_check
+ipvs_check
 
-dstat_begin
 
 num=${ipvs}_$try
-#set_ipvs ; bench
-#set_ipvstun ; bench
-set_iptd ; bench
 
-dstat_end
+set_ipvs ; bench
+set_ipvstun ; bench
+#set_iptd ; bench
 
 echo end measurement for try= $try, ipvs= $ipvs , repl= $repl
 echo 
