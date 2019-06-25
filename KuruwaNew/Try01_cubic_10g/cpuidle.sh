@@ -45,6 +45,11 @@ url=http://10.1.1.1:8888/
 file=ipvs$num.log
 }
 
+set_ipvstun(){
+url=http://10.1.1.1/
+file=ipvstun$num.log
+}
+
 set_iptd(){
 url=http://10.254.0.10:81/
 file=iptd$num.log
@@ -108,29 +113,31 @@ scp $hst:~/dstat_$repl.csv ./
 
 bench_set(){
 
-for try in {1..1} ; do
+for try in {2..2} ; do
 for ipvs in {1..1}; do
-for repl in 1 $(seq 5 5 70) ; do
+for repl in 1 $(seq 2 2 20) $(seq 25 5 70) ; do
 #for repl in 1 10 50 100 ; do 
 
 echo start measurement for $repl
 $kbctl scale deploy/tea-rc --replicas=0
 $kbctl scale deploy/tea-rc --replicas=$repl
 
+$kbctl scale deploy/ipvs-controller --replicas=0
 $kbctl scale deploy/ipvs-controller --replicas=$ipvs
 
 sleep 3
 $kbctl scale deploy/tea-rc --replicas=$repl
 $kbctl scale deploy/ipvs-controller --replicas=$ipvs
 
-ipvsctr_check
 pod_check
+ipvsctr_check
 ipvs_check
 
 dstat_begin
 
 num=${ipvs}_$try
 set_ipvs ; bench
+set_ipvstun ; bench
 set_iptd ; bench
 
 dstat_end
