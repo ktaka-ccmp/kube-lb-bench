@@ -82,10 +82,24 @@ cids=$($kbctl get po -o wide |grep ipvs|egrep Runn |cut -f 1 -d ' ')
 for cid in $cids ; do 
 	workers=$($kbctl exec -it $cid -c server -- ipvsadm -L -n -f 1 |egrep :80|wc -l)
 	echo $workers
-	if [ $workers != $repl ]; then
+#	if [ $workers != $repl ]; then
+#		sleep $wait
+#		ipvs_check
+#	fi
+
+	count=1
+	while [ $workers != $repl ]; do
+		if [ $(( count % 30 )) == 0 ] ; then
+			echo "Restarting pods... " 
+			$kbctl scale deploy/tea-rc --replicas=0
+			$kbctl scale deploy/tea-rc --replicas=$repl
+		fi
+
 		sleep $wait
-		ipvs_check
-	fi
+		workers=$($kbctl exec -it $cid -c server -- ipvsadm -L -n -f 1 |egrep :80|wc -l)
+		echo $workers
+		((++count))
+	done 
 done
 }
 
@@ -113,9 +127,10 @@ scp $hst:~/dstat_$repl.csv ./
 
 bench_set(){
 
-for try in {3..3} ; do
+for try in {4..4} ; do
 for ipvs in {1..1}; do
-for repl in 1 $(seq 2 2 20) $(seq 25 5 70) ; do
+#for repl in 1 $(seq 2 2 20) $(seq 25 5 80) ; do
+for repl in $(seq 25 5 80) ; do
 #for repl in 1 10 50 100 ; do 
 
 echo start measurement for $repl
