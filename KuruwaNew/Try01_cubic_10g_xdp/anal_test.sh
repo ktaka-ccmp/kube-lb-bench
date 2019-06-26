@@ -43,7 +43,7 @@ echo $dir
 (cd $dir 
 prefix=xlb ; anal_outer 
 #prefix=ipvstun ; anal_outer 
-#prefix=iptd ; anal_outer 
+prefix=iptd ; anal_outer 
 )
 done
 

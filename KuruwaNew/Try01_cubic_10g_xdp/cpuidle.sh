@@ -49,6 +49,10 @@ url=http://10.1.1.2/
 file=xlb_$num.log
 }
 
+set_iptd(){
+url=http://10.254.0.10:81/
+file=iptd_$num.log
+}
 
 pod_check(){
 echo -n "pod_check : "
@@ -86,7 +90,8 @@ dstat_end(){
 
 bench_set(){
 
-for try in {1..5} ; do
+#for try in 0 8 9 ; do
+for try in {0..9} ; do
 for ipvs in {1..1}; do
 for repl in 1 $(seq 2 2 20) $(seq 25 5 60) ; do
 
@@ -103,7 +108,8 @@ sleep 3
 
 num=${ipvs}_$try
 
-set_xlb ; bench
+#set_xlb ; bench
+set_iptd ; bench 
 
 echo end measurement for try= $try, ipvs= $ipvs , repl= $repl
 echo 

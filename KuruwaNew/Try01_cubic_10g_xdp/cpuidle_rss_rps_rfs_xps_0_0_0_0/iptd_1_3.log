@@ -1,0 +1,14 @@
+podnum=1
+Start time: 1561550288
+wrk -c2000 -t100 -d30s http://10.254.0.10:81/
+Running 30s test @ http://10.254.0.10:81/
+  100 threads and 2000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    51.27ms   13.83ms 318.71ms   72.83%
+    Req/Sec   375.01    115.08     7.46k    90.03%
+  1101404 requests in 30.09s, 259.48MB read
+  Socket errors: connect 0, read 0, write 5, timeout 0
+Requests/sec:  36607.91
+Transfer/sec:      8.62MB
+End time: 1561550318
+
