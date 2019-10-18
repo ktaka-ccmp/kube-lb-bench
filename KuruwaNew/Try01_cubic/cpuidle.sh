@@ -4,8 +4,8 @@ wait=1
 
 con=2000
 thr=100
-#dur=30s
-dur=15s
+dur=30s
+#dur=15s
 #dur=3s
 
 ulimit -n 65536
@@ -108,7 +108,7 @@ scp $hst:~/dstat_$repl.csv ./
 
 bench_set(){
 
-for try in {0..0} ; do
+for try in {1..1} ; do
 for ipvs in {1..1}; do
 for repl in 1 $(seq 2 2 50); do 
 #for repl in 1 10 50 100 ; do 
